@@ -3,7 +3,7 @@
 Experiments in evolutionary program search for prefix-cache retention policies.
 MiMo is the initial API model for proposing policies; policy evaluation will run
 locally on CPU against fixed request traces. No local model weights or GPU are
-needed to download/tokenize data or run the planned replay simulator.
+needed to download/tokenize data or run the replay simulator.
 
 ## Setup
 
@@ -44,25 +44,45 @@ An interrupted download uses a `.part` file and restarts on the next run.
 counts. The source datasets retain their respective licenses and attribution;
 this repository does not redistribute them.
 
-## Scope and next steps
+## Run the simulator
 
-This repository currently contains dataset setup only. The downloaded files
-are **raw text datasets, not tokenized replay traces**. No paid API calls are
-made by setup.
+The CPU simulator includes LRU, LFU and FIFO baselines, a seeded synthetic
+chat/document-QA workload, and an unlimited-cache reference.
 
-1. Validate the simulator on tiny synthetic traces.
-2. Clean/deduplicate ShareGPT; preserve MASH-QA document identity and splits.
-3. Choose and pin a serving tokenizer and chat template, then tokenize on CPU.
-   The serving tokenizer need not be MiMo's. Keep recorded answers as outputs.
-4. Build timestamped traces with explicit, seeded arrival assumptions. Keep
-   complete sessions/documents separate across search and held-out evaluation.
-5. Compare LRU/LFU and candidate policies on separate and mixed workloads,
-   across cache capacities. Preserve exact-prefix dependencies and legal eviction.
-6. Minimize extra prompt computation versus an unlimited-cache replay, subject
-   to a policy-time budget. Measure all policy bookkeeping, metadata memory,
-   and cache churn. Token savings do not by themselves establish GPU latency gains.
-7. Integrate MiMo proposals and the evolution loop after the evaluator is sound.
+```sh
+uv run --locked python -m cache_sim --capacities 32 64 128 --output runs/demo.json
+```
 
-The initial sequential replay will be a simplification, not a reproduction of
-UniCache's concurrent vLLM-based simulator. Concurrent scheduling and decode
-memory pressure require subsequent validation.
+Capacities are in blocks (16 tokens per block by default). The table reports
+prompt-hit ratio, computed prompt tokens, extra computation versus unlimited
+cache, eviction count and policy execution time. JSON includes per-workload
+breakdowns, peak cache occupancy and timing details.
+
+Save the input trace or replay your own pretokenized trace:
+
+```sh
+uv run --locked python -m cache_sim --save-trace data/synthetic.json
+uv run --locked python -m cache_sim --trace data/synthetic.json --details --output runs/replay.json
+uv run --locked python -m unittest discover -s tests -v
+```
+
+See [the simulator contract](docs/simulator.md) for trace format, policy API,
+metrics, and assumptions. The model is sequential, pins active-request blocks,
+and permits only leaf evictions so retained prefixes remain usable. Requests
+that cannot fit are rejected. Timings measure instrumented CPU policy work,
+not GPU inference latency. Custom-policy isolation is not implemented yet.
+
+## Next steps
+
+Downloaded ShareGPT and MASH-QA remain raw text datasets. The working demo uses
+synthetic tokens; it does not yet claim dataset benchmark results.
+
+1. Clean/deduplicate ShareGPT and preserve MASH-QA document identity and splits.
+2. Pin a serving tokenizer/chat template; prepare CPU-tokenized traces with
+   recorded answers and seeded arrival assumptions. Keep complete sessions and
+   documents separate across search and held-out evaluation.
+3. Add bounded, isolated candidate evaluation and integrate MiMo proposals.
+4. Record coding-attempt histories, then build Dream-RSI's separate controller
+   replay and improvement loop.
+5. Validate concurrent scheduling, decode pressure and promising policies against
+   a serving engine before making latency claims.
