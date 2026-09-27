@@ -44,6 +44,23 @@ An interrupted download uses a `.part` file and restarts on the next run.
 counts. The source datasets retain their respective licenses and attribution;
 this repository does not redistribute them.
 
+## Tokenize the datasets ($0 API cost)
+
+```sh
+uv run --locked python scripts/tokenize_datasets.py
+uv run --locked python scripts/tokenize_datasets.py --verify-only
+```
+
+This uses the pinned **Qwen2.5-14B-Instruct tokenizer locally**, with its chat
+serialization template. No model weights or MiMo calls are needed; `.env` and
+`XIAOMI_API` are not used. Results are in `data/tokenized/qwen2.5/`, with a manifest
+of hashes, token counts, preprocessing exclusions, run time and API cost.
+
+Each output shard is a replay-ready JSON trace with synthetic arrival times.
+Conversation/document groups stay together, and train/validation/test splits
+are kept separate. See [dataset preparation](docs/dataset-preparation.md) for
+filtering, provenance, cost, capacity requirements, and rerun instructions.
+
 ## Run the simulator
 
 The CPU simulator includes LRU, LFU and FIFO baselines, a seeded synthetic
@@ -74,15 +91,13 @@ not GPU inference latency. Custom-policy isolation is not implemented yet.
 
 ## Next steps
 
-Downloaded ShareGPT and MASH-QA remain raw text datasets. The working demo uses
-synthetic tokens; it does not yet claim dataset benchmark results.
+Raw originals and prepared traces remain local. The default simulator demo still
+uses synthetic tokens; pass `--trace` to evaluate a prepared dataset shard.
 
-1. Clean/deduplicate ShareGPT and preserve MASH-QA document identity and splits.
-2. Pin a serving tokenizer/chat template; prepare CPU-tokenized traces with
-   recorded answers and seeded arrival assumptions. Keep complete sessions and
-   documents separate across search and held-out evaluation.
-3. Add bounded, isolated candidate evaluation and integrate MiMo proposals.
-4. Record coding-attempt histories, then build Dream-RSI's separate controller
+1. Establish dataset baselines across fixed shard sizes, capacities and arrival
+   assumptions; add mixed-workload trace composition.
+2. Add bounded, isolated candidate evaluation and integrate MiMo proposals.
+3. Record coding-attempt histories, then build Dream-RSI's separate controller
    replay and improvement loop.
-5. Validate concurrent scheduling, decode pressure and promising policies against
+4. Validate concurrent scheduling, decode pressure and promising policies against
    a serving engine before making latency claims.
