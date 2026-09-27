@@ -1,0 +1,16 @@
+{
+  "cycles": 2,
+  "online_rounds": 4,
+  "replay_rounds": 6,
+  "workers": 2,
+  "max_depth": 4,
+  "controller_revisions": 2,
+  "train": [
+    {"name": "synthetic-seed42-cap32", "synthetic": {"seed": 42, "sessions": 12}, "capacity_blocks": 32},
+    {"name": "synthetic-seed42-cap64", "synthetic": {"seed": 42, "sessions": 12}, "capacity_blocks": 64}
+  ],
+  "validation": [
+    {"name": "synthetic-seed314-cap32", "synthetic": {"seed": 314, "sessions": 12}, "capacity_blocks": 32},
+    {"name": "synthetic-seed314-cap64", "synthetic": {"seed": 314, "sessions": 12}, "capacity_blocks": 64}
+  ]
+}

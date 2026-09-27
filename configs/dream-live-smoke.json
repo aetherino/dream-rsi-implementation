@@ -1,0 +1,14 @@
+{
+  "cycles": 1,
+  "online_rounds": 1,
+  "replay_rounds": 3,
+  "workers": 1,
+  "controller_revisions": 1,
+  "api": {"model": "mimo-v2.6-pro", "max_calls": 2, "max_usd": 0.1, "max_completion_tokens": 2048, "thinking": "disabled"},
+  "train": [
+    {"name": "synthetic-seed42-cap32", "synthetic": {"seed": 42, "sessions": 12}, "capacity_blocks": 32}
+  ],
+  "validation": [
+    {"name": "synthetic-seed314-cap32", "synthetic": {"seed": 314, "sessions": 12}, "capacity_blocks": 32}
+  ]
+}

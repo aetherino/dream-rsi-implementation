@@ -1,7 +1,7 @@
 # Dream-RSI implementation
 
 Experiments in evolutionary program search for prefix-cache retention policies.
-MiMo is the initial API model for proposing policies; policy evaluation will run
+MiMo is the initial API model for proposing policies; policy evaluation runs
 locally on CPU against fixed request traces. No local model weights or GPU are
 needed to download/tokenize data or run the replay simulator.
 
@@ -87,17 +87,44 @@ See [the simulator contract](docs/simulator.md) for trace format, policy API,
 metrics, and assumptions. The model is sequential, pins active-request blocks,
 and permits only leaf evictions so retained prefixes remain usable. Requests
 that cannot fit are rejected. Timings measure instrumented CPU policy work,
-not GPU inference latency. Custom-policy isolation is not implemented yet.
+not GPU inference latency. The low-level simulator accepts trusted Python policies;
+the Dream-RSI harness below restricts generated programs to a bounded expression language.
 
-## Next steps
+## Dream-RSI search harness
 
-Raw originals and prepared traces remain local. The default simulator demo still
-uses synthetic tokens; pass `--trace` to evaluate a prepared dataset shard.
+The harness has two loops: MiMo proposes cache policies for real CPU evaluation,
+then proposes exploration-controller revisions evaluated by replaying recorded
+discovery trees. Only observed outcomes are visible during a controller replay.
+The incumbent controller is replaced only on a strict improvement against the
+same history pool. A final held-out check evaluates the selected cache policy.
 
-1. Establish dataset baselines across fixed shard sizes, capacities and arrival
-   assumptions; add mixed-workload trace composition.
-2. Add bounded, isolated candidate evaluation and integrate MiMo proposals.
-3. Record coding-attempt histories, then build Dream-RSI's separate controller
-   replay and improvement loop.
-4. Validate concurrent scheduling, decode pressure and promising policies against
-   a serving engine before making latency claims.
+```sh
+# No API cost: deterministic proposals, complete two-loop search.
+uv run --locked python -m dream_rsi --config configs/dream-smoke.json --backend mock
+
+# Same harness on small fixed ShareGPT/MASH-QA shard suites.
+uv run --locked python -m dream_rsi --config configs/dream-datasets.json --backend mock
+
+# Two-call MiMo integration check; uses XIAOMI_API from .env/environment.
+uv run --locked python -m dream_rsi --config configs/dream-live-smoke.json --backend mimo
+
+# Real search; includes controller-generation calls in the budget.
+uv run --locked python -m dream_rsi --config configs/dream-datasets.json --backend mimo \
+  --max-usd 0.50 --max-calls 24
+```
+
+The default backend is `mock`. Generated policies and controllers are validated
+numeric expressions, never arbitrary Python. Each cache evaluation runs in a
+child process with a wall-time limit. The API has call/completion-token limits and
+an estimated-dollar guard. Local run directories record prompts, programs,
+tree structure, failures, baselines, controller replay trajectories and API usage.
+Existing run directories are never overwritten; automatic resume is not implemented.
+
+See [the detailed walkthrough and flowchart](docs/dream-rsi.md) for the scoring
+formulas, configuration, replay semantics, budget accounting, and differences
+from the paper. This implements the paper's two-loop mechanism in a restricted
+program space; smoke results are not evidence of general self-improvement.
+
+Next experiments: expand the fixed suites; compare frozen and adaptive controllers
+at equal total API budgets; calibrate recomputation/CPU-cost tradeoffs; validate
+promising policies against a serving engine before making latency claims.
