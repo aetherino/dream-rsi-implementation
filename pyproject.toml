@@ -1,0 +1,6 @@
+[project]
+name = "dream-rsi-implementation"
+version = "0.1.0"
+description = "API-assisted evolutionary search for prefix-cache eviction policies"
+requires-python = ">=3.11"
+dependencies = ["gdown>=5.2,<6", "requests>=2.32,<3"]
