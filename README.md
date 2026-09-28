@@ -195,3 +195,15 @@ Up to four requests run concurrently across independent trials. Each request's
 outcome is saved immediately. Restart with the same output path and `--resume
 --watch`; completed requests are reused, and requests interrupted with an unknown
 outcome are recorded as failed attempts without automatic resubmission.
+
+## Follow-up diagnostics
+
+The completed 240-call experiment favored the fixed controller on held-out
+recomputation (22.75% average reduction versus LRU, compared with 13.39% adaptive).
+The next study continues all three fixed searches to 100 total calls and tests
+all four accepted controller revisions against their predecessors on fresh
+searches. It allows 420 new requests with a $3 new spending ceiling.
+
+See [the diagnostic study design](docs/controller-transfer-study.md) and
+[the prompt audit](docs/prompt-audit-20260927.md). Prompts remain unchanged in this
+study so controller and search-length effects can be interpreted separately.

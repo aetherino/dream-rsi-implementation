@@ -1,0 +1,130 @@
+{
+  "extension_total_calls": 100,
+  "extension_new_usd": 0.6,
+  "replicates": 2,
+  "diagnostic_calls": 15,
+  "diagnostic_usd": 0.075,
+  "max_new_usd": 3,
+  "validation": [
+    {
+      "name": "sharegpt-validation-13-cap2048",
+      "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00013.json",
+      "capacity_blocks": 2048
+    },
+    {
+      "name": "sharegpt-validation-13-cap4096",
+      "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00013.json",
+      "capacity_blocks": 4096
+    },
+    {
+      "name": "sharegpt-validation-14-cap2048",
+      "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00014.json",
+      "capacity_blocks": 2048
+    },
+    {
+      "name": "sharegpt-validation-14-cap4096",
+      "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00014.json",
+      "capacity_blocks": 4096
+    },
+    {
+      "name": "sharegpt-validation-15-cap2048",
+      "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00015.json",
+      "capacity_blocks": 2048
+    },
+    {
+      "name": "sharegpt-validation-15-cap4096",
+      "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00015.json",
+      "capacity_blocks": 4096
+    },
+    {
+      "name": "sharegpt-validation-16-cap2048",
+      "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00016.json",
+      "capacity_blocks": 2048
+    },
+    {
+      "name": "sharegpt-validation-16-cap4096",
+      "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00016.json",
+      "capacity_blocks": 4096
+    },
+    {
+      "name": "sharegpt-validation-17-cap2048",
+      "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00017.json",
+      "capacity_blocks": 2048
+    },
+    {
+      "name": "sharegpt-validation-17-cap4096",
+      "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00017.json",
+      "capacity_blocks": 4096
+    },
+    {
+      "name": "sharegpt-validation-18-cap2048",
+      "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00018.json",
+      "capacity_blocks": 2048
+    },
+    {
+      "name": "sharegpt-validation-18-cap4096",
+      "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00018.json",
+      "capacity_blocks": 4096
+    },
+    {
+      "name": "mashqa-validation-13-cap2048",
+      "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00013.json",
+      "capacity_blocks": 2048
+    },
+    {
+      "name": "mashqa-validation-13-cap4096",
+      "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00013.json",
+      "capacity_blocks": 4096
+    },
+    {
+      "name": "mashqa-validation-14-cap2048",
+      "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00014.json",
+      "capacity_blocks": 2048
+    },
+    {
+      "name": "mashqa-validation-14-cap4096",
+      "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00014.json",
+      "capacity_blocks": 4096
+    },
+    {
+      "name": "mashqa-validation-15-cap2048",
+      "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00015.json",
+      "capacity_blocks": 2048
+    },
+    {
+      "name": "mashqa-validation-15-cap4096",
+      "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00015.json",
+      "capacity_blocks": 4096
+    },
+    {
+      "name": "mashqa-validation-16-cap2048",
+      "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00016.json",
+      "capacity_blocks": 2048
+    },
+    {
+      "name": "mashqa-validation-16-cap4096",
+      "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00016.json",
+      "capacity_blocks": 4096
+    },
+    {
+      "name": "mashqa-validation-17-cap2048",
+      "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00017.json",
+      "capacity_blocks": 2048
+    },
+    {
+      "name": "mashqa-validation-17-cap4096",
+      "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00017.json",
+      "capacity_blocks": 4096
+    },
+    {
+      "name": "mashqa-validation-18-cap2048",
+      "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00018.json",
+      "capacity_blocks": 2048
+    },
+    {
+      "name": "mashqa-validation-18-cap4096",
+      "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00018.json",
+      "capacity_blocks": 4096
+    }
+  ]
+}

@@ -204,7 +204,7 @@ def advance(run):
             raise ValueError("Unknown coordinator phase")
 
 
-def save_artifacts(state, output):
+def save_artifacts(state, output, make_report=True):
     rows = []
     for run in state["runs"]:
         folder = output / run["id"]
@@ -213,7 +213,7 @@ def save_artifacts(state, output):
         write_json(folder / "source-hashes.json", state["source_hashes"])
         write_json(folder / "usage.json", usage(run, state["backend"]))
         write_json(folder / "progress.json", run["progress"])
-        write_json(folder / "controller-initial.json", INITIAL_CONTROLLER)
+        write_json(folder / "controller-initial.json", run.get("initial_controller", INITIAL_CONTROLLER))
         write_json(folder / "controller-final.json", run["controller"])
         if "best" in run:
             write_json(folder / "best-policy.json", run["best"])
@@ -244,6 +244,8 @@ def save_artifacts(state, output):
                         "validation_score": run["validation"]["score"], "usage": usage(run, state["backend"]),
                         "elapsed_seconds": run["finished_at"] - run["started_at"]})
             rows.append(summarize_run(folder, run["trial"], run["arm"]))
+    if not make_report:
+        return rows
     report = {"status": state["status"], "backend": state["backend"], "plan": state["plan"],
               "runs": rows, "aggregate": aggregate(rows), "error": state.get("error")}
     write_json(output / "comparison.json", report)
@@ -285,7 +287,8 @@ def initialize(raw, backend, project_root):
             "status": "prepared", "runs": runs}
 
 
-def tick(state, output, project_root, transport=None, attach_batch=None):
+def tick(state, output, project_root, transport=None, attach_batch=None, reporter=None):
+    reporter = reporter or save_artifacts
     checkpoint = output / "checkpoint.json"
     if state["active_wave"]:
         jobs = [j for r in state["runs"] for j in r["pending"]]
@@ -300,7 +303,7 @@ def tick(state, output, project_root, transport=None, attach_batch=None):
         if results is None:
             state["status"] = "waiting_for_batch"
             write_json(checkpoint, state)
-            return save_artifacts(state, output)
+            return reporter(state, output)
         updated = copy.deepcopy(state)
         for run in updated["runs"]:
             if run["pending"]:
@@ -318,7 +321,7 @@ def tick(state, output, project_root, transport=None, attach_batch=None):
     else:
         state["status"] = "completed"
     write_json(checkpoint, state)
-    return save_artifacts(state, output)
+    return reporter(state, output)
 
 
 def main():

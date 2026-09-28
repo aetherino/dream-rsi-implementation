@@ -1,0 +1,1519 @@
+{
+  "status": "completed",
+  "backend": "mimo",
+  "plan": {
+    "trials": 3,
+    "backend": "mimo",
+    "base_config": {
+      "cycles": 10,
+      "online_rounds": 3,
+      "replay_rounds": 6,
+      "workers": 2,
+      "scoring": "total_extra_v2",
+      "max_depth": 4,
+      "controller_revisions": 1,
+      "block_size": 16,
+      "revise_after_final_cycle": true,
+      "stop_on_empty_rollout": false,
+      "beta_calls": 0.02,
+      "beta_parallel": 0.005,
+      "evaluation_timeout_seconds": 180,
+      "max_policy_us_per_request": 50000,
+      "api": {
+        "model": "mimo-v2.6-pro",
+        "max_calls": 40,
+        "max_usd": 0.5,
+        "max_completion_tokens": 2048,
+        "thinking": "disabled",
+        "timeout_seconds": 120,
+        "input_usd_per_million": 0.435,
+        "output_usd_per_million": 0.87
+      },
+      "train": [
+        {
+          "name": "sharegpt-train-1-cap2048",
+          "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00001.json",
+          "capacity_blocks": 2048,
+          "sha256": "dfabcbc175ac981423b57a92258a6f51d74f41255ad50e060cc823e04fe35fe6"
+        },
+        {
+          "name": "sharegpt-train-1-cap4096",
+          "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00001.json",
+          "capacity_blocks": 4096,
+          "sha256": "dfabcbc175ac981423b57a92258a6f51d74f41255ad50e060cc823e04fe35fe6"
+        },
+        {
+          "name": "sharegpt-train-2-cap2048",
+          "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00002.json",
+          "capacity_blocks": 2048,
+          "sha256": "aa63b96e24e2773947c6c1d82856a9cdaf8c51b8c7099540d9ef8e9bd1a7d345"
+        },
+        {
+          "name": "sharegpt-train-2-cap4096",
+          "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00002.json",
+          "capacity_blocks": 4096,
+          "sha256": "aa63b96e24e2773947c6c1d82856a9cdaf8c51b8c7099540d9ef8e9bd1a7d345"
+        },
+        {
+          "name": "sharegpt-train-3-cap2048",
+          "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00003.json",
+          "capacity_blocks": 2048,
+          "sha256": "597d57b1c7ff5f4a5678703debc6af6aa0d82b3338ed2fe83f4ffe4d913f826c"
+        },
+        {
+          "name": "sharegpt-train-3-cap4096",
+          "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00003.json",
+          "capacity_blocks": 4096,
+          "sha256": "597d57b1c7ff5f4a5678703debc6af6aa0d82b3338ed2fe83f4ffe4d913f826c"
+        },
+        {
+          "name": "mashqa-train-1-cap2048",
+          "path": "data/tokenized/qwen2.5/mashqa/train/trace-00001.json",
+          "capacity_blocks": 2048,
+          "sha256": "d096232cb8a2a0cd25d4fc88266e1b905fab22288b973b76c7bdda0b21eedfce"
+        },
+        {
+          "name": "mashqa-train-1-cap4096",
+          "path": "data/tokenized/qwen2.5/mashqa/train/trace-00001.json",
+          "capacity_blocks": 4096,
+          "sha256": "d096232cb8a2a0cd25d4fc88266e1b905fab22288b973b76c7bdda0b21eedfce"
+        },
+        {
+          "name": "mashqa-train-2-cap2048",
+          "path": "data/tokenized/qwen2.5/mashqa/train/trace-00002.json",
+          "capacity_blocks": 2048,
+          "sha256": "c358a4f394e14a1d0f9fad6bc41048e3596dc7af8c4ac5f0a79669ba66250ca3"
+        },
+        {
+          "name": "mashqa-train-2-cap4096",
+          "path": "data/tokenized/qwen2.5/mashqa/train/trace-00002.json",
+          "capacity_blocks": 4096,
+          "sha256": "c358a4f394e14a1d0f9fad6bc41048e3596dc7af8c4ac5f0a79669ba66250ca3"
+        },
+        {
+          "name": "mashqa-train-3-cap2048",
+          "path": "data/tokenized/qwen2.5/mashqa/train/trace-00003.json",
+          "capacity_blocks": 2048,
+          "sha256": "ceca51c8989dc35f7120a92af30f9bd49b98f39a0074bf590694d3738623bab6"
+        },
+        {
+          "name": "mashqa-train-3-cap4096",
+          "path": "data/tokenized/qwen2.5/mashqa/train/trace-00003.json",
+          "capacity_blocks": 4096,
+          "sha256": "ceca51c8989dc35f7120a92af30f9bd49b98f39a0074bf590694d3738623bab6"
+        }
+      ],
+      "validation": [
+        {
+          "name": "sharegpt-validation-7-cap2048",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00007.json",
+          "capacity_blocks": 2048,
+          "sha256": "710a52df5b594707f640860c114d53aee4bdf9c267b006ce9110f7d4a5c4d03e"
+        },
+        {
+          "name": "sharegpt-validation-7-cap4096",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00007.json",
+          "capacity_blocks": 4096,
+          "sha256": "710a52df5b594707f640860c114d53aee4bdf9c267b006ce9110f7d4a5c4d03e"
+        },
+        {
+          "name": "sharegpt-validation-8-cap2048",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00008.json",
+          "capacity_blocks": 2048,
+          "sha256": "914b961e6b9c714f94a653c1829df34bda5a035d713d7ec299edb20278c088bf"
+        },
+        {
+          "name": "sharegpt-validation-8-cap4096",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00008.json",
+          "capacity_blocks": 4096,
+          "sha256": "914b961e6b9c714f94a653c1829df34bda5a035d713d7ec299edb20278c088bf"
+        },
+        {
+          "name": "sharegpt-validation-9-cap2048",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00009.json",
+          "capacity_blocks": 2048,
+          "sha256": "db90e550b804a63f2271e65358c84f7acaa40178647bcac114015cd063f426a6"
+        },
+        {
+          "name": "sharegpt-validation-9-cap4096",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00009.json",
+          "capacity_blocks": 4096,
+          "sha256": "db90e550b804a63f2271e65358c84f7acaa40178647bcac114015cd063f426a6"
+        },
+        {
+          "name": "sharegpt-validation-10-cap2048",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00010.json",
+          "capacity_blocks": 2048,
+          "sha256": "6a7cbc2a00f417bb46465061c00f65e2ebcc4b1a48cd1447ee3e364fcda9760b"
+        },
+        {
+          "name": "sharegpt-validation-10-cap4096",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00010.json",
+          "capacity_blocks": 4096,
+          "sha256": "6a7cbc2a00f417bb46465061c00f65e2ebcc4b1a48cd1447ee3e364fcda9760b"
+        },
+        {
+          "name": "sharegpt-validation-11-cap2048",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00011.json",
+          "capacity_blocks": 2048,
+          "sha256": "1d57c1cb7b6d9e070ac3de5b08821c50d489097b807004b6193f0e6fc7a827c4"
+        },
+        {
+          "name": "sharegpt-validation-11-cap4096",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00011.json",
+          "capacity_blocks": 4096,
+          "sha256": "1d57c1cb7b6d9e070ac3de5b08821c50d489097b807004b6193f0e6fc7a827c4"
+        },
+        {
+          "name": "sharegpt-validation-12-cap2048",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00012.json",
+          "capacity_blocks": 2048,
+          "sha256": "c6859b747bbd4bb30791c99be0e12de93bd4eeffd4c3232948de2f376aa574fb"
+        },
+        {
+          "name": "sharegpt-validation-12-cap4096",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00012.json",
+          "capacity_blocks": 4096,
+          "sha256": "c6859b747bbd4bb30791c99be0e12de93bd4eeffd4c3232948de2f376aa574fb"
+        },
+        {
+          "name": "mashqa-validation-7-cap2048",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00007.json",
+          "capacity_blocks": 2048,
+          "sha256": "0e51680ce5f56a264fe2a7f145522978aee9facd85f6d39ed5b356f0d890d0c4"
+        },
+        {
+          "name": "mashqa-validation-7-cap4096",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00007.json",
+          "capacity_blocks": 4096,
+          "sha256": "0e51680ce5f56a264fe2a7f145522978aee9facd85f6d39ed5b356f0d890d0c4"
+        },
+        {
+          "name": "mashqa-validation-8-cap2048",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00008.json",
+          "capacity_blocks": 2048,
+          "sha256": "621d594dbb6938376423eef4a37b800dbfa766e5f00b5fb2f5c08be19d528d4d"
+        },
+        {
+          "name": "mashqa-validation-8-cap4096",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00008.json",
+          "capacity_blocks": 4096,
+          "sha256": "621d594dbb6938376423eef4a37b800dbfa766e5f00b5fb2f5c08be19d528d4d"
+        },
+        {
+          "name": "mashqa-validation-9-cap2048",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00009.json",
+          "capacity_blocks": 2048,
+          "sha256": "a6d3a55d6a178a4bdb4d877a5ab616db1046ee08c8ad83f2cc3e8a70a43756b5"
+        },
+        {
+          "name": "mashqa-validation-9-cap4096",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00009.json",
+          "capacity_blocks": 4096,
+          "sha256": "a6d3a55d6a178a4bdb4d877a5ab616db1046ee08c8ad83f2cc3e8a70a43756b5"
+        },
+        {
+          "name": "mashqa-validation-10-cap2048",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00010.json",
+          "capacity_blocks": 2048,
+          "sha256": "29976a081efae392c79061d3106d6e198186ec5adbc467e980dc924f16409593"
+        },
+        {
+          "name": "mashqa-validation-10-cap4096",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00010.json",
+          "capacity_blocks": 4096,
+          "sha256": "29976a081efae392c79061d3106d6e198186ec5adbc467e980dc924f16409593"
+        },
+        {
+          "name": "mashqa-validation-11-cap2048",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00011.json",
+          "capacity_blocks": 2048,
+          "sha256": "ac3ccbb888cfecf9635864cc8cc81443d510a9fc155f7fc4fb4e6790c4879692"
+        },
+        {
+          "name": "mashqa-validation-11-cap4096",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00011.json",
+          "capacity_blocks": 4096,
+          "sha256": "ac3ccbb888cfecf9635864cc8cc81443d510a9fc155f7fc4fb4e6790c4879692"
+        },
+        {
+          "name": "mashqa-validation-12-cap2048",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00012.json",
+          "capacity_blocks": 2048,
+          "sha256": "e2848e9d51a460f5974e22fd2cac195f95be163bcb2a5a23066f30dc3c595f5c"
+        },
+        {
+          "name": "mashqa-validation-12-cap4096",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00012.json",
+          "capacity_blocks": 4096,
+          "sha256": "e2848e9d51a460f5974e22fd2cac195f95be163bcb2a5a23066f30dc3c595f5c"
+        }
+      ]
+    },
+    "estimated_usd_ceiling": 3.0,
+    "total_call_ceiling": 240,
+    "scheduling": "Independent trials; up to four concurrent regular API requests"
+  },
+  "runs": [
+    {
+      "trial": 1,
+      "arm": "fixed",
+      "path": "runs/comparison-long-realtime-20260927/trial-01-fixed",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.26233915882465914,
+      "validation_score": 0.2956612650287507,
+      "calls": 40,
+      "discovery_calls": 40,
+      "controller_calls": 0,
+      "valid_candidates": 38,
+      "candidate_failures": [
+        {
+          "cycle_file": "tree-001.json",
+          "node": 5,
+          "error": "ValueError: Only finite numeric constants of magnitude <= 1e6 are allowed"
+        },
+        {
+          "cycle_file": "tree-005.json",
+          "node": 1,
+          "error": "ValueError: Only finite numeric constants of magnitude <= 1e6 are allowed"
+        }
+      ],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.16262039999999997,
+      "elapsed_seconds": 1366.6889560222626,
+      "best_policy": {
+        "name": "lru-freq-tuned-depth-weak",
+        "retention_score": "last_access + 50 * frequency - 1 * depth",
+        "rationale": "Tuning the best-scoring variant (id=3, score 0.2566) by slightly reducing the frequency bonus from 55 to 50. Analysis of runs shows frequency-based retention strongly helps mashqa workloads (repeated-prefix access patterns) but can over-retention hurt sharegpt-train-2-cap2048. A marginally weaker frequency weight should reduce over-retention on noisy workloads while preserving most of the mashqa gains, targeting a net suite-wide token reduction relative to LRU (denominator 83,808 total LRU extra tokens across scenarios with nonzero LRU). Depth penalty of 1 preserves the shallow-prefix bias observed to help. All metadata is runtime-available (last_access, frequency, depth); arithmetic stays within magnitude limits and avoids division, so CPU feasibility is maintained."
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-7-cap2048",
+          "improvement": -0.0014705882352941176,
+          "extra_computed_tokens": 10896,
+          "lru_extra_computed_tokens": 10880,
+          "policy_us_per_request": 1684.8826919431278
+        },
+        {
+          "name": "sharegpt-validation-7-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 613.6538199052134
+        },
+        {
+          "name": "sharegpt-validation-8-cap2048",
+          "improvement": -0.13942307692307693,
+          "extra_computed_tokens": 7584,
+          "lru_extra_computed_tokens": 6656,
+          "policy_us_per_request": 2445.2251483516484
+        },
+        {
+          "name": "sharegpt-validation-8-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 1688.7726758241758
+        },
+        {
+          "name": "sharegpt-validation-9-cap2048",
+          "improvement": 0.12050739957716702,
+          "extra_computed_tokens": 13312,
+          "lru_extra_computed_tokens": 15136,
+          "policy_us_per_request": 1920.8480731707318
+        },
+        {
+          "name": "sharegpt-validation-9-cap4096",
+          "improvement": -576.0,
+          "extra_computed_tokens": 576,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 750.1359268292683
+        },
+        {
+          "name": "sharegpt-validation-10-cap2048",
+          "improvement": -0.3538083538083538,
+          "extra_computed_tokens": 8816,
+          "lru_extra_computed_tokens": 6512,
+          "policy_us_per_request": 1597.8155406698563
+        },
+        {
+          "name": "sharegpt-validation-10-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 542.3669186602871
+        },
+        {
+          "name": "sharegpt-validation-11-cap2048",
+          "improvement": 0.011494252873563218,
+          "extra_computed_tokens": 23392,
+          "lru_extra_computed_tokens": 23664,
+          "policy_us_per_request": 2337.3847807017546
+        },
+        {
+          "name": "sharegpt-validation-11-cap4096",
+          "improvement": -0.15,
+          "extra_computed_tokens": 736,
+          "lru_extra_computed_tokens": 640,
+          "policy_us_per_request": 1207.0712061403508
+        },
+        {
+          "name": "sharegpt-validation-12-cap2048",
+          "improvement": 0.039805036555645816,
+          "extra_computed_tokens": 18912,
+          "lru_extra_computed_tokens": 19696,
+          "policy_us_per_request": 2116.0974725738397
+        },
+        {
+          "name": "sharegpt-validation-12-cap4096",
+          "improvement": 1.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 400,
+          "policy_us_per_request": 1100.1526371308018
+        },
+        {
+          "name": "mashqa-validation-7-cap2048",
+          "improvement": 0.8095238095238095,
+          "extra_computed_tokens": 2368,
+          "lru_extra_computed_tokens": 12432,
+          "policy_us_per_request": 873.71707239819
+        },
+        {
+          "name": "mashqa-validation-7-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 54.905298642533936
+        },
+        {
+          "name": "mashqa-validation-8-cap2048",
+          "improvement": 0.6003616636528029,
+          "extra_computed_tokens": 3536,
+          "lru_extra_computed_tokens": 8848,
+          "policy_us_per_request": 910.8495217391305
+        },
+        {
+          "name": "mashqa-validation-8-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 59.11131884057971
+        },
+        {
+          "name": "mashqa-validation-9-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 443.8084237288135
+        },
+        {
+          "name": "mashqa-validation-9-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 70.14940112994351
+        },
+        {
+          "name": "mashqa-validation-10-cap2048",
+          "improvement": 0.8498583569405099,
+          "extra_computed_tokens": 1696,
+          "lru_extra_computed_tokens": 11296,
+          "policy_us_per_request": 759.70675
+        },
+        {
+          "name": "mashqa-validation-10-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 60.956455
+        },
+        {
+          "name": "mashqa-validation-11-cap2048",
+          "improvement": 0.683929931454684,
+          "extra_computed_tokens": 6640,
+          "lru_extra_computed_tokens": 21008,
+          "policy_us_per_request": 1031.1665673076923
+        },
+        {
+          "name": "mashqa-validation-11-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 58.09344230769231
+        },
+        {
+          "name": "mashqa-validation-12-cap2048",
+          "improvement": 0.4122983870967742,
+          "extra_computed_tokens": 9328,
+          "lru_extra_computed_tokens": 15872,
+          "policy_us_per_request": 1174.7056705882353
+        },
+        {
+          "name": "mashqa-validation-12-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 47.40969019607843
+        }
+      ]
+    },
+    {
+      "trial": 1,
+      "arm": "adaptive",
+      "path": "runs/comparison-long-realtime-20260927/trial-01-adaptive",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.020549260610716342,
+      "validation_score": 0.054051228437009935,
+      "calls": 40,
+      "discovery_calls": 33,
+      "controller_calls": 7,
+      "valid_candidates": 33,
+      "candidate_failures": [],
+      "accepted_revisions": 2,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.14412028500000001,
+      "elapsed_seconds": 1646.0295040607452,
+      "best_policy": {
+        "name": "recency-freq-compact",
+        "retention_score": "last_access + 20 * log1p(frequency)",
+        "rationale": "LRU is already near-optimal here; prior experiment adding large depth/insertion terms hurt badly (score -2.69) because it evicted hot recent prefixes. This candidate keeps recency dominant and adds only a mild frequency bonus so repeatedly reused blocks survive a little longer, while avoiding heavy multi-term formulas that blow CPU-time and misorder eviction. Expect small-but-safe savings or parity rather than regression."
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-7-cap2048",
+          "improvement": -0.04264705882352941,
+          "extra_computed_tokens": 11344,
+          "lru_extra_computed_tokens": 10880,
+          "policy_us_per_request": 1433.6014881516587
+        },
+        {
+          "name": "sharegpt-validation-7-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 546.8224928909952
+        },
+        {
+          "name": "sharegpt-validation-8-cap2048",
+          "improvement": 0.07451923076923077,
+          "extra_computed_tokens": 6160,
+          "lru_extra_computed_tokens": 6656,
+          "policy_us_per_request": 2121.017076923077
+        },
+        {
+          "name": "sharegpt-validation-8-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 1641.0894670329671
+        },
+        {
+          "name": "sharegpt-validation-9-cap2048",
+          "improvement": -0.049682875264270614,
+          "extra_computed_tokens": 15888,
+          "lru_extra_computed_tokens": 15136,
+          "policy_us_per_request": 1696.6504341463415
+        },
+        {
+          "name": "sharegpt-validation-9-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 673.1930682926828
+        },
+        {
+          "name": "sharegpt-validation-10-cap2048",
+          "improvement": -0.02702702702702703,
+          "extra_computed_tokens": 6688,
+          "lru_extra_computed_tokens": 6512,
+          "policy_us_per_request": 1276.172
+        },
+        {
+          "name": "sharegpt-validation-10-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 497.8522679425837
+        },
+        {
+          "name": "sharegpt-validation-11-cap2048",
+          "improvement": -0.06693711967545639,
+          "extra_computed_tokens": 25248,
+          "lru_extra_computed_tokens": 23664,
+          "policy_us_per_request": 1958.4600350877192
+        },
+        {
+          "name": "sharegpt-validation-11-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 640,
+          "lru_extra_computed_tokens": 640,
+          "policy_us_per_request": 1100.6111622807018
+        },
+        {
+          "name": "sharegpt-validation-12-cap2048",
+          "improvement": -0.023558082859463852,
+          "extra_computed_tokens": 20160,
+          "lru_extra_computed_tokens": 19696,
+          "policy_us_per_request": 1763.987970464135
+        },
+        {
+          "name": "sharegpt-validation-12-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 400,
+          "lru_extra_computed_tokens": 400,
+          "policy_us_per_request": 1012.1874852320675
+        },
+        {
+          "name": "mashqa-validation-7-cap2048",
+          "improvement": 0.20205920205920205,
+          "extra_computed_tokens": 9920,
+          "lru_extra_computed_tokens": 12432,
+          "policy_us_per_request": 1161.9152081447962
+        },
+        {
+          "name": "mashqa-validation-7-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 54.91178733031674
+        },
+        {
+          "name": "mashqa-validation-8-cap2048",
+          "improvement": 0.0325497287522604,
+          "extra_computed_tokens": 8560,
+          "lru_extra_computed_tokens": 8848,
+          "policy_us_per_request": 1131.1306231884057
+        },
+        {
+          "name": "mashqa-validation-8-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 59.77299033816425
+        },
+        {
+          "name": "mashqa-validation-9-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 424.98858757062146
+        },
+        {
+          "name": "mashqa-validation-9-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 70.72491525423729
+        },
+        {
+          "name": "mashqa-validation-10-cap2048",
+          "improvement": 0.18696883852691218,
+          "extra_computed_tokens": 9184,
+          "lru_extra_computed_tokens": 11296,
+          "policy_us_per_request": 1105.320175
+        },
+        {
+          "name": "mashqa-validation-10-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 60.8695
+        },
+        {
+          "name": "mashqa-validation-11-cap2048",
+          "improvement": 0.19345011424219344,
+          "extra_computed_tokens": 16944,
+          "lru_extra_computed_tokens": 21008,
+          "policy_us_per_request": 1374.0127211538463
+        },
+        {
+          "name": "mashqa-validation-11-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 58.08958173076923
+        },
+        {
+          "name": "mashqa-validation-12-cap2048",
+          "improvement": 0.14112903225806453,
+          "extra_computed_tokens": 13632,
+          "lru_extra_computed_tokens": 15872,
+          "policy_us_per_request": 1322.6373607843136
+        },
+        {
+          "name": "mashqa-validation-12-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 46.430576470588235
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "arm": "adaptive",
+      "path": "runs/comparison-long-realtime-20260927/trial-02-adaptive",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.16823506817745343,
+      "validation_score": 0.18494511238891792,
+      "calls": 40,
+      "discovery_calls": 34,
+      "controller_calls": 6,
+      "valid_candidates": 34,
+      "candidate_failures": [],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.15405524999999998,
+      "elapsed_seconds": 1515.835552930832,
+      "best_policy": {
+        "name": "frequency-175-shallow-boost-v2",
+        "retention_score": "last_access + log1p(frequency) * 175 * (1 if frequency <= 2 else 0.9 if frequency <= 6 else 0.8) * (1.15 if depth <= 3 else 1 if depth <= 6 else 0.97)",
+        "rationale": "Refines the selected parent (score 0.1675, currently best) by increasing the shallow-depth retention boost from 1.12 to 1.15. Analysis of per-scenario deltas shows the biggest risk of loss is sharegpt-train-2-cap2048 (-1888 tokens) and sharegpt-train-3-cap2048 (-48), while the dominant win is mashqa-train-3-cap2048 (+14000). Shallow prefix blocks (depth<=3) are expensive to recompute when evicted because they sit at the root of many replay paths and their loss forces recomputation of long suffixes; a slightly larger multiplier (1.15 vs 1.12) keeps them resident longer without materially displacing mid/depth blocks, and keeps recency as the primary driver so recently-active prefixes still win ties. The frequency damping tiers (1 / 0.9 / 0.8) are retained because they prevent very-high-frequency blocks from hoarding capacity at the expense of the shallow-boosted blocks, which were the source of the earlier regression in sharegpt-train-2 when coefficients were raised. This change is expected to further reduce extra tokens in sharegpt-train-1-cap2048 (already +1232 saved) and shave some of the -1888 in sharegpt-train-2 by holding shallow blocks through short reuse windows, while keeping mashqa-train-3-cap2048's large saving intact (its win comes from protecting a small set of high-frequency shallow blocks that LRU evicts). Expression cost is comparable to the parent (single multiplier branch change), so the CPU-time feasibility limit is respected; no divisions, no unbounded terms, and all intermediates stay well under 1e12 in magnitude."
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-7-cap2048",
+          "improvement": -0.12794117647058822,
+          "extra_computed_tokens": 12272,
+          "lru_extra_computed_tokens": 10880,
+          "policy_us_per_request": 2997.71536492891
+        },
+        {
+          "name": "sharegpt-validation-7-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 1014.9386682464454
+        },
+        {
+          "name": "sharegpt-validation-8-cap2048",
+          "improvement": -0.06009615384615385,
+          "extra_computed_tokens": 7056,
+          "lru_extra_computed_tokens": 6656,
+          "policy_us_per_request": 4238.4187142857145
+        },
+        {
+          "name": "sharegpt-validation-8-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 2899.416818681319
+        },
+        {
+          "name": "sharegpt-validation-9-cap2048",
+          "improvement": -0.014799154334038054,
+          "extra_computed_tokens": 15360,
+          "lru_extra_computed_tokens": 15136,
+          "policy_us_per_request": 3441.1931024390246
+        },
+        {
+          "name": "sharegpt-validation-9-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 1191.6309414634145
+        },
+        {
+          "name": "sharegpt-validation-10-cap2048",
+          "improvement": -0.26044226044226043,
+          "extra_computed_tokens": 8208,
+          "lru_extra_computed_tokens": 6512,
+          "policy_us_per_request": 2700.523842105263
+        },
+        {
+          "name": "sharegpt-validation-10-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 894.3977703349282
+        },
+        {
+          "name": "sharegpt-validation-11-cap2048",
+          "improvement": -0.12643678160919541,
+          "extra_computed_tokens": 26656,
+          "lru_extra_computed_tokens": 23664,
+          "policy_us_per_request": 4078.680289473684
+        },
+        {
+          "name": "sharegpt-validation-11-cap4096",
+          "improvement": 0.15,
+          "extra_computed_tokens": 544,
+          "lru_extra_computed_tokens": 640,
+          "policy_us_per_request": 1936.3970789473683
+        },
+        {
+          "name": "sharegpt-validation-12-cap2048",
+          "improvement": -0.07067424857839155,
+          "extra_computed_tokens": 21088,
+          "lru_extra_computed_tokens": 19696,
+          "policy_us_per_request": 3667.6311940928267
+        },
+        {
+          "name": "sharegpt-validation-12-cap4096",
+          "improvement": 0.12,
+          "extra_computed_tokens": 352,
+          "lru_extra_computed_tokens": 400,
+          "policy_us_per_request": 1768.9760253164557
+        },
+        {
+          "name": "mashqa-validation-7-cap2048",
+          "improvement": 0.631917631917632,
+          "extra_computed_tokens": 4576,
+          "lru_extra_computed_tokens": 12432,
+          "policy_us_per_request": 1821.9889773755656
+        },
+        {
+          "name": "mashqa-validation-7-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 54.83041176470588
+        },
+        {
+          "name": "mashqa-validation-8-cap2048",
+          "improvement": 0.2585895117540687,
+          "extra_computed_tokens": 6560,
+          "lru_extra_computed_tokens": 8848,
+          "policy_us_per_request": 2032.7391256038647
+        },
+        {
+          "name": "mashqa-validation-8-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 59.67475362318841
+        },
+        {
+          "name": "mashqa-validation-9-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 862.7988135593221
+        },
+        {
+          "name": "mashqa-validation-9-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 70.08761016949153
+        },
+        {
+          "name": "mashqa-validation-10-cap2048",
+          "improvement": 0.5963172804532578,
+          "extra_computed_tokens": 4560,
+          "lru_extra_computed_tokens": 11296,
+          "policy_us_per_request": 1740.282165
+        },
+        {
+          "name": "mashqa-validation-10-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 61.926685
+        },
+        {
+          "name": "mashqa-validation-11-cap2048",
+          "improvement": 0.5346534653465347,
+          "extra_computed_tokens": 9776,
+          "lru_extra_computed_tokens": 21008,
+          "policy_us_per_request": 2094.4381153846157
+        },
+        {
+          "name": "mashqa-validation-11-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 58.3545
+        },
+        {
+          "name": "mashqa-validation-12-cap2048",
+          "improvement": 0.5131048387096774,
+          "extra_computed_tokens": 7728,
+          "lru_extra_computed_tokens": 15872,
+          "policy_us_per_request": 2131.5534352941177
+        },
+        {
+          "name": "mashqa-validation-12-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 46.44134901960784
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "arm": "fixed",
+      "path": "runs/comparison-long-realtime-20260927/trial-02-fixed",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.2108699827155752,
+      "validation_score": 0.17647673810768427,
+      "calls": 40,
+      "discovery_calls": 40,
+      "controller_calls": 0,
+      "valid_candidates": 37,
+      "candidate_failures": [
+        {
+          "cycle_file": "tree-001.json",
+          "node": 2,
+          "error": "ValueError: Only finite numeric constants of magnitude <= 1e6 are allowed"
+        },
+        {
+          "cycle_file": "tree-003.json",
+          "node": 2,
+          "error": "Invalid model program (JSONDecodeError)"
+        },
+        {
+          "cycle_file": "tree-005.json",
+          "node": 3,
+          "error": "ValueError: Unexpected policy fields"
+        }
+      ],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.16513513500000002,
+      "elapsed_seconds": 1383.8921160697937,
+      "best_policy": {
+        "name": "recency-frequency-deep-penalty-125",
+        "retention_score": "last_access + 2 * log1p(frequency) - 1.25 * max(0, depth - 4)",
+        "rationale": "Parent id 2 (penalty 1.0) is best at 0.1965. Sweep of penalty showed 0.4=0.127, 0.5=0.140, 0.75=0.174, 1.0=0.196, with gains concentrated in scenarios where deep evictions are cheap to repair. Extending penalty modestly to 1.25 should further protect shallow/shared prefixes while remaining dominated by recency+frequency for typical depths <=4. Rationale: recent blocks are most likely to be reused; frequency adds reuse-probability mass via log1p; deep penalties trade off tail-scenario over-retention versus head-scenario savings, and stronger penalties further bias toward shallower, cheaper-to-recompute blocks."
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-7-cap2048",
+          "improvement": 0.20441176470588235,
+          "extra_computed_tokens": 8656,
+          "lru_extra_computed_tokens": 10880,
+          "policy_us_per_request": 2217.1553127962084
+        },
+        {
+          "name": "sharegpt-validation-7-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 812.878
+        },
+        {
+          "name": "sharegpt-validation-8-cap2048",
+          "improvement": -0.11298076923076923,
+          "extra_computed_tokens": 7408,
+          "lru_extra_computed_tokens": 6656,
+          "policy_us_per_request": 3421.3269670329673
+        },
+        {
+          "name": "sharegpt-validation-8-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 2249.863945054945
+        },
+        {
+          "name": "sharegpt-validation-9-cap2048",
+          "improvement": 0.13742071881606766,
+          "extra_computed_tokens": 13056,
+          "lru_extra_computed_tokens": 15136,
+          "policy_us_per_request": 2569.355951219512
+        },
+        {
+          "name": "sharegpt-validation-9-cap4096",
+          "improvement": -672.0,
+          "extra_computed_tokens": 672,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 1018.1719512195122
+        },
+        {
+          "name": "sharegpt-validation-10-cap2048",
+          "improvement": -0.35135135135135137,
+          "extra_computed_tokens": 8800,
+          "lru_extra_computed_tokens": 6512,
+          "policy_us_per_request": 2185.189449760766
+        },
+        {
+          "name": "sharegpt-validation-10-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 725.4387894736842
+        },
+        {
+          "name": "sharegpt-validation-11-cap2048",
+          "improvement": 0.11223799864773495,
+          "extra_computed_tokens": 21008,
+          "lru_extra_computed_tokens": 23664,
+          "policy_us_per_request": 3144.4607192982453
+        },
+        {
+          "name": "sharegpt-validation-11-cap4096",
+          "improvement": -0.4,
+          "extra_computed_tokens": 896,
+          "lru_extra_computed_tokens": 640,
+          "policy_us_per_request": 1621.3768114035088
+        },
+        {
+          "name": "sharegpt-validation-12-cap2048",
+          "improvement": 0.12185215272136475,
+          "extra_computed_tokens": 17296,
+          "lru_extra_computed_tokens": 19696,
+          "policy_us_per_request": 2843.9964767932493
+        },
+        {
+          "name": "sharegpt-validation-12-cap4096",
+          "improvement": 1.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 400,
+          "policy_us_per_request": 1471.9320253164556
+        },
+        {
+          "name": "mashqa-validation-7-cap2048",
+          "improvement": 0.23423423423423423,
+          "extra_computed_tokens": 9520,
+          "lru_extra_computed_tokens": 12432,
+          "policy_us_per_request": 1719.1016108597285
+        },
+        {
+          "name": "mashqa-validation-7-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 55.42966063348416
+        },
+        {
+          "name": "mashqa-validation-8-cap2048",
+          "improvement": 0.3924050632911392,
+          "extra_computed_tokens": 5376,
+          "lru_extra_computed_tokens": 8848,
+          "policy_us_per_request": 1535.9900193236715
+        },
+        {
+          "name": "mashqa-validation-8-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 59.38014492753623
+        },
+        {
+          "name": "mashqa-validation-9-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 646.8633276836158
+        },
+        {
+          "name": "mashqa-validation-9-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 70.9280451977401
+        },
+        {
+          "name": "mashqa-validation-10-cap2048",
+          "improvement": 0.40793201133144474,
+          "extra_computed_tokens": 6688,
+          "lru_extra_computed_tokens": 11296,
+          "policy_us_per_request": 1458.3185700000001
+        },
+        {
+          "name": "mashqa-validation-10-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 60.79666
+        },
+        {
+          "name": "mashqa-validation-11-cap2048",
+          "improvement": 0.39146991622239147,
+          "extra_computed_tokens": 12784,
+          "lru_extra_computed_tokens": 21008,
+          "policy_us_per_request": 1814.4397836538462
+        },
+        {
+          "name": "mashqa-validation-11-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 57.8808798076923
+        },
+        {
+          "name": "mashqa-validation-12-cap2048",
+          "improvement": 0.12600806451612903,
+          "extra_computed_tokens": 13872,
+          "lru_extra_computed_tokens": 15872,
+          "policy_us_per_request": 2026.1187960784314
+        },
+        {
+          "name": "mashqa-validation-12-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 46.69655294117647
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "arm": "fixed",
+      "path": "runs/comparison-long-realtime-20260927/trial-03-fixed",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.20222777030919917,
+      "validation_score": 0.21035023523261892,
+      "calls": 40,
+      "discovery_calls": 40,
+      "controller_calls": 0,
+      "valid_candidates": 37,
+      "candidate_failures": [
+        {
+          "cycle_file": "tree-003.json",
+          "node": 1,
+          "error": "ValueError: Unexpected policy fields"
+        },
+        {
+          "cycle_file": "tree-005.json",
+          "node": 5,
+          "error": "ValueError: Unexpected policy fields"
+        },
+        {
+          "cycle_file": "tree-008.json",
+          "node": 3,
+          "error": "ValueError: Unexpected policy fields"
+        }
+      ],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.16403415,
+      "elapsed_seconds": 1404.7251651287079,
+      "best_policy": {
+        "name": "damped-freq-80-deep-cap-soft-recency-shallow",
+        "retention_score": "last_access + 80 * log1p(frequency) * min(1, (now - inserted_at) / 200) * min(1, 25 / (1 + depth)) + 50 * min(1, 40 / (1 + depth))",
+        "rationale": "Extends the best parent (score 0.1444) by adding a small depth-aware bonus that favors shallow blocks, which are the most valuable to retain since they are shared across more prefix computations and their loss causes larger recomputation cascades. The existing frequency term already showed strong gains (6128 saved tokens on mashqa-train-3-cap2048, 2048 on mashqa-train-2-cap2048) while the depth damping kept deep, less-reused blocks from dominating. The new shallow-bonus term uses only allowed metadata (depth) and is capped at 50 units so it gently shifts eviction preference toward shallow unpinned leaves without overwhelming the recency baseline. All operations are simple arithmetic and min(), keeping runtime cost near the parent's observed ~3-4ms per request, well under the 50ms CPU feasibility limit."
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-7-cap2048",
+          "improvement": 0.052941176470588235,
+          "extra_computed_tokens": 10304,
+          "lru_extra_computed_tokens": 10880,
+          "policy_us_per_request": 3568.6519383886257
+        },
+        {
+          "name": "sharegpt-validation-7-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 1225.216075829384
+        },
+        {
+          "name": "sharegpt-validation-8-cap2048",
+          "improvement": -0.1201923076923077,
+          "extra_computed_tokens": 7456,
+          "lru_extra_computed_tokens": 6656,
+          "policy_us_per_request": 5429.468857142857
+        },
+        {
+          "name": "sharegpt-validation-8-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 3636.524098901099
+        },
+        {
+          "name": "sharegpt-validation-9-cap2048",
+          "improvement": 0.1416490486257928,
+          "extra_computed_tokens": 12992,
+          "lru_extra_computed_tokens": 15136,
+          "policy_us_per_request": 4082.7777804878046
+        },
+        {
+          "name": "sharegpt-validation-9-cap4096",
+          "improvement": -560.0,
+          "extra_computed_tokens": 560,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 1550.896848780488
+        },
+        {
+          "name": "sharegpt-validation-10-cap2048",
+          "improvement": -0.29238329238329236,
+          "extra_computed_tokens": 8416,
+          "lru_extra_computed_tokens": 6512,
+          "policy_us_per_request": 3338.270851674641
+        },
+        {
+          "name": "sharegpt-validation-10-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 1099.8828899521532
+        },
+        {
+          "name": "sharegpt-validation-11-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 23664,
+          "lru_extra_computed_tokens": 23664,
+          "policy_us_per_request": 5025.09975
+        },
+        {
+          "name": "sharegpt-validation-11-cap4096",
+          "improvement": 0.425,
+          "extra_computed_tokens": 368,
+          "lru_extra_computed_tokens": 640,
+          "policy_us_per_request": 2430.01798245614
+        },
+        {
+          "name": "sharegpt-validation-12-cap2048",
+          "improvement": 0.012997562956945572,
+          "extra_computed_tokens": 19440,
+          "lru_extra_computed_tokens": 19696,
+          "policy_us_per_request": 4564.966080168776
+        },
+        {
+          "name": "sharegpt-validation-12-cap4096",
+          "improvement": 1.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 400,
+          "policy_us_per_request": 2221.281135021097
+        },
+        {
+          "name": "mashqa-validation-7-cap2048",
+          "improvement": 0.510939510939511,
+          "extra_computed_tokens": 6080,
+          "lru_extra_computed_tokens": 12432,
+          "policy_us_per_request": 2479.632402714932
+        },
+        {
+          "name": "mashqa-validation-7-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 54.995769230769234
+        },
+        {
+          "name": "mashqa-validation-8-cap2048",
+          "improvement": 0.4213381555153707,
+          "extra_computed_tokens": 5120,
+          "lru_extra_computed_tokens": 8848,
+          "policy_us_per_request": 2369.379719806763
+        },
+        {
+          "name": "mashqa-validation-8-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 59.51374396135266
+        },
+        {
+          "name": "mashqa-validation-9-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 1118.4279604519772
+        },
+        {
+          "name": "mashqa-validation-9-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 71.05936158192091
+        },
+        {
+          "name": "mashqa-validation-10-cap2048",
+          "improvement": 0.6416430594900849,
+          "extra_computed_tokens": 4048,
+          "lru_extra_computed_tokens": 11296,
+          "policy_us_per_request": 2110.0014100000003
+        },
+        {
+          "name": "mashqa-validation-10-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 61.54361
+        },
+        {
+          "name": "mashqa-validation-11-cap2048",
+          "improvement": 0.4501142421934501,
+          "extra_computed_tokens": 11552,
+          "lru_extra_computed_tokens": 21008,
+          "policy_us_per_request": 2770.3189615384613
+        },
+        {
+          "name": "mashqa-validation-11-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 58.764
+        },
+        {
+          "name": "mashqa-validation-12-cap2048",
+          "improvement": 0.3165322580645161,
+          "extra_computed_tokens": 10848,
+          "lru_extra_computed_tokens": 15872,
+          "policy_us_per_request": 2953.7325725490196
+        },
+        {
+          "name": "mashqa-validation-12-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 46.99738039215686
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "arm": "adaptive",
+      "path": "runs/comparison-long-realtime-20260927/trial-03-adaptive",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.12809679277895142,
+      "validation_score": 0.16257187663355985,
+      "calls": 40,
+      "discovery_calls": 34,
+      "controller_calls": 6,
+      "valid_candidates": 33,
+      "candidate_failures": [
+        {
+          "cycle_file": "tree-002.json",
+          "node": 2,
+          "error": "ValueError: Expression exceeds 96 AST nodes"
+        }
+      ],
+      "accepted_revisions": 2,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.15241965,
+      "elapsed_seconds": 1530.6205749511719,
+      "best_policy": {
+        "name": "lru-freq-boost-v3",
+        "retention_score": "last_access + log1p(frequency) * 200",
+        "rationale": "Building on parent lru-freq-boost-v2 (score 0.1200) which added log1p(frequency)*120 to LRU recency, and comparison observation id=3 showing weight 50 is weaker (0.0576). Increasing the frequency weight further should better preserve frequently-reused prefix blocks in heavy-reuse scenarios like mashqa-train-3, while capped growth of log1p limits over-penalization of cold entries. Suite objective is total tokens; frequency boost helps reuse-heavy workloads where recomputation is most expensive."
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-7-cap2048",
+          "improvement": -0.3073529411764706,
+          "extra_computed_tokens": 14224,
+          "lru_extra_computed_tokens": 10880,
+          "policy_us_per_request": 1564.425232227488
+        },
+        {
+          "name": "sharegpt-validation-7-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 548.1747772511848
+        },
+        {
+          "name": "sharegpt-validation-8-cap2048",
+          "improvement": -0.08653846153846154,
+          "extra_computed_tokens": 7232,
+          "lru_extra_computed_tokens": 6656,
+          "policy_us_per_request": 2180.3479615384613
+        },
+        {
+          "name": "sharegpt-validation-8-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 1639.764142857143
+        },
+        {
+          "name": "sharegpt-validation-9-cap2048",
+          "improvement": -0.03488372093023256,
+          "extra_computed_tokens": 15664,
+          "lru_extra_computed_tokens": 15136,
+          "policy_us_per_request": 1752.3882097560975
+        },
+        {
+          "name": "sharegpt-validation-9-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 670.4236926829268
+        },
+        {
+          "name": "sharegpt-validation-10-cap2048",
+          "improvement": -0.28501228501228504,
+          "extra_computed_tokens": 8368,
+          "lru_extra_computed_tokens": 6512,
+          "policy_us_per_request": 1377.067162679426
+        },
+        {
+          "name": "sharegpt-validation-10-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 488.61364114832537
+        },
+        {
+          "name": "sharegpt-validation-11-cap2048",
+          "improvement": -0.1663286004056795,
+          "extra_computed_tokens": 27600,
+          "lru_extra_computed_tokens": 23664,
+          "policy_us_per_request": 2108.038004385965
+        },
+        {
+          "name": "sharegpt-validation-11-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 640,
+          "lru_extra_computed_tokens": 640,
+          "policy_us_per_request": 1134.9448596491227
+        },
+        {
+          "name": "sharegpt-validation-12-cap2048",
+          "improvement": -0.07717303005686434,
+          "extra_computed_tokens": 21216,
+          "lru_extra_computed_tokens": 19696,
+          "policy_us_per_request": 1861.9624430379747
+        },
+        {
+          "name": "sharegpt-validation-12-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 400,
+          "lru_extra_computed_tokens": 400,
+          "policy_us_per_request": 1027.6000548523207
+        },
+        {
+          "name": "mashqa-validation-7-cap2048",
+          "improvement": 0.6447876447876448,
+          "extra_computed_tokens": 4416,
+          "lru_extra_computed_tokens": 12432,
+          "policy_us_per_request": 912.8699773755656
+        },
+        {
+          "name": "mashqa-validation-7-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 54.97539366515837
+        },
+        {
+          "name": "mashqa-validation-8-cap2048",
+          "improvement": 0.2332730560578662,
+          "extra_computed_tokens": 6784,
+          "lru_extra_computed_tokens": 8848,
+          "policy_us_per_request": 999.8833043478261
+        },
+        {
+          "name": "mashqa-validation-8-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 58.90318357487923
+        },
+        {
+          "name": "mashqa-validation-9-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 413.0854745762712
+        },
+        {
+          "name": "mashqa-validation-9-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 69.90849717514124
+        },
+        {
+          "name": "mashqa-validation-10-cap2048",
+          "improvement": 0.5878186968838527,
+          "extra_computed_tokens": 4656,
+          "lru_extra_computed_tokens": 11296,
+          "policy_us_per_request": 872.149875
+        },
+        {
+          "name": "mashqa-validation-10-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 61.86775
+        },
+        {
+          "name": "mashqa-validation-11-cap2048",
+          "improvement": 0.5346534653465347,
+          "extra_computed_tokens": 9776,
+          "lru_extra_computed_tokens": 21008,
+          "policy_us_per_request": 1095.0428221153845
+        },
+        {
+          "name": "mashqa-validation-11-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 58.73477403846154
+        },
+        {
+          "name": "mashqa-validation-12-cap2048",
+          "improvement": 0.5473790322580645,
+          "extra_computed_tokens": 7184,
+          "lru_extra_computed_tokens": 15872,
+          "policy_us_per_request": 1038.1800705882354
+        },
+        {
+          "name": "mashqa-validation-12-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 46.56569803921568
+        }
+      ]
+    }
+  ],
+  "aggregate": {
+    "arms": {
+      "fixed": {
+        "runs": 3,
+        "mean_validation_score": 0.22749607945635128,
+        "mean_validation_extra_tokens": 118224,
+        "mean_lru_validation_extra_tokens": 153040,
+        "total_extra_fraction_change_vs_lru": -0.2274960794563513,
+        "min_validation_score": 0.17647673810768427,
+        "max_validation_score": 0.2956612650287507,
+        "sample_sd": 0.06141435373720034,
+        "mean_train_score": 0.2251456372831445,
+        "total_calls": 120,
+        "discovery_calls": 120,
+        "controller_calls": 0,
+        "accepted_revisions": 0,
+        "estimated_usd": 0.491789685
+      },
+      "adaptive": {
+        "runs": 3,
+        "mean_validation_score": 0.1338560724864959,
+        "mean_validation_extra_tokens": 132554.66666666666,
+        "mean_lru_validation_extra_tokens": 153040,
+        "total_extra_fraction_change_vs_lru": -0.1338560724864959,
+        "min_validation_score": 0.054051228437009935,
+        "max_validation_score": 0.18494511238891792,
+        "sample_sd": 0.07001250081137861,
+        "mean_train_score": 0.10562704052237373,
+        "total_calls": 120,
+        "discovery_calls": 101,
+        "controller_calls": 19,
+        "accepted_revisions": 4,
+        "estimated_usd": 0.45059518499999995
+      }
+    },
+    "paired_differences": [
+      {
+        "trial": 1,
+        "adaptive_minus_fixed": -0.24161003659174074
+      },
+      {
+        "trial": 2,
+        "adaptive_minus_fixed": 0.008468374281233648
+      },
+      {
+        "trial": 3,
+        "adaptive_minus_fixed": -0.04777835859905907
+      }
+    ],
+    "mean_adaptive_minus_fixed": -0.09364000696985539,
+    "estimated_usd": 0.9423848699999999
+  },
+  "error": null
+}
