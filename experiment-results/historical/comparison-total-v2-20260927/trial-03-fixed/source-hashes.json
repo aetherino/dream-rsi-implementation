@@ -1,0 +1,19 @@
+{
+  "dream_rsi/worker.py": "cc152e276cdbfd077800a43d000373f4b293d6a2c4ac43c38661af6312940108",
+  "dream_rsi/runner.py": "223beaae53d0b741ef89ece0d3a79032eff6d708b8b94e298179fc1a3deecf08",
+  "dream_rsi/backend.py": "8787e489efddb9a35f3a0ae309e61007cedb381e4af32ce5c4bb5ba2737461b0",
+  "dream_rsi/scoring.py": "686c2fb66223a1bed8c88ecd1f66486d7c64f803db52be802595da3116093eb7",
+  "dream_rsi/evaluation.py": "48b294c76e6d4b2025ad341abeb3e12900d7346870cbc149e46b02f92d6feeeb",
+  "dream_rsi/__init__.py": "fe14ab8d14212de870c90c0c8fb004e616b58079150e1c35d5f4101c984cb959",
+  "dream_rsi/prompts.py": "fe9b93f208a7832a10bb38376e75e10278868f9c8342a71f894e8955e1c5aa71",
+  "dream_rsi/programs.py": "3be73c9ba89c44f9433ddc90151c323a1f8589698e82c9a0994324696471331b",
+  "dream_rsi/replay.py": "bc85ffc4535adf209bf14047d0f81b1504e03a4986dbb79e6f59b09ca325f53c",
+  "dream_rsi/compare.py": "57ec2004565abb31862b9ece134a829146c3da4be8e1cd8fc0b8cfdd1c40f610",
+  "dream_rsi/__main__.py": "9c738e5548fd6dd7ae45b45dd93aa2cc6b0301e949cf28e547c518a98ccbb44a",
+  "dream_rsi/history.py": "658254c7c7bd95b961da3f2dd1f2fcdcb2905a3a56e62ec8b8adb2ed01b8ece0",
+  "cache_sim/trace.py": "5213487331c4a8a86cb1dffda9f7d23b79bb2e91a43491bff5c7414e19664392",
+  "cache_sim/__init__.py": "cdd9f73c489489ef9469af0f252e99060c02b3a21ba809a9675005d32e5de4fd",
+  "cache_sim/engine.py": "91fd6591c4ff92dca5c7f580601a143f96136968e909ae394312a2fac44460c7",
+  "cache_sim/policies.py": "ee506f5e9299d0d1c3c6f63002f7f76c65be780609c7b900b280636e2705be61",
+  "cache_sim/__main__.py": "ef6a2c6fdd1cde8f941ec9333be773c7efaacd4128926ca7d70f2a5bf4f75941"
+}

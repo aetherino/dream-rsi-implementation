@@ -1,0 +1,206 @@
+{
+  "trials": 3,
+  "backend": "mimo",
+  "base_config": {
+    "cycles": 3,
+    "online_rounds": 3,
+    "replay_rounds": 6,
+    "workers": 2,
+    "scoring": "total_extra_v2",
+    "max_depth": 4,
+    "controller_revisions": 1,
+    "block_size": 16,
+    "revise_after_final_cycle": true,
+    "stop_on_empty_rollout": false,
+    "beta_calls": 0.02,
+    "beta_parallel": 0.005,
+    "evaluation_timeout_seconds": 180,
+    "max_policy_us_per_request": 50000,
+    "api": {
+      "model": "mimo-v2.6-pro",
+      "max_calls": 8,
+      "max_usd": 0.1,
+      "max_completion_tokens": 2048,
+      "thinking": "disabled",
+      "timeout_seconds": 120,
+      "input_usd_per_million": 0.435,
+      "output_usd_per_million": 0.87
+    },
+    "train": [
+      {
+        "name": "sharegpt-train-1-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00001.json",
+        "capacity_blocks": 2048,
+        "sha256": "dfabcbc175ac981423b57a92258a6f51d74f41255ad50e060cc823e04fe35fe6"
+      },
+      {
+        "name": "sharegpt-train-1-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00001.json",
+        "capacity_blocks": 4096,
+        "sha256": "dfabcbc175ac981423b57a92258a6f51d74f41255ad50e060cc823e04fe35fe6"
+      },
+      {
+        "name": "sharegpt-train-2-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00002.json",
+        "capacity_blocks": 2048,
+        "sha256": "aa63b96e24e2773947c6c1d82856a9cdaf8c51b8c7099540d9ef8e9bd1a7d345"
+      },
+      {
+        "name": "sharegpt-train-2-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00002.json",
+        "capacity_blocks": 4096,
+        "sha256": "aa63b96e24e2773947c6c1d82856a9cdaf8c51b8c7099540d9ef8e9bd1a7d345"
+      },
+      {
+        "name": "sharegpt-train-3-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00003.json",
+        "capacity_blocks": 2048,
+        "sha256": "597d57b1c7ff5f4a5678703debc6af6aa0d82b3338ed2fe83f4ffe4d913f826c"
+      },
+      {
+        "name": "sharegpt-train-3-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00003.json",
+        "capacity_blocks": 4096,
+        "sha256": "597d57b1c7ff5f4a5678703debc6af6aa0d82b3338ed2fe83f4ffe4d913f826c"
+      },
+      {
+        "name": "mashqa-train-1-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00001.json",
+        "capacity_blocks": 2048,
+        "sha256": "d096232cb8a2a0cd25d4fc88266e1b905fab22288b973b76c7bdda0b21eedfce"
+      },
+      {
+        "name": "mashqa-train-1-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00001.json",
+        "capacity_blocks": 4096,
+        "sha256": "d096232cb8a2a0cd25d4fc88266e1b905fab22288b973b76c7bdda0b21eedfce"
+      },
+      {
+        "name": "mashqa-train-2-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00002.json",
+        "capacity_blocks": 2048,
+        "sha256": "c358a4f394e14a1d0f9fad6bc41048e3596dc7af8c4ac5f0a79669ba66250ca3"
+      },
+      {
+        "name": "mashqa-train-2-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00002.json",
+        "capacity_blocks": 4096,
+        "sha256": "c358a4f394e14a1d0f9fad6bc41048e3596dc7af8c4ac5f0a79669ba66250ca3"
+      },
+      {
+        "name": "mashqa-train-3-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00003.json",
+        "capacity_blocks": 2048,
+        "sha256": "ceca51c8989dc35f7120a92af30f9bd49b98f39a0074bf590694d3738623bab6"
+      },
+      {
+        "name": "mashqa-train-3-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00003.json",
+        "capacity_blocks": 4096,
+        "sha256": "ceca51c8989dc35f7120a92af30f9bd49b98f39a0074bf590694d3738623bab6"
+      }
+    ],
+    "validation": [
+      {
+        "name": "sharegpt-validation-4-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00004.json",
+        "capacity_blocks": 2048,
+        "sha256": "7a8acf3d25ab3b1a33e3ea87cb613ea7cf67598b31a130023e7be4dc06fe7a31"
+      },
+      {
+        "name": "sharegpt-validation-4-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00004.json",
+        "capacity_blocks": 4096,
+        "sha256": "7a8acf3d25ab3b1a33e3ea87cb613ea7cf67598b31a130023e7be4dc06fe7a31"
+      },
+      {
+        "name": "sharegpt-validation-5-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00005.json",
+        "capacity_blocks": 2048,
+        "sha256": "409dcd6aaf47e49cbf0175b3824146a5352ec7e2c997c9e1494f0ea9bda7294d"
+      },
+      {
+        "name": "sharegpt-validation-5-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00005.json",
+        "capacity_blocks": 4096,
+        "sha256": "409dcd6aaf47e49cbf0175b3824146a5352ec7e2c997c9e1494f0ea9bda7294d"
+      },
+      {
+        "name": "sharegpt-validation-6-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00006.json",
+        "capacity_blocks": 2048,
+        "sha256": "3f2bc038f888b1ae036913abee7349bc8b77d187cf47ded204c45c3b7ae525c1"
+      },
+      {
+        "name": "sharegpt-validation-6-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00006.json",
+        "capacity_blocks": 4096,
+        "sha256": "3f2bc038f888b1ae036913abee7349bc8b77d187cf47ded204c45c3b7ae525c1"
+      },
+      {
+        "name": "mashqa-validation-4-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00004.json",
+        "capacity_blocks": 2048,
+        "sha256": "001930291707ca67eeb51ae645675638870e42e1b9d54d7c613961b1fa15404f"
+      },
+      {
+        "name": "mashqa-validation-4-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00004.json",
+        "capacity_blocks": 4096,
+        "sha256": "001930291707ca67eeb51ae645675638870e42e1b9d54d7c613961b1fa15404f"
+      },
+      {
+        "name": "mashqa-validation-5-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00005.json",
+        "capacity_blocks": 2048,
+        "sha256": "c487a218681bacedb910d294404d1c5da309fba728aed9940110ce4a44a42086"
+      },
+      {
+        "name": "mashqa-validation-5-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00005.json",
+        "capacity_blocks": 4096,
+        "sha256": "c487a218681bacedb910d294404d1c5da309fba728aed9940110ce4a44a42086"
+      },
+      {
+        "name": "mashqa-validation-6-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00006.json",
+        "capacity_blocks": 2048,
+        "sha256": "65618d6b68244063a4446369cc76340f3826d48910c133852310fa141d93ac94"
+      },
+      {
+        "name": "mashqa-validation-6-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00006.json",
+        "capacity_blocks": 4096,
+        "sha256": "65618d6b68244063a4446369cc76340f3826d48910c133852310fa141d93ac94"
+      }
+    ]
+  },
+  "estimated_usd_ceiling": 0.6000000000000001,
+  "total_call_ceiling": 48,
+  "order": [
+    {
+      "trial": 1,
+      "arm": "fixed"
+    },
+    {
+      "trial": 1,
+      "arm": "adaptive"
+    },
+    {
+      "trial": 2,
+      "arm": "adaptive"
+    },
+    {
+      "trial": 2,
+      "arm": "fixed"
+    },
+    {
+      "trial": 3,
+      "arm": "fixed"
+    },
+    {
+      "trial": 3,
+      "arm": "adaptive"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "status": "api_budget_reached",
+  "backend": "mimo",
+  "scoring": "total_extra_v2",
+  "cycles_recorded": 3,
+  "task_attempts": 14,
+  "valid_task_attempts": 14,
+  "best_train_score": 0.020549260610716342,
+  "best_policy": {
+    "name": "gentle-freq-boost-v5-tuned",
+    "retention_score": "last_access + 20 * log1p(frequency)"
+  },
+  "controller": {
+    "name": "parallel-refinement",
+    "root_if": "True",
+    "root_priority": "1",
+    "leaf_if": "failure_streak < 2 and stagnation < 3",
+    "leaf_priority": "2 + score - 0.1 * depth"
+  },
+  "validation_valid": true,
+  "validation_score": 0.06275067925993014,
+  "usage": {
+    "backend": "mimo",
+    "model": "mimo-v2.6-pro",
+    "thinking": "disabled",
+    "calls": 14,
+    "estimated_usd": 0.0452139,
+    "cost_basis": "Configured uncached rates for the selected transport; pending/unknown results retain reservation"
+  },
+  "elapsed_seconds": 2511.9172818660736
+}

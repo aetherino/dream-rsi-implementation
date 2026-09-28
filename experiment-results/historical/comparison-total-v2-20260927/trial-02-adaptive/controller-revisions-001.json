@@ -1,0 +1,122 @@
+[
+  {
+    "revision": 0,
+    "controller": {
+      "name": "parallel-refinement",
+      "root_if": "True",
+      "root_priority": "1",
+      "leaf_if": "failure_streak < 2 and stagnation < 3",
+      "leaf_priority": "2 + score - 0.1 * depth"
+    },
+    "evaluation": {
+      "valid": true,
+      "value": 0.050257665962486375,
+      "replays": [
+        {
+          "value": 0.050257665962486375,
+          "best_score": 0.14192433262915305,
+          "attempts": 5,
+          "rounds": 3,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.14192433262915305
+            },
+            {
+              "round": 2,
+              "selected": [
+                1,
+                0
+              ],
+              "revealed": [
+                2,
+                3
+              ],
+              "best_score": 0.14192433262915305
+            },
+            {
+              "round": 3,
+              "selected": [
+                3,
+                2
+              ],
+              "revealed": [
+                4,
+                5
+              ],
+              "best_score": 0.14192433262915305
+            }
+          ],
+          "exhausted": []
+        }
+      ]
+    },
+    "accepted": true
+  },
+  {
+    "revision": 1,
+    "controller": {
+      "name": "prioritized-fanout-exploit",
+      "root_if": "True",
+      "root_priority": "1 + 2 * best_score + 0.5 * log1p(attempts_seen)",
+      "leaf_if": "failure_streak < 2 and stagnation < 4",
+      "leaf_priority": "3 + 2 * score + max(gain, 0) - 0.25 * depth - 0.1 * stagnation + 0.1 * log1p(age_rounds)"
+    },
+    "evaluation": {
+      "valid": true,
+      "value": 0.050257665962486375,
+      "replays": [
+        {
+          "value": 0.050257665962486375,
+          "best_score": 0.14192433262915305,
+          "attempts": 5,
+          "rounds": 3,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.14192433262915305
+            },
+            {
+              "round": 2,
+              "selected": [
+                1,
+                0
+              ],
+              "revealed": [
+                2,
+                3
+              ],
+              "best_score": 0.14192433262915305
+            },
+            {
+              "round": 3,
+              "selected": [
+                3,
+                2
+              ],
+              "revealed": [
+                4,
+                5
+              ],
+              "best_score": 0.14192433262915305
+            }
+          ],
+          "exhausted": []
+        }
+      ]
+    },
+    "accepted": false
+  }
+]

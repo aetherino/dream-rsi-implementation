@@ -67,17 +67,19 @@ def replay(trace: CompiledTrace, capacity_blocks: int | None, policy: Policy | N
         result.policy_max_operation_ns = max(result.policy_max_operation_ns, elapsed)
         result.policy_operations += 1
 
-    def access(block: int, now: float) -> None:
+    def access(block: int, now: float, task_type: str, turn_index: int) -> None:
         nonlocal order
         start = perf_counter_ns()
         order += 1
         old = cache.get(block)
+        task = dict(task_chat=task_type == "chat", task_qa=task_type == "document-qa",
+                    task_unknown=task_type == "unknown", turn_index=turn_index)
         if old is None:
-            entry = Entry(block, trace.depths[block], now, now, 1, order, order)
+            entry = Entry(block, trace.depths[block], now, now, 1, order, order, **task)
             cache[block] = entry
             policy.observe_insert(entry)
         else:
-            entry = replace(old, last_access=now, frequency=old.frequency + 1, access_order=order)
+            entry = replace(old, last_access=now, frequency=old.frequency + 1, access_order=order, **task)
             cache[block] = entry
             policy.observe_hit(entry)
         timed_end(start)
@@ -124,7 +126,7 @@ def replay(trace: CompiledTrace, capacity_blocks: int | None, policy: Policy | N
                     child_counts[parent] += 1
                 child_counts[block] = 0
                 result.inserted_blocks += 1
-            access(block, req.arrival_time)
+            access(block, req.arrival_time, req.task_type, req.turn_index)
             pinned.add(block)
             result.peak_retained_blocks = max(result.peak_retained_blocks, len(cache))
             result.peak_occupied_blocks = max(result.peak_occupied_blocks, len(cache))

@@ -8,7 +8,7 @@ import time
 from .backend import BudgetExceeded, MiMo, Mock, write_json
 from .evaluation import isolated_evaluate, snapshot_suite
 from .history import evaluate_controller, observation, root
-from .programs import Controller, INITIAL_CONTROLLER
+from .programs import Controller, INITIAL_CONTROLLER, POLICY_FEATURE_SETS
 from .prompts import compact_node, controller_prompt, discovery_prompt, tried_memory, PROMPT_VERSIONS
 from .scoring import TOTAL_EXTRA, SCORING_MODES
 
@@ -17,7 +17,7 @@ API_DEFAULTS = {"model": "mimo-v2.6-pro", "max_calls": 24, "max_usd": 0.5,
                 "max_completion_tokens": 4096, "thinking": "disabled", "timeout_seconds": 120,
                 "input_usd_per_million": 0.435, "output_usd_per_million": 0.87}
 DEFAULTS = {"cycles": 2, "online_rounds": 4, "replay_rounds": 6, "workers": 2,
-            "prompt_version": "v2",
+            "prompt_version": "v2", "policy_features": "block-v1",
             "scoring": TOTAL_EXTRA,
             "max_depth": 4, "controller_revisions": 2, "block_size": 16,
             "revise_after_final_cycle": True, "stop_on_empty_rollout": False,
@@ -27,6 +27,10 @@ DEFAULTS = {"cycles": 2, "online_rounds": 4, "replay_rounds": 6, "workers": 2,
 
 def prepare_config(raw, project_root):
     config = DEFAULTS | raw
+    if config["policy_features"] not in POLICY_FEATURE_SETS:
+        raise ValueError("Unknown policy feature set")
+    if config["policy_features"] != "block-v1" and config["prompt_version"] != "v2":
+        raise ValueError("Task features require prompt v2")
     if config["prompt_version"] not in PROMPT_VERSIONS:
         raise ValueError("Unknown prompt version")
     if config["scoring"] not in SCORING_MODES:
@@ -61,6 +65,8 @@ def prepare_config(raw, project_root):
     config["validation"] = snapshot_suite(config["validation"], project_root) if config.get("validation") else []
     for split in ("train", "validation"):
         for item in config[split]:
+            if item.get("declared_split", split) != split:
+                raise ValueError(f"Incorrect dataset split in {split} suite")
             if "path" in item:
                 parts = Path(item["path"]).parts
                 if "test" in parts or (split == "train" and "validation" in parts) or (split == "validation" and "train" in parts):
@@ -96,6 +102,7 @@ def run(config, backend_name, project_root, output):
                                   "block_size": config["block_size"], "candidate": candidate,
                                   "baselines": baselines,
                                   "scoring": config["scoring"],
+                                  "policy_features": config["policy_features"],
                                   "max_policy_us_per_request": config["max_policy_us_per_request"]},
                                  config["evaluation_timeout_seconds"])
 
@@ -153,6 +160,7 @@ def run(config, backend_name, project_root, output):
                         prior_best = [max(history, key=lambda n: n["score"]) for history in histories[-4:]]
                         prompt = discovery_prompt(parent, tree, suite_summary, prior_best, config["scoring"],
                                                   version=config["prompt_version"], best=best,
+                                                  policy_features=config["policy_features"],
                                                   memory=tried_memory(histories, tree) if config["prompt_version"] == "v2" else None)
                         jobs.append((node_id, parent, pool.submit(generate, "discovery", prompt,
                                                                   {"cycle": cycle, "node": node_id})))

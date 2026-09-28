@@ -15,6 +15,8 @@ class Request:
     output: tuple[int, ...] = ()
     session_id: str = ""
     workload: str = "unknown"
+    task_type: str = "unknown"  # Declared serving metadata, never inferred from future turns.
+    turn_index: int = 0  # Zero-based current turn; independent QA requests use zero.
 
 
 @dataclass(frozen=True)
@@ -53,6 +55,10 @@ def compile_trace(trace: Trace, block_size: int = 16) -> CompiledTrace:
         if not isinstance(req.request_id, str) or not req.request_id or req.request_id in seen_ids:
             raise ValueError("request_id must be a unique nonempty string")
         seen_ids.add(req.request_id)
+        if req.task_type not in {"unknown", "chat", "document-qa"}:
+            raise ValueError("Unknown task_type")
+        if type(req.turn_index) is not int or req.turn_index < 0:
+            raise ValueError("turn_index must be a nonnegative integer")
         if (type(req.arrival_time) not in (int, float) or not math.isfinite(req.arrival_time)
                 or req.arrival_time < 0 or req.arrival_time < previous_time):
             raise ValueError("arrival_time must be finite, nonnegative and nondecreasing")
@@ -88,6 +94,7 @@ def load_trace(path: Path) -> Trace:
         request_id=row["request_id"], arrival_time=row["arrival_time"],
         prompt=tuple(row["prompt_token_ids"]), output=tuple(row.get("output_token_ids", [])),
         session_id=row.get("session_id", ""), workload=row.get("workload", "unknown"),
+        task_type=row.get("task_type", "unknown"), turn_index=row.get("turn_index", 0),
     ) for row in data["requests"])
     return Trace(requests, data["tokenizer"])
 
@@ -96,7 +103,8 @@ def save_trace(trace: Trace, path: Path) -> None:
     data = {"schema_version": 1, "tokenizer": trace.tokenizer, "requests": [
         {"request_id": r.request_id, "arrival_time": r.arrival_time,
          "prompt_token_ids": r.prompt, "output_token_ids": r.output,
-         "session_id": r.session_id, "workload": r.workload} for r in trace.requests
+         "session_id": r.session_id, "workload": r.workload,
+         "task_type": r.task_type, "turn_index": r.turn_index} for r in trace.requests
     ]}
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, indent=2) + "\n")

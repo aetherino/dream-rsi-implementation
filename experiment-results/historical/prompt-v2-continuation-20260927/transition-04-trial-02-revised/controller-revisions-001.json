@@ -1,0 +1,62 @@
+[
+  {
+    "revision": 0,
+    "controller": {
+      "name": "gated-root-early-then-gain-weighted-refinement",
+      "root_if": "round_index <= 1 or best_score <= 0.02",
+      "root_priority": "3 if round_index <= 1 else 2",
+      "leaf_if": "valid and failure_streak < 2 and stagnation < 3",
+      "leaf_priority": "3 + score + 0.5 * max(gain, 0) - 0.1 * depth - 0.1 * age_rounds"
+    },
+    "evaluation": {
+      "valid": true,
+      "value": -0.03097913065744831,
+      "replays": [
+        {
+          "value": -0.03097913065744831,
+          "best_score": 0.06068753600921836,
+          "attempts": 5,
+          "rounds": 3,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 2,
+              "selected": [
+                1,
+                0
+              ],
+              "revealed": [
+                2,
+                3
+              ],
+              "best_score": 0.06068753600921836
+            },
+            {
+              "round": 3,
+              "selected": [
+                2,
+                3
+              ],
+              "revealed": [
+                4,
+                5
+              ],
+              "best_score": 0.06068753600921836
+            }
+          ],
+          "exhausted": []
+        }
+      ]
+    },
+    "accepted": true
+  }
+]

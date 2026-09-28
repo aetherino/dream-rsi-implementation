@@ -1,0 +1,99 @@
+[
+  {
+    "revision": 0,
+    "controller": {
+      "name": "wide-diverse-refinement",
+      "root_if": "True",
+      "root_priority": "3",
+      "leaf_if": "failure_streak < 1 and stagnation < 1",
+      "leaf_priority": "1 + score - 0.05 * depth"
+    },
+    "evaluation": {
+      "valid": true,
+      "value": -0.06263027334997759,
+      "replays": [
+        {
+          "value": -0.07179694001664426,
+          "best_score": 0.0015363933166890724,
+          "attempts": 4,
+          "rounds": 3,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 2,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                2
+              ],
+              "best_score": 0.0015363933166890724
+            },
+            {
+              "round": 3,
+              "selected": [
+                0,
+                2
+              ],
+              "revealed": [
+                3,
+                4
+              ],
+              "best_score": 0.0015363933166890724
+            }
+          ],
+          "exhausted": []
+        },
+        {
+          "value": -0.053463606683310926,
+          "best_score": 0.0015363933166890724,
+          "attempts": 3,
+          "rounds": 3,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 2,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                2
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 3,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                3
+              ],
+              "best_score": 0.0015363933166890724
+            }
+          ],
+          "exhausted": []
+        }
+      ]
+    },
+    "accepted": true
+  }
+]

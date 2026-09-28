@@ -1,0 +1,7 @@
+{
+  "name": "score-gated-parallel-priority",
+  "root_if": "round_index <= 2 or best_score <= 0.02",
+  "root_priority": "3 if round_index <= 2 else 2",
+  "leaf_if": "valid and failure_streak < 2 and stagnation < 3",
+  "leaf_priority": "3 + score + max(gain, 0) - 0.05 * depth - 0.05 * age_rounds"
+}

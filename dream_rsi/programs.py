@@ -6,6 +6,8 @@ import operator
 from cache_sim.policies import Policy
 
 POLICY_NAMES = frozenset("now depth inserted_at last_access frequency insertion_order access_order".split())
+TASK_NAMES = frozenset("task_chat task_qa task_unknown turn_index".split())
+POLICY_FEATURE_SETS = {"block-v1": POLICY_NAMES, "task-v1": POLICY_NAMES | TASK_NAMES}
 GLOBAL_NAMES = frozenset("round_index attempts_seen branches_opened best_score".split())
 LEAF_NAMES = GLOBAL_NAMES | frozenset("score gain depth stagnation failure_streak valid age_rounds".split())
 FUNCTIONS = {"min": (min, 2), "max": (max, 2), "abs": (abs, 1),
@@ -100,16 +102,19 @@ def metadata(spec):
 
 
 class RetentionPolicy(Policy):
-    def __init__(self, spec):
+    def __init__(self, spec, policy_features="block-v1"):
         metadata(spec)
         if set(spec) - {"name", "rationale", "retention_score"}:
             raise ValueError("Unexpected policy fields")
         self.name = spec["name"]
-        self.expression = Expression(spec.get("retention_score"), POLICY_NAMES)
+        if policy_features not in POLICY_FEATURE_SETS:
+            raise ValueError("Unknown policy feature set")
+        self.names = POLICY_FEATURE_SETS[policy_features]
+        self.expression = Expression(spec.get("retention_score"), self.names)
 
     def choose(self, eligible, now):
         def key(entry):
-            values = {name: getattr(entry, name) for name in POLICY_NAMES if name != "now"}
+            values = {name: getattr(entry, name) for name in self.names if name != "now"}
             values["now"] = now
             return self.expression(values), entry.access_order
         return min(eligible, key=key).block_id

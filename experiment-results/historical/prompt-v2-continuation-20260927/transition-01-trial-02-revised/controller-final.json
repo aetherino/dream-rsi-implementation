@@ -1,0 +1,7 @@
+{
+  "name": "wide-diverse-refinement",
+  "root_if": "True",
+  "root_priority": "3",
+  "leaf_if": "failure_streak < 1 and stagnation < 1",
+  "leaf_priority": "1 + score - 0.05 * depth"
+}

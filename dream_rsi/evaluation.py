@@ -32,6 +32,9 @@ def snapshot_suite(suite, project_root):
             current_hash = digest(path)
             if "sha256" in item and item["sha256"] != current_hash:
                 raise ValueError("Trace changed after suite snapshot")
+            declared_split = json.loads(path.read_text()).get("split")
+            if declared_split is not None:
+                item["declared_split"] = declared_split
             item.update(path=str(path), sha256=current_hash)
         elif "synthetic" not in item:
             raise ValueError("Scenario requires a path or synthetic configuration")
@@ -42,10 +45,10 @@ def snapshot_suite(suite, project_root):
 
 
 def run_suite(suite, block_size, *, candidate=None, baselines=None, max_policy_us_per_request=50000,
-              scoring=TOTAL_EXTRA):
+              scoring=TOTAL_EXTRA, policy_features="block-v1"):
     """Minimize total recomputation; timing remains a feasibility gate."""
     if candidate is not None:
-        RetentionPolicy(candidate)  # Reject malformed expressions even if no eviction happens.
+        RetentionPolicy(candidate, policy_features)  # Reject malformed expressions even if no eviction happens.
     runs = []
     for index, item in enumerate(suite):
         if "path" in item:
@@ -68,7 +71,7 @@ def run_suite(suite, block_size, *, candidate=None, baselines=None, max_policy_u
             reference = baselines[index]
             if reference["name"] != item["name"]:
                 raise ValueError("Baseline/scenario mismatch")
-            result = replay(compiled, item["capacity_blocks"], RetentionPolicy(candidate)).to_dict()
+            result = replay(compiled, item["capacity_blocks"], RetentionPolicy(candidate, policy_features)).to_dict()
             extra = result["computed_prompt_tokens"] - reference["unlimited"]["computed_prompt_tokens"]
             lru_extra = reference["policies"]["lru"]["extra_computed_tokens"]
             result.update(name=item["name"], extra_computed_tokens=extra,

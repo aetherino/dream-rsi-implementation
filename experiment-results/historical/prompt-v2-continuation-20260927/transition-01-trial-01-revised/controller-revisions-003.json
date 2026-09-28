@@ -1,0 +1,142 @@
+[
+  {
+    "revision": 0,
+    "controller": {
+      "name": "wide-diverse-refinement",
+      "root_if": "True",
+      "root_priority": "3",
+      "leaf_if": "failure_streak < 1 and stagnation < 1",
+      "leaf_priority": "1 + score - 0.05 * depth"
+    },
+    "evaluation": {
+      "valid": true,
+      "value": 0.00015748031496062853,
+      "replays": [
+        {
+          "value": -0.055,
+          "best_score": 0.0,
+          "attempts": 3,
+          "rounds": 3,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 2,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                2
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 3,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                3
+              ],
+              "best_score": 0.0
+            }
+          ],
+          "exhausted": []
+        },
+        {
+          "value": -0.008612764867806155,
+          "best_score": 0.06472056846552718,
+          "attempts": 4,
+          "rounds": 3,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 2,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                2
+              ],
+              "best_score": 0.06472056846552718
+            },
+            {
+              "round": 3,
+              "selected": [
+                0,
+                2
+              ],
+              "revealed": [
+                3,
+                4
+              ],
+              "best_score": 0.06472056846552718
+            }
+          ],
+          "exhausted": []
+        },
+        {
+          "value": 0.06408520581268803,
+          "best_score": 0.1557518724793547,
+          "attempts": 5,
+          "rounds": 3,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.12003072786633379
+            },
+            {
+              "round": 2,
+              "selected": [
+                0,
+                1
+              ],
+              "revealed": [
+                2,
+                3
+              ],
+              "best_score": 0.12003072786633379
+            },
+            {
+              "round": 3,
+              "selected": [
+                0,
+                2
+              ],
+              "revealed": [
+                4,
+                5
+              ],
+              "best_score": 0.1557518724793547
+            }
+          ],
+          "exhausted": []
+        }
+      ]
+    },
+    "accepted": true
+  }
+]

@@ -85,7 +85,8 @@ mean 1 second; inter-turn intervals are lognormal with `mu=4.15`, `sigma=0.971`.
 Within a MASH-QA shard, all questions are shuffled, then assigned exponential
 interarrival times with mean 1 second. All sampling is seeded. These are synthetic
 arrivals, not measured source timestamps or service-time estimates. Separate
-workloads are currently exported; mixed-workload composition remains future work.
+workloads are exported here. The [mixed-workload preparer](mixed-task-experiment.md)
+selects whole groups from these exports and assigns new mixed-episode timestamps.
 
 To make a small independently reproducible test export:
 

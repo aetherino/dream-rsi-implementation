@@ -1,0 +1,8 @@
+{
+  "valid": true,
+  "evaluations_checked": 62,
+  "runs_checked": 6,
+  "shared_trace_and_source_hashes": true,
+  "scores_match_raw_totals": true,
+  "training_winners_are_best_observed": true
+}

@@ -5,6 +5,19 @@ MiMo is the initial API model for proposing policies; policy evaluation runs
 locally on CPU against fixed request traces. No local model weights or GPU are
 needed to download/tokenize data or run the replay simulator.
 
+## Current experiment and results
+
+The current experiment mixes chat and document QA in one shared cache and compares
+policies with and without declared task metadata. A separate final test remains
+outside search feedback. See [mixed-workload setup and protocol](docs/mixed-task-experiment.md)
+and [the first pilot results](docs/mixed-task-pilot-results.md).
+
+[Archived experiments](docs/past-results.md) include selected policies, per-scenario
+metrics, configurations and provenance hashes. The latest three extended searches
+averaged **4.01% fewer total computed prompt tokens than LRU** on their validation
+suite (26.72% less extra recomputation). These are simulator results, not GPU
+speedups or a comparison against UniCache.
+
 ## Setup
 
 Requires Python 3.11+ and [uv](https://docs.astral.sh/uv/).

@@ -1,0 +1,48 @@
+[
+  {
+    "revision": 0,
+    "controller": {
+      "name": "balanced-root-open-with-early-refine",
+      "root_if": "round_index < 3",
+      "root_priority": "2.5 if round_index < 3 else 1",
+      "leaf_if": "failure_streak < 1 and stagnation < 1 and depth < 2",
+      "leaf_priority": "3 + 4 * score - 0.15 * depth"
+    },
+    "evaluation": {
+      "valid": true,
+      "value": -0.035,
+      "replays": [
+        {
+          "value": -0.035,
+          "best_score": 0.0,
+          "attempts": 2,
+          "rounds": 2,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 2,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                2
+              ],
+              "best_score": 0.0
+            }
+          ],
+          "exhausted": []
+        }
+      ]
+    },
+    "accepted": true
+  }
+]

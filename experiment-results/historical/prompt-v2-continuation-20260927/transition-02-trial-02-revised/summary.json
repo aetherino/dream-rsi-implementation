@@ -1,0 +1,31 @@
+{
+  "status": "api_budget_reached",
+  "backend": "mimo",
+  "scoring": "total_extra_v2",
+  "cycles_recorded": 6,
+  "task_attempts": 15,
+  "valid_task_attempts": 15,
+  "best_train_score": 0.020549260610716342,
+  "best_policy": {
+    "name": "frequency-balanced-lru",
+    "retention_score": "last_access + log1p(frequency) * 20"
+  },
+  "controller": {
+    "name": "balanced-root-open-with-early-refine",
+    "root_if": "round_index < 3",
+    "root_priority": "2.5 if round_index < 3 else 1",
+    "leaf_if": "failure_streak < 1 and stagnation < 1 and depth < 2",
+    "leaf_priority": "3 + 4 * score - 0.15 * depth"
+  },
+  "validation_valid": true,
+  "validation_score": 0.06275067925993014,
+  "usage": {
+    "backend": "mimo",
+    "model": "mimo-v2.6-pro",
+    "thinking": "disabled",
+    "calls": 15,
+    "estimated_usd": 0.060919575,
+    "cost_basis": "Configured uncached rates for the selected transport; pending/unknown results retain reservation"
+  },
+  "elapsed_seconds": 3060.4709618091583
+}

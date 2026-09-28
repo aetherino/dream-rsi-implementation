@@ -1,0 +1,31 @@
+{
+  "status": "api_budget_reached",
+  "backend": "mimo",
+  "cycles_recorded": 2,
+  "scoring": "total_extra_v2",
+  "task_attempts": 8,
+  "best_train_score": 0.11350105627040523,
+  "valid_task_attempts": 8,
+  "best_policy": {
+    "name": "cost-aware-lru-with-weak-freq-and-depth",
+    "retention_score": "last_access + 200 * log1p(frequency) + 5 * log1p(depth)"
+  },
+  "controller": {
+    "name": "parallel-refinement",
+    "root_if": "True",
+    "root_priority": "1",
+    "leaf_if": "failure_streak < 2 and stagnation < 3",
+    "leaf_priority": "2 + score - 0.1 * depth"
+  },
+  "validation_score": 0.07556131260794473,
+  "validation_valid": true,
+  "usage": {
+    "backend": "mimo",
+    "model": "mimo-v2.6-pro",
+    "thinking": "disabled",
+    "calls": 8,
+    "estimated_usd": 0.024460919999999997,
+    "cost_basis": "Configured uncached token rates; unknown failed calls retain reservation"
+  },
+  "elapsed_seconds": 116.78615949998493
+}

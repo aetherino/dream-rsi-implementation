@@ -1,0 +1,188 @@
+{
+  "version": 1,
+  "source_files": [
+    {
+      "path": "runs/mixed-task-v1-baselines/baselines.json",
+      "sha256": "26b7ed949c3220c8ad6835336afa492ca4000703936f6809c2d6581bc44aab7c"
+    },
+    {
+      "path": "runs/mixed-task-v1-baselines/provenance.json",
+      "sha256": "1fc47a9f78a25a73812ba1085f3d566db3a0cf99d6989cc851120c53c5919d09"
+    },
+    {
+      "path": "data/mixed/task-v1/manifest.json",
+      "sha256": "1ea4958f2550b47ee661d0fe12c7f10ab26d0a23bb6488fe7128482d25a9522e"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/frozen-selection.json",
+      "sha256": "cfae06502b463d681bb064a3e521e490580d53fdf720152859538fc9dc70e66e"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/block-v1/config.json",
+      "sha256": "e64b2410d461a7b6fcd4f665ee6e66f99b306e0477b625c8239298891eb878c1"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/block-v1/summary.json",
+      "sha256": "7680330c13ed7e4188da29bc3125fa723481c60c140c115f40f3a1455b7351e3"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/block-v1/best-policy.json",
+      "sha256": "f3d17723630e2e7d52125545fca8b2ca4bb25f3076db278df247b61a672e74e1"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/block-v1/validation.json",
+      "sha256": "2d272b95013b1e6054ce0d33b43787efbee95662c18c671261ea4e1c19cfd08a"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/block-v1/validation-baselines.json",
+      "sha256": "57ef847cbd451663b80adafac935545ae90d1dc1430c403241cb1b59eba24ecc"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/block-v1/baselines.json",
+      "sha256": "6b36965953dd3317b93cb7d5b9bc9df35b30b6ca21343285037842d3e03fe828"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/block-v1/usage.json",
+      "sha256": "e15e84cca0722f98d60756d531859ebc3822b491c5c9c9ed19498e7c3e9e6749"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/block-v1/source-hashes.json",
+      "sha256": "effa696765afededa9a772cc5212ef370eac42926c57437e662936919aa9360e"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/block-v1/controller-final.json",
+      "sha256": "2d94e03cedb7e14c6439a5b4cbd63b4cd2edd20c772906e82327441574f26d0e"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/task-v1/config.json",
+      "sha256": "8e7617c742fe5ac0a9da06cb7ac5e0df64fa3dcff744e089de5ccfa4f60a2dfe"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/task-v1/summary.json",
+      "sha256": "10700692a1a415219a5f617a6cec71d23487f3eebe7e2905954fda8650f3a311"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/task-v1/best-policy.json",
+      "sha256": "17c69eb67519d3294c114930c87a664c79b41251a53d542e4ee0f6e97be14757"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/task-v1/validation.json",
+      "sha256": "773e5470ab10c5e6e03ffbe118c1adbdf4f2a2b530c6da48ccda3484cbed9be0"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/task-v1/validation-baselines.json",
+      "sha256": "022ac19c58bd0d66345279ed5d58ab902918070f393af66d165ad3fa29ab7335"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/task-v1/baselines.json",
+      "sha256": "f31fb8287ca3a22f7ec96de5ad2847d8e3616d30eacd32aaa96080c3892200a6"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/task-v1/usage.json",
+      "sha256": "2d000475066db8717bd832e825426a028551e1866ff38e75e6a1cfdd34720ab5"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/task-v1/source-hashes.json",
+      "sha256": "effa696765afededa9a772cc5212ef370eac42926c57437e662936919aa9360e"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot/task-v1/controller-final.json",
+      "sha256": "2d94e03cedb7e14c6439a5b4cbd63b4cd2edd20c772906e82327441574f26d0e"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/frozen-selection.json",
+      "sha256": "a7d2857ed5d4e6229857d1f9e0dfb34fbba639600c3c780514933cbff5c37a63"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/block-v1/config.json",
+      "sha256": "60798c4eae022088f018e7d39c592727b90d814f3baae1743dbaf74d3f7ebc91"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/block-v1/summary.json",
+      "sha256": "5c2111eed3c215401ce841616b2abd5aa2eb2e83086c91402aeadc1394e8b537"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/block-v1/best-policy.json",
+      "sha256": "a0419a1273b56daf3d890781f5ef8ab52417274bb10749ac58f8128602b095c7"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/block-v1/validation.json",
+      "sha256": "b17b737993e94ed795ac958731b5d92cf807e24a54426a97a65374f1eb288d5d"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/block-v1/validation-baselines.json",
+      "sha256": "e2a9adc9d414765087c6380eac72487dea65b840759c1d0c4f24201a1468d378"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/block-v1/baselines.json",
+      "sha256": "003f062a13e3463c374e8efaa032bf96bb8fb034664fe522161922ea4e72b6df"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/block-v1/usage.json",
+      "sha256": "f9b52b815d9d85df00c56465fd6bb32b96f9c75d41d3a17d01cd92d5242e2520"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/block-v1/source-hashes.json",
+      "sha256": "a40daab44e1005889a58e25edfa51300fc850ceecf7ce287237e4734c82e2f50"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/block-v1/controller-final.json",
+      "sha256": "2d94e03cedb7e14c6439a5b4cbd63b4cd2edd20c772906e82327441574f26d0e"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/task-v1/config.json",
+      "sha256": "95d5c12e6c8b10ac12ff4d7b5b9be7437d0a5bff98b739740b736de78dfd32e9"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/task-v1/summary.json",
+      "sha256": "b6db5d3d42c5947e4f998f278500090a87a864241961e6a8402bceaa36167d46"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/task-v1/best-policy.json",
+      "sha256": "e95545ffd262902a57dd2529847d26ecd5c3a63c27de135d2bf863b8d2bcb757"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/task-v1/validation.json",
+      "sha256": "e36f74dbcab8c60994255062e1df77ec4b090e84ae6c7d253746957d77a9e930"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/task-v1/validation-baselines.json",
+      "sha256": "196b699835db05e17f50d5beab9a74e30a22eea12402717af841d36e3249e241"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/task-v1/baselines.json",
+      "sha256": "69f22ca690df174796d0744dccd34762a12432e096b382f25d5e8e43056fd5f6"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/task-v1/usage.json",
+      "sha256": "01bf1b435993faa602f8964f5c4f1df7ce3d047c23febb6c1ad4a1a5eed0508d"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/task-v1/source-hashes.json",
+      "sha256": "a40daab44e1005889a58e25edfa51300fc850ceecf7ce287237e4734c82e2f50"
+    },
+    {
+      "path": "runs/mixed-task-v1-pilot-bounded/task-v1/controller-final.json",
+      "sha256": "2d94e03cedb7e14c6439a5b4cbd63b4cd2edd20c772906e82327441574f26d0e"
+    }
+  ],
+  "transform": "Bundle allowlisted evidence files; remove rationale, per-request and usage-record details; normalize local paths. No prompts, response bodies, traces, tokens or group IDs.",
+  "archive_files": [
+    {
+      "path": "bounded-pilot.json",
+      "sha256": "7f328313d843d0704c82437642f216ff7445357e8095d355a7fac691ea63a63c"
+    },
+    {
+      "path": "debug-superseded.json",
+      "sha256": "ea8d805f20707e08c1b7092a88620b4fb7ad26d6631266dd3d0105dc4d0709e6"
+    },
+    {
+      "path": "prepared-data-metadata.json",
+      "sha256": "1ea4958f2550b47ee661d0fe12c7f10ab26d0a23bb6488fe7128482d25a9522e"
+    },
+    {
+      "path": "training-baselines.json",
+      "sha256": "039a96bcb6c3528cd22693d48b27e89eacdd783bda72fdddbd96262ccdad5509"
+    }
+  ]
+}

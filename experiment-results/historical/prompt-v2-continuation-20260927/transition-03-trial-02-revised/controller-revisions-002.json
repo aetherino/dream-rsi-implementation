@@ -1,0 +1,105 @@
+[
+  {
+    "revision": 0,
+    "controller": {
+      "name": "score-gated-parallel-priority",
+      "root_if": "round_index <= 2 or best_score <= 0.02",
+      "root_priority": "3 if round_index <= 2 else 2",
+      "leaf_if": "valid and failure_streak < 2 and stagnation < 3",
+      "leaf_priority": "3 + score + max(gain, 0) - 0.05 * depth - 0.05 * age_rounds"
+    },
+    "evaluation": {
+      "valid": true,
+      "value": 0.05793963254593175,
+      "replays": [
+        {
+          "value": 0.054674796747967463,
+          "best_score": 0.14634146341463414,
+          "attempts": 5,
+          "rounds": 3,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 2,
+              "selected": [
+                0,
+                1
+              ],
+              "revealed": [
+                2,
+                3
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 3,
+              "selected": [
+                3,
+                2
+              ],
+              "revealed": [
+                4,
+                5
+              ],
+              "best_score": 0.14634146341463414
+            }
+          ],
+          "exhausted": []
+        },
+        {
+          "value": 0.061204468343896035,
+          "best_score": 0.1528711350105627,
+          "attempts": 5,
+          "rounds": 3,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.0885346648742078
+            },
+            {
+              "round": 2,
+              "selected": [
+                1,
+                0
+              ],
+              "revealed": [
+                2,
+                3
+              ],
+              "best_score": 0.11849433454964471
+            },
+            {
+              "round": 3,
+              "selected": [
+                3,
+                2
+              ],
+              "revealed": [
+                4,
+                5
+              ],
+              "best_score": 0.1528711350105627
+            }
+          ],
+          "exhausted": []
+        }
+      ]
+    },
+    "accepted": true
+  }
+]

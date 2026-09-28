@@ -1,0 +1,7 @@
+{
+  "name": "parallel-refinement",
+  "root_if": "True",
+  "root_priority": "1",
+  "leaf_if": "failure_streak < 2 and stagnation < 3",
+  "leaf_priority": "2 + score - 0.1 * depth"
+}

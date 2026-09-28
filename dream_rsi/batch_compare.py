@@ -27,6 +27,7 @@ def evaluate(config, candidate=None, validation=False, baselines=None):
     return isolated_evaluate({"suite": config["validation" if validation else "train"],
                               "block_size": config["block_size"], "candidate": candidate,
                               "baselines": baselines, "scoring": config["scoring"],
+                              "policy_features": config.get("policy_features", "block-v1"),
                               "max_policy_us_per_request": config["max_policy_us_per_request"]},
                              config["evaluation_timeout_seconds"])
 
@@ -38,7 +39,7 @@ def lean_node(node):
     return result
 
 
-def bounded_discovery(parent, tree, suite, histories, scoring, prompt_version="v1", best=None):
+def bounded_discovery(parent, tree, suite, histories, scoring, prompt_version="v1", best=None, policy_features="block-v1"):
     # Keep the parent and suite; discard only old auxiliary observations as needed.
     visible = [lean_node(n) for n in tree[-12:]]
     previous = [lean_node(max(h, key=lambda n: n["score"])) for h in histories[-4:]]
@@ -47,7 +48,7 @@ def bounded_discovery(parent, tree, suite, histories, scoring, prompt_version="v
     memory = tried_memory(histories, tree) if prompt_version == "v2" else None
     while True:
         prompt = discovery_prompt(lean_node(parent), visible, suite, previous, scoring, version=prompt_version,
-                                  best=lean_node(best), memory=memory)
+                                  best=lean_node(best), memory=memory, policy_features=policy_features)
         if len(prompt.encode()) < 54000:
             return prompt
         if len(visible) > 1:
@@ -179,7 +180,7 @@ def advance(run):
             for offset, parent_id in enumerate(actions[:remaining]):
                 parent = next(n for n in run["tree"] if n["id"] == parent_id)
                 prompt = bounded_discovery(parent, run["tree"], run["suite_summary"], run["histories"], config["scoring"],
-                                           config.get("prompt_version", "v1"), run["best"])
+                                           config.get("prompt_version", "v1"), run["best"], config.get("policy_features", "block-v1"))
                 job = reserve(run, "discovery", prompt, {"cycle": run["cycle"], "node": len(run["tree"]) + offset}, parent_id)
                 if job is None:
                     break

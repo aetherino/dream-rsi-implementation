@@ -1,0 +1,919 @@
+{
+  "status": "completed",
+  "backend": "mimo",
+  "plan": {
+    "trials": 3,
+    "backend": "mimo",
+    "base_config": {
+      "cycles": 3,
+      "online_rounds": 3,
+      "replay_rounds": 6,
+      "workers": 2,
+      "scoring": "total_extra_v2",
+      "max_depth": 4,
+      "controller_revisions": 1,
+      "block_size": 16,
+      "revise_after_final_cycle": true,
+      "stop_on_empty_rollout": false,
+      "beta_calls": 0.02,
+      "beta_parallel": 0.005,
+      "evaluation_timeout_seconds": 180,
+      "max_policy_us_per_request": 50000,
+      "api": {
+        "model": "mimo-v2.6-pro",
+        "max_calls": 8,
+        "max_usd": 0.1,
+        "max_completion_tokens": 2048,
+        "thinking": "disabled",
+        "timeout_seconds": 120,
+        "input_usd_per_million": 0.435,
+        "output_usd_per_million": 0.87
+      },
+      "train": [
+        {
+          "name": "sharegpt-train-1-cap2048",
+          "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00001.json",
+          "capacity_blocks": 2048,
+          "sha256": "dfabcbc175ac981423b57a92258a6f51d74f41255ad50e060cc823e04fe35fe6"
+        },
+        {
+          "name": "sharegpt-train-1-cap4096",
+          "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00001.json",
+          "capacity_blocks": 4096,
+          "sha256": "dfabcbc175ac981423b57a92258a6f51d74f41255ad50e060cc823e04fe35fe6"
+        },
+        {
+          "name": "sharegpt-train-2-cap2048",
+          "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00002.json",
+          "capacity_blocks": 2048,
+          "sha256": "aa63b96e24e2773947c6c1d82856a9cdaf8c51b8c7099540d9ef8e9bd1a7d345"
+        },
+        {
+          "name": "sharegpt-train-2-cap4096",
+          "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00002.json",
+          "capacity_blocks": 4096,
+          "sha256": "aa63b96e24e2773947c6c1d82856a9cdaf8c51b8c7099540d9ef8e9bd1a7d345"
+        },
+        {
+          "name": "sharegpt-train-3-cap2048",
+          "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00003.json",
+          "capacity_blocks": 2048,
+          "sha256": "597d57b1c7ff5f4a5678703debc6af6aa0d82b3338ed2fe83f4ffe4d913f826c"
+        },
+        {
+          "name": "sharegpt-train-3-cap4096",
+          "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00003.json",
+          "capacity_blocks": 4096,
+          "sha256": "597d57b1c7ff5f4a5678703debc6af6aa0d82b3338ed2fe83f4ffe4d913f826c"
+        },
+        {
+          "name": "mashqa-train-1-cap2048",
+          "path": "data/tokenized/qwen2.5/mashqa/train/trace-00001.json",
+          "capacity_blocks": 2048,
+          "sha256": "d096232cb8a2a0cd25d4fc88266e1b905fab22288b973b76c7bdda0b21eedfce"
+        },
+        {
+          "name": "mashqa-train-1-cap4096",
+          "path": "data/tokenized/qwen2.5/mashqa/train/trace-00001.json",
+          "capacity_blocks": 4096,
+          "sha256": "d096232cb8a2a0cd25d4fc88266e1b905fab22288b973b76c7bdda0b21eedfce"
+        },
+        {
+          "name": "mashqa-train-2-cap2048",
+          "path": "data/tokenized/qwen2.5/mashqa/train/trace-00002.json",
+          "capacity_blocks": 2048,
+          "sha256": "c358a4f394e14a1d0f9fad6bc41048e3596dc7af8c4ac5f0a79669ba66250ca3"
+        },
+        {
+          "name": "mashqa-train-2-cap4096",
+          "path": "data/tokenized/qwen2.5/mashqa/train/trace-00002.json",
+          "capacity_blocks": 4096,
+          "sha256": "c358a4f394e14a1d0f9fad6bc41048e3596dc7af8c4ac5f0a79669ba66250ca3"
+        },
+        {
+          "name": "mashqa-train-3-cap2048",
+          "path": "data/tokenized/qwen2.5/mashqa/train/trace-00003.json",
+          "capacity_blocks": 2048,
+          "sha256": "ceca51c8989dc35f7120a92af30f9bd49b98f39a0074bf590694d3738623bab6"
+        },
+        {
+          "name": "mashqa-train-3-cap4096",
+          "path": "data/tokenized/qwen2.5/mashqa/train/trace-00003.json",
+          "capacity_blocks": 4096,
+          "sha256": "ceca51c8989dc35f7120a92af30f9bd49b98f39a0074bf590694d3738623bab6"
+        }
+      ],
+      "validation": [
+        {
+          "name": "sharegpt-validation-4-cap2048",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00004.json",
+          "capacity_blocks": 2048,
+          "sha256": "7a8acf3d25ab3b1a33e3ea87cb613ea7cf67598b31a130023e7be4dc06fe7a31"
+        },
+        {
+          "name": "sharegpt-validation-4-cap4096",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00004.json",
+          "capacity_blocks": 4096,
+          "sha256": "7a8acf3d25ab3b1a33e3ea87cb613ea7cf67598b31a130023e7be4dc06fe7a31"
+        },
+        {
+          "name": "sharegpt-validation-5-cap2048",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00005.json",
+          "capacity_blocks": 2048,
+          "sha256": "409dcd6aaf47e49cbf0175b3824146a5352ec7e2c997c9e1494f0ea9bda7294d"
+        },
+        {
+          "name": "sharegpt-validation-5-cap4096",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00005.json",
+          "capacity_blocks": 4096,
+          "sha256": "409dcd6aaf47e49cbf0175b3824146a5352ec7e2c997c9e1494f0ea9bda7294d"
+        },
+        {
+          "name": "sharegpt-validation-6-cap2048",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00006.json",
+          "capacity_blocks": 2048,
+          "sha256": "3f2bc038f888b1ae036913abee7349bc8b77d187cf47ded204c45c3b7ae525c1"
+        },
+        {
+          "name": "sharegpt-validation-6-cap4096",
+          "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00006.json",
+          "capacity_blocks": 4096,
+          "sha256": "3f2bc038f888b1ae036913abee7349bc8b77d187cf47ded204c45c3b7ae525c1"
+        },
+        {
+          "name": "mashqa-validation-4-cap2048",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00004.json",
+          "capacity_blocks": 2048,
+          "sha256": "001930291707ca67eeb51ae645675638870e42e1b9d54d7c613961b1fa15404f"
+        },
+        {
+          "name": "mashqa-validation-4-cap4096",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00004.json",
+          "capacity_blocks": 4096,
+          "sha256": "001930291707ca67eeb51ae645675638870e42e1b9d54d7c613961b1fa15404f"
+        },
+        {
+          "name": "mashqa-validation-5-cap2048",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00005.json",
+          "capacity_blocks": 2048,
+          "sha256": "c487a218681bacedb910d294404d1c5da309fba728aed9940110ce4a44a42086"
+        },
+        {
+          "name": "mashqa-validation-5-cap4096",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00005.json",
+          "capacity_blocks": 4096,
+          "sha256": "c487a218681bacedb910d294404d1c5da309fba728aed9940110ce4a44a42086"
+        },
+        {
+          "name": "mashqa-validation-6-cap2048",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00006.json",
+          "capacity_blocks": 2048,
+          "sha256": "65618d6b68244063a4446369cc76340f3826d48910c133852310fa141d93ac94"
+        },
+        {
+          "name": "mashqa-validation-6-cap4096",
+          "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00006.json",
+          "capacity_blocks": 4096,
+          "sha256": "65618d6b68244063a4446369cc76340f3826d48910c133852310fa141d93ac94"
+        }
+      ]
+    },
+    "estimated_usd_ceiling": 0.6000000000000001,
+    "total_call_ceiling": 48,
+    "order": [
+      {
+        "trial": 1,
+        "arm": "fixed"
+      },
+      {
+        "trial": 1,
+        "arm": "adaptive"
+      },
+      {
+        "trial": 2,
+        "arm": "adaptive"
+      },
+      {
+        "trial": 2,
+        "arm": "fixed"
+      },
+      {
+        "trial": 3,
+        "arm": "fixed"
+      },
+      {
+        "trial": 3,
+        "arm": "adaptive"
+      }
+    ]
+  },
+  "runs": [
+    {
+      "trial": 1,
+      "arm": "fixed",
+      "path": "runs/comparison-total-v2-20260927/trial-01-fixed",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.11350105627040523,
+      "validation_score": 0.07556131260794473,
+      "calls": 8,
+      "discovery_calls": 8,
+      "controller_calls": 0,
+      "valid_candidates": 8,
+      "candidate_failures": [],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.024460919999999997,
+      "elapsed_seconds": 116.78615949998493,
+      "best_policy": {
+        "name": "cost-aware-lru-with-weak-freq-and-depth",
+        "retention_score": "last_access + 200 * log1p(frequency) + 5 * log1p(depth)"
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-4-cap2048",
+          "improvement": 0.12742980561555076,
+          "extra_computed_tokens": 6464,
+          "lru_extra_computed_tokens": 7408,
+          "policy_us_per_request": 1799.6860166666665
+        },
+        {
+          "name": "sharegpt-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 365.14363888888886
+        },
+        {
+          "name": "sharegpt-validation-5-cap2048",
+          "improvement": -0.2808988764044944,
+          "extra_computed_tokens": 12768,
+          "lru_extra_computed_tokens": 9968,
+          "policy_us_per_request": 2224.954623529412
+        },
+        {
+          "name": "sharegpt-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 351.4798352941176
+        },
+        {
+          "name": "sharegpt-validation-6-cap2048",
+          "improvement": -0.031446540880503145,
+          "extra_computed_tokens": 7872,
+          "lru_extra_computed_tokens": 7632,
+          "policy_us_per_request": 1525.7052167487684
+        },
+        {
+          "name": "sharegpt-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 200.60349753694584
+        },
+        {
+          "name": "mashqa-validation-4-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 413.2213939393939
+        },
+        {
+          "name": "mashqa-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 419.5432878787879
+        },
+        {
+          "name": "mashqa-validation-5-cap2048",
+          "improvement": 0.4140730717185386,
+          "extra_computed_tokens": 6928,
+          "lru_extra_computed_tokens": 11824,
+          "policy_us_per_request": 1345.733973568282
+        },
+        {
+          "name": "mashqa-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 54.22364757709251
+        },
+        {
+          "name": "mashqa-validation-6-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 224,
+          "lru_extra_computed_tokens": 224,
+          "policy_us_per_request": 876.66891160221
+        },
+        {
+          "name": "mashqa-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 69.95082872928177
+        }
+      ]
+    },
+    {
+      "trial": 1,
+      "arm": "adaptive",
+      "path": "runs/comparison-total-v2-20260927/trial-01-adaptive",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.05780679854042635,
+      "validation_score": 0.07340241796200346,
+      "calls": 8,
+      "discovery_calls": 7,
+      "controller_calls": 1,
+      "valid_candidates": 6,
+      "candidate_failures": [
+        {
+          "cycle_file": "tree-002.json",
+          "node": 2,
+          "error": "ValueError: Unexpected policy fields"
+        }
+      ],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.02533266,
+      "elapsed_seconds": 116.81022095799563,
+      "best_policy": {
+        "name": "lru-recency-deep-hot",
+        "retention_score": "last_access + 20 * log1p(frequency) * log1p(depth) + 200 / (1 + abs(depth - 4))"
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-4-cap2048",
+          "improvement": 0.10583153347732181,
+          "extra_computed_tokens": 6624,
+          "lru_extra_computed_tokens": 7408,
+          "policy_us_per_request": 3114.324222222222
+        },
+        {
+          "name": "sharegpt-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 473.36965000000004
+        },
+        {
+          "name": "sharegpt-validation-5-cap2048",
+          "improvement": -0.24719101123595505,
+          "extra_computed_tokens": 12432,
+          "lru_extra_computed_tokens": 9968,
+          "policy_us_per_request": 4190.949347058823
+        },
+        {
+          "name": "sharegpt-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 469.0680705882353
+        },
+        {
+          "name": "sharegpt-validation-6-cap2048",
+          "improvement": -0.15513626834381553,
+          "extra_computed_tokens": 8816,
+          "lru_extra_computed_tokens": 7632,
+          "policy_us_per_request": 2838.096896551724
+        },
+        {
+          "name": "sharegpt-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 259.52364532019703
+        },
+        {
+          "name": "mashqa-validation-4-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 415.3399772727273
+        },
+        {
+          "name": "mashqa-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 407.4011590909091
+        },
+        {
+          "name": "mashqa-validation-5-cap2048",
+          "improvement": 0.4654939106901218,
+          "extra_computed_tokens": 6320,
+          "lru_extra_computed_tokens": 11824,
+          "policy_us_per_request": 1835.4553700440529
+        },
+        {
+          "name": "mashqa-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 52.61956387665198
+        },
+        {
+          "name": "mashqa-validation-6-cap2048",
+          "improvement": 0.35714285714285715,
+          "extra_computed_tokens": 144,
+          "lru_extra_computed_tokens": 224,
+          "policy_us_per_request": 1198.19382320442
+        },
+        {
+          "name": "mashqa-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 68.45580110497237
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "arm": "adaptive",
+      "path": "runs/comparison-total-v2-20260927/trial-02-adaptive",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.15440752832725177,
+      "validation_score": 0.18393782383419688,
+      "calls": 8,
+      "discovery_calls": 7,
+      "controller_calls": 1,
+      "valid_candidates": 7,
+      "candidate_failures": [],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.025674570000000004,
+      "elapsed_seconds": 114.50201012499747,
+      "best_policy": {
+        "name": "freq-biased-lru-k700",
+        "retention_score": "last_access + 700 * frequency / (1 + depth)"
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-4-cap2048",
+          "improvement": 0.22894168466522677,
+          "extra_computed_tokens": 5712,
+          "lru_extra_computed_tokens": 7408,
+          "policy_us_per_request": 1965.3774611111112
+        },
+        {
+          "name": "sharegpt-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 317.97228333333334
+        },
+        {
+          "name": "sharegpt-validation-5-cap2048",
+          "improvement": -0.28731942215088285,
+          "extra_computed_tokens": 12832,
+          "lru_extra_computed_tokens": 9968,
+          "policy_us_per_request": 2502.6823705882352
+        },
+        {
+          "name": "sharegpt-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 307.11879999999996
+        },
+        {
+          "name": "sharegpt-validation-6-cap2048",
+          "improvement": 0.1278825995807128,
+          "extra_computed_tokens": 6656,
+          "lru_extra_computed_tokens": 7632,
+          "policy_us_per_request": 1767.290502463054
+        },
+        {
+          "name": "sharegpt-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 173.11331527093597
+        },
+        {
+          "name": "mashqa-validation-4-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 414.7225378787879
+        },
+        {
+          "name": "mashqa-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 413.5483712121212
+        },
+        {
+          "name": "mashqa-validation-5-cap2048",
+          "improvement": 0.5751014884979703,
+          "extra_computed_tokens": 5024,
+          "lru_extra_computed_tokens": 11824,
+          "policy_us_per_request": 1016.1424449339207
+        },
+        {
+          "name": "mashqa-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 51.90419383259912
+        },
+        {
+          "name": "mashqa-validation-6-cap2048",
+          "improvement": 0.9285714285714286,
+          "extra_computed_tokens": 16,
+          "lru_extra_computed_tokens": 224,
+          "policy_us_per_request": 670.2660497237569
+        },
+        {
+          "name": "mashqa-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 69.14311602209945
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "arm": "fixed",
+      "path": "runs/comparison-total-v2-20260927/trial-02-fixed",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.0,
+      "validation_score": 0.0,
+      "calls": 8,
+      "discovery_calls": 8,
+      "controller_calls": 0,
+      "valid_candidates": 8,
+      "candidate_failures": [],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.02325945,
+      "elapsed_seconds": 117.67603570802021,
+      "best_policy": {
+        "name": "initial-lru",
+        "retention_score": "last_access"
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-4-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 7408,
+          "lru_extra_computed_tokens": 7408,
+          "policy_us_per_request": 1002.7570722222222
+        },
+        {
+          "name": "sharegpt-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 223.95692222222223
+        },
+        {
+          "name": "sharegpt-validation-5-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 9968,
+          "lru_extra_computed_tokens": 9968,
+          "policy_us_per_request": 1114.2029117647057
+        },
+        {
+          "name": "sharegpt-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 215.48231764705884
+        },
+        {
+          "name": "sharegpt-validation-6-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 7632,
+          "lru_extra_computed_tokens": 7632,
+          "policy_us_per_request": 867.1258472906403
+        },
+        {
+          "name": "sharegpt-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 135.47321674876846
+        },
+        {
+          "name": "mashqa-validation-4-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 427.0846212121212
+        },
+        {
+          "name": "mashqa-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 428.56367424242427
+        },
+        {
+          "name": "mashqa-validation-5-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 11824,
+          "lru_extra_computed_tokens": 11824,
+          "policy_us_per_request": 826.1909559471366
+        },
+        {
+          "name": "mashqa-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 55.40424669603524
+        },
+        {
+          "name": "mashqa-validation-6-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 224,
+          "lru_extra_computed_tokens": 224,
+          "policy_us_per_request": 420.7806464088398
+        },
+        {
+          "name": "mashqa-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 70.54403867403315
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "arm": "fixed",
+      "path": "runs/comparison-total-v2-20260927/trial-03-fixed",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.020549260610716342,
+      "validation_score": 0.03842832469775475,
+      "calls": 8,
+      "discovery_calls": 8,
+      "controller_calls": 0,
+      "valid_candidates": 8,
+      "candidate_failures": [],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.024052455,
+      "elapsed_seconds": 107.56439974997193,
+      "best_policy": {
+        "name": "lru-dominant-weak-freq",
+        "retention_score": "last_access + log1p(frequency) * 20"
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-4-cap2048",
+          "improvement": -0.04535637149028078,
+          "extra_computed_tokens": 7744,
+          "lru_extra_computed_tokens": 7408,
+          "policy_us_per_request": 1434.5925277777778
+        },
+        {
+          "name": "sharegpt-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 296.3894555555555
+        },
+        {
+          "name": "sharegpt-validation-5-cap2048",
+          "improvement": -0.0898876404494382,
+          "extra_computed_tokens": 10864,
+          "lru_extra_computed_tokens": 9968,
+          "policy_us_per_request": 1622.7904647058824
+        },
+        {
+          "name": "sharegpt-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 281.15609411764706
+        },
+        {
+          "name": "sharegpt-validation-6-cap2048",
+          "improvement": -0.04612159329140461,
+          "extra_computed_tokens": 7984,
+          "lru_extra_computed_tokens": 7632,
+          "policy_us_per_request": 1215.3567438423645
+        },
+        {
+          "name": "sharegpt-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 168.27812807881773
+        },
+        {
+          "name": "mashqa-validation-4-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 408.3606439393939
+        },
+        {
+          "name": "mashqa-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 406.192803030303
+        },
+        {
+          "name": "mashqa-validation-5-cap2048",
+          "improvement": 0.2543978349120433,
+          "extra_computed_tokens": 8816,
+          "lru_extra_computed_tokens": 11824,
+          "policy_us_per_request": 1130.3290484581498
+        },
+        {
+          "name": "mashqa-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 53.34039647577092
+        },
+        {
+          "name": "mashqa-validation-6-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 224,
+          "lru_extra_computed_tokens": 224,
+          "policy_us_per_request": 665.9671325966851
+        },
+        {
+          "name": "mashqa-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 66.15472375690608
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "arm": "adaptive",
+      "path": "runs/comparison-total-v2-20260927/trial-03-adaptive",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.007874015748031496,
+      "validation_score": 0.07858376511226252,
+      "calls": 8,
+      "discovery_calls": 7,
+      "controller_calls": 1,
+      "valid_candidates": 7,
+      "candidate_failures": [],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.02728842,
+      "elapsed_seconds": 133.67536799999652,
+      "best_policy": {
+        "name": "lru_recency_dominant_medium_freq_depth_tiebreak",
+        "retention_score": "last_access + log1p(frequency) * 30 + depth * 0.001"
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-4-cap2048",
+          "improvement": -0.04535637149028078,
+          "extra_computed_tokens": 7744,
+          "lru_extra_computed_tokens": 7408,
+          "policy_us_per_request": 1626.5263944444443
+        },
+        {
+          "name": "sharegpt-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 334.9360777777778
+        },
+        {
+          "name": "sharegpt-validation-5-cap2048",
+          "improvement": -0.09791332263242375,
+          "extra_computed_tokens": 10944,
+          "lru_extra_computed_tokens": 9968,
+          "policy_us_per_request": 1885.8275352941178
+        },
+        {
+          "name": "sharegpt-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 317.89264705882357
+        },
+        {
+          "name": "sharegpt-validation-6-cap2048",
+          "improvement": 0.031446540880503145,
+          "extra_computed_tokens": 7392,
+          "lru_extra_computed_tokens": 7632,
+          "policy_us_per_request": 1376.403064039409
+        },
+        {
+          "name": "sharegpt-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 187.2466354679803
+        },
+        {
+          "name": "mashqa-validation-4-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 421.2349393939394
+        },
+        {
+          "name": "mashqa-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 415.358
+        },
+        {
+          "name": "mashqa-validation-5-cap2048",
+          "improvement": 0.33694181326116374,
+          "extra_computed_tokens": 7840,
+          "lru_extra_computed_tokens": 11824,
+          "policy_us_per_request": 1276.990101321586
+        },
+        {
+          "name": "mashqa-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 53.744933920704845
+        },
+        {
+          "name": "mashqa-validation-6-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 224,
+          "lru_extra_computed_tokens": 224,
+          "policy_us_per_request": 791.3071436464088
+        },
+        {
+          "name": "mashqa-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 69.54696685082872
+        }
+      ]
+    }
+  ],
+  "aggregate": {
+    "arms": {
+      "fixed": {
+        "runs": 3,
+        "mean_validation_score": 0.037996545768566495,
+        "mean_validation_extra_tokens": 35648,
+        "mean_lru_validation_extra_tokens": 37056,
+        "total_extra_fraction_change_vs_lru": -0.03799654576856648,
+        "min_validation_score": 0.0,
+        "max_validation_score": 0.07556131260794473,
+        "sample_sd": 0.03778250673978177,
+        "mean_train_score": 0.044683438960373856,
+        "total_calls": 24,
+        "discovery_calls": 24,
+        "controller_calls": 0,
+        "accepted_revisions": 0,
+        "estimated_usd": 0.071772825
+      },
+      "adaptive": {
+        "runs": 3,
+        "mean_validation_score": 0.11197466896948761,
+        "mean_validation_extra_tokens": 32906.666666666664,
+        "mean_lru_validation_extra_tokens": 37056,
+        "total_extra_fraction_change_vs_lru": -0.1119746689694876,
+        "min_validation_score": 0.07340241796200346,
+        "max_validation_score": 0.18393782383419688,
+        "sample_sd": 0.062375743146951525,
+        "mean_train_score": 0.0733627808719032,
+        "total_calls": 24,
+        "discovery_calls": 21,
+        "controller_calls": 3,
+        "accepted_revisions": 0,
+        "estimated_usd": 0.07829565
+      }
+    },
+    "paired_differences": [
+      {
+        "trial": 1,
+        "adaptive_minus_fixed": -0.0021588946459412672
+      },
+      {
+        "trial": 2,
+        "adaptive_minus_fixed": 0.18393782383419688
+      },
+      {
+        "trial": 3,
+        "adaptive_minus_fixed": 0.04015544041450777
+      }
+    ],
+    "mean_adaptive_minus_fixed": 0.07397812320092112,
+    "estimated_usd": 0.150068475
+  },
+  "error": null
+}

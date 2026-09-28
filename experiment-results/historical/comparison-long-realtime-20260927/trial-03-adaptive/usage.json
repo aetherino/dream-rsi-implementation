@@ -1,0 +1,8 @@
+{
+  "backend": "mimo",
+  "model": "mimo-v2.6-pro",
+  "thinking": "disabled",
+  "calls": 40,
+  "estimated_usd": 0.15241965,
+  "cost_basis": "Configured uncached rates for the selected transport; pending/unknown results retain reservation"
+}

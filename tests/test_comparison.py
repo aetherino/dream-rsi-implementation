@@ -21,9 +21,9 @@ class ComparisonTests(unittest.TestCase):
     def test_refreezing_does_not_accept_changed_trace(self):
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / "trace.json"
-            path.write_text("a")
+            path.write_text('{"fixture": "a"}')
             frozen = snapshot_suite([{"name": "a", "path": str(path), "capacity_blocks": 32}], Path(temp))
-            path.write_text("b")
+            path.write_text('{"fixture": "b"}')
             with self.assertRaisesRegex(ValueError, "changed"):
                 snapshot_suite(frozen, Path(temp))
 

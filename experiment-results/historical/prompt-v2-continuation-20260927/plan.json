@@ -1,0 +1,596 @@
+{
+  "kind": "prompt-v2-continuation",
+  "base_config": {
+    "cycles": 10,
+    "online_rounds": 3,
+    "replay_rounds": 6,
+    "workers": 2,
+    "scoring": "total_extra_v2",
+    "max_depth": 4,
+    "controller_revisions": 1,
+    "block_size": 16,
+    "revise_after_final_cycle": true,
+    "stop_on_empty_rollout": false,
+    "beta_calls": 0.02,
+    "beta_parallel": 0.005,
+    "evaluation_timeout_seconds": 180,
+    "max_policy_us_per_request": 50000,
+    "api": {
+      "model": "mimo-v2.6-pro",
+      "max_calls": 40,
+      "max_usd": 0.5,
+      "max_completion_tokens": 2048,
+      "thinking": "disabled",
+      "timeout_seconds": 120,
+      "input_usd_per_million": 0.435,
+      "output_usd_per_million": 0.87
+    },
+    "train": [
+      {
+        "name": "sharegpt-train-1-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00001.json",
+        "capacity_blocks": 2048,
+        "sha256": "dfabcbc175ac981423b57a92258a6f51d74f41255ad50e060cc823e04fe35fe6"
+      },
+      {
+        "name": "sharegpt-train-1-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00001.json",
+        "capacity_blocks": 4096,
+        "sha256": "dfabcbc175ac981423b57a92258a6f51d74f41255ad50e060cc823e04fe35fe6"
+      },
+      {
+        "name": "sharegpt-train-2-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00002.json",
+        "capacity_blocks": 2048,
+        "sha256": "aa63b96e24e2773947c6c1d82856a9cdaf8c51b8c7099540d9ef8e9bd1a7d345"
+      },
+      {
+        "name": "sharegpt-train-2-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00002.json",
+        "capacity_blocks": 4096,
+        "sha256": "aa63b96e24e2773947c6c1d82856a9cdaf8c51b8c7099540d9ef8e9bd1a7d345"
+      },
+      {
+        "name": "sharegpt-train-3-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00003.json",
+        "capacity_blocks": 2048,
+        "sha256": "597d57b1c7ff5f4a5678703debc6af6aa0d82b3338ed2fe83f4ffe4d913f826c"
+      },
+      {
+        "name": "sharegpt-train-3-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00003.json",
+        "capacity_blocks": 4096,
+        "sha256": "597d57b1c7ff5f4a5678703debc6af6aa0d82b3338ed2fe83f4ffe4d913f826c"
+      },
+      {
+        "name": "mashqa-train-1-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00001.json",
+        "capacity_blocks": 2048,
+        "sha256": "d096232cb8a2a0cd25d4fc88266e1b905fab22288b973b76c7bdda0b21eedfce"
+      },
+      {
+        "name": "mashqa-train-1-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00001.json",
+        "capacity_blocks": 4096,
+        "sha256": "d096232cb8a2a0cd25d4fc88266e1b905fab22288b973b76c7bdda0b21eedfce"
+      },
+      {
+        "name": "mashqa-train-2-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00002.json",
+        "capacity_blocks": 2048,
+        "sha256": "c358a4f394e14a1d0f9fad6bc41048e3596dc7af8c4ac5f0a79669ba66250ca3"
+      },
+      {
+        "name": "mashqa-train-2-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00002.json",
+        "capacity_blocks": 4096,
+        "sha256": "c358a4f394e14a1d0f9fad6bc41048e3596dc7af8c4ac5f0a79669ba66250ca3"
+      },
+      {
+        "name": "mashqa-train-3-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00003.json",
+        "capacity_blocks": 2048,
+        "sha256": "ceca51c8989dc35f7120a92af30f9bd49b98f39a0074bf590694d3738623bab6"
+      },
+      {
+        "name": "mashqa-train-3-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00003.json",
+        "capacity_blocks": 4096,
+        "sha256": "ceca51c8989dc35f7120a92af30f9bd49b98f39a0074bf590694d3738623bab6"
+      }
+    ],
+    "validation": [
+      {
+        "name": "sharegpt-validation-13-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00013.json",
+        "capacity_blocks": 2048,
+        "sha256": "69419d90bf3ec998581fc10aaf7498aaa042a809f1dc12534bc845b36b39fb1f"
+      },
+      {
+        "name": "sharegpt-validation-13-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00013.json",
+        "capacity_blocks": 4096,
+        "sha256": "69419d90bf3ec998581fc10aaf7498aaa042a809f1dc12534bc845b36b39fb1f"
+      },
+      {
+        "name": "sharegpt-validation-14-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00014.json",
+        "capacity_blocks": 2048,
+        "sha256": "c5831247051500c7af9ce164af86faadb9d7b1c5f07379469fe737217b090363"
+      },
+      {
+        "name": "sharegpt-validation-14-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00014.json",
+        "capacity_blocks": 4096,
+        "sha256": "c5831247051500c7af9ce164af86faadb9d7b1c5f07379469fe737217b090363"
+      },
+      {
+        "name": "sharegpt-validation-15-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00015.json",
+        "capacity_blocks": 2048,
+        "sha256": "2a2f3eb5f8aeaea9777f2985559a4426ffe9b0563ea5581c69b4a5054539475b"
+      },
+      {
+        "name": "sharegpt-validation-15-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00015.json",
+        "capacity_blocks": 4096,
+        "sha256": "2a2f3eb5f8aeaea9777f2985559a4426ffe9b0563ea5581c69b4a5054539475b"
+      },
+      {
+        "name": "sharegpt-validation-16-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00016.json",
+        "capacity_blocks": 2048,
+        "sha256": "2177c05ae9575ed5b843a552ed241d3f5f10b05ab479d6faa9beefb5085b8867"
+      },
+      {
+        "name": "sharegpt-validation-16-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00016.json",
+        "capacity_blocks": 4096,
+        "sha256": "2177c05ae9575ed5b843a552ed241d3f5f10b05ab479d6faa9beefb5085b8867"
+      },
+      {
+        "name": "sharegpt-validation-17-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00017.json",
+        "capacity_blocks": 2048,
+        "sha256": "e42f06db86e7565b4e04193ba6e04911374a0e96265bed78e778e4788a805d80"
+      },
+      {
+        "name": "sharegpt-validation-17-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00017.json",
+        "capacity_blocks": 4096,
+        "sha256": "e42f06db86e7565b4e04193ba6e04911374a0e96265bed78e778e4788a805d80"
+      },
+      {
+        "name": "sharegpt-validation-18-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00018.json",
+        "capacity_blocks": 2048,
+        "sha256": "33895e37178bfc2ed721f71d958a29af93d97fb8195b39ee4a746d5c92b4d4c4"
+      },
+      {
+        "name": "sharegpt-validation-18-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00018.json",
+        "capacity_blocks": 4096,
+        "sha256": "33895e37178bfc2ed721f71d958a29af93d97fb8195b39ee4a746d5c92b4d4c4"
+      },
+      {
+        "name": "mashqa-validation-13-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00013.json",
+        "capacity_blocks": 2048,
+        "sha256": "d0a3d4f434201fe0288e4d480438ecc922c4bab0aa63de2549a2d1b90ec29155"
+      },
+      {
+        "name": "mashqa-validation-13-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00013.json",
+        "capacity_blocks": 4096,
+        "sha256": "d0a3d4f434201fe0288e4d480438ecc922c4bab0aa63de2549a2d1b90ec29155"
+      },
+      {
+        "name": "mashqa-validation-14-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00014.json",
+        "capacity_blocks": 2048,
+        "sha256": "5726b6c62dfe5b2564142c7be638082999d5b742f2270fc93281dc4dc36716db"
+      },
+      {
+        "name": "mashqa-validation-14-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00014.json",
+        "capacity_blocks": 4096,
+        "sha256": "5726b6c62dfe5b2564142c7be638082999d5b742f2270fc93281dc4dc36716db"
+      },
+      {
+        "name": "mashqa-validation-15-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00015.json",
+        "capacity_blocks": 2048,
+        "sha256": "a2fb8ceda1043025d92e344e95c2633c35fb641030c488de6101bbb120c43b5e"
+      },
+      {
+        "name": "mashqa-validation-15-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00015.json",
+        "capacity_blocks": 4096,
+        "sha256": "a2fb8ceda1043025d92e344e95c2633c35fb641030c488de6101bbb120c43b5e"
+      },
+      {
+        "name": "mashqa-validation-16-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00016.json",
+        "capacity_blocks": 2048,
+        "sha256": "61bd034eddfc7122f00c7401573ee38df92c0b137179a41cc2d685cc6b0b2db3"
+      },
+      {
+        "name": "mashqa-validation-16-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00016.json",
+        "capacity_blocks": 4096,
+        "sha256": "61bd034eddfc7122f00c7401573ee38df92c0b137179a41cc2d685cc6b0b2db3"
+      },
+      {
+        "name": "mashqa-validation-17-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00017.json",
+        "capacity_blocks": 2048,
+        "sha256": "134431bc16ae44e9ecad917496d6cfd980c4263a4b030e2781be9e463a5f22fe"
+      },
+      {
+        "name": "mashqa-validation-17-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00017.json",
+        "capacity_blocks": 4096,
+        "sha256": "134431bc16ae44e9ecad917496d6cfd980c4263a4b030e2781be9e463a5f22fe"
+      },
+      {
+        "name": "mashqa-validation-18-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00018.json",
+        "capacity_blocks": 2048,
+        "sha256": "e627f413cf8aff60abc09295c6542d8a7fc74634e331cce4508f47bba07ba644"
+      },
+      {
+        "name": "mashqa-validation-18-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00018.json",
+        "capacity_blocks": 4096,
+        "sha256": "e627f413cf8aff60abc09295c6542d8a7fc74634e331cce4508f47bba07ba644"
+      }
+    ],
+    "prompt_version": "v2"
+  },
+  "source_checkpoint_sha256": "78a7a6c3f020abd96f3726ddfa9da9f353b30ec5977cc6066797bce2e1a62afd",
+  "transitions": [
+    {
+      "id": "transition-01",
+      "source_run": "trial-01-adaptive",
+      "cycle": 1,
+      "call": 6,
+      "predecessor": {
+        "name": "parallel-refinement",
+        "root_if": "True",
+        "root_priority": "1",
+        "leaf_if": "failure_streak < 2 and stagnation < 3",
+        "leaf_priority": "2 + score - 0.1 * depth"
+      },
+      "revised": {
+        "name": "wide-diverse-refinement",
+        "root_if": "True",
+        "root_priority": "3",
+        "leaf_if": "failure_streak < 1 and stagnation < 1",
+        "leaf_priority": "1 + score - 0.05 * depth"
+      },
+      "historical_replay_gain": 0.036666666666666674
+    },
+    {
+      "id": "transition-02",
+      "source_run": "trial-01-adaptive",
+      "cycle": 6,
+      "call": 32,
+      "predecessor": {
+        "name": "wide-diverse-refinement",
+        "root_if": "True",
+        "root_priority": "3",
+        "leaf_if": "failure_streak < 1 and stagnation < 1",
+        "leaf_priority": "1 + score - 0.05 * depth"
+      },
+      "revised": {
+        "name": "balanced-root-open-with-early-refine",
+        "root_if": "round_index < 3",
+        "root_priority": "2.5 if round_index < 3 else 1",
+        "leaf_if": "failure_streak < 1 and stagnation < 1 and depth < 2",
+        "leaf_priority": "3 + 4 * score - 0.15 * depth"
+      },
+      "historical_replay_gain": 0.014990264174295283
+    },
+    {
+      "id": "transition-03",
+      "source_run": "trial-03-adaptive",
+      "cycle": 3,
+      "call": 18,
+      "predecessor": {
+        "name": "parallel-refinement",
+        "root_if": "True",
+        "root_priority": "1",
+        "leaf_if": "failure_streak < 2 and stagnation < 3",
+        "leaf_priority": "2 + score - 0.1 * depth"
+      },
+      "revised": {
+        "name": "score-gated-parallel-priority",
+        "root_if": "round_index <= 2 or best_score <= 0.02",
+        "root_priority": "3 if round_index <= 2 else 2",
+        "leaf_if": "valid and failure_streak < 2 and stagnation < 3",
+        "leaf_priority": "3 + score + max(gain, 0) - 0.05 * depth - 0.05 * age_rounds"
+      },
+      "historical_replay_gain": 0.00555555555555556
+    },
+    {
+      "id": "transition-04",
+      "source_run": "trial-03-adaptive",
+      "cycle": 6,
+      "call": 36,
+      "predecessor": {
+        "name": "score-gated-parallel-priority",
+        "root_if": "round_index <= 2 or best_score <= 0.02",
+        "root_priority": "3 if round_index <= 2 else 2",
+        "leaf_if": "valid and failure_streak < 2 and stagnation < 3",
+        "leaf_priority": "3 + score + max(gain, 0) - 0.05 * depth - 0.05 * age_rounds"
+      },
+      "revised": {
+        "name": "gated-root-early-then-gain-weighted-refinement",
+        "root_if": "round_index <= 1 or best_score <= 0.02",
+        "root_priority": "3 if round_index <= 1 else 2",
+        "leaf_if": "valid and failure_streak < 2 and stagnation < 3",
+        "leaf_priority": "3 + score + 0.5 * max(gain, 0) - 0.1 * depth - 0.1 * age_rounds"
+      },
+      "historical_replay_gain": 0.017708333333333343
+    }
+  ],
+  "settings": {
+    "extension_total_calls": 100,
+    "extension_new_usd": 0.6,
+    "replicates": 2,
+    "diagnostic_calls": 15,
+    "diagnostic_usd": 0.075,
+    "max_new_usd": 3,
+    "validation": [
+      {
+        "name": "sharegpt-validation-13-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00013.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "sharegpt-validation-13-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00013.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "sharegpt-validation-14-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00014.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "sharegpt-validation-14-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00014.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "sharegpt-validation-15-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00015.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "sharegpt-validation-15-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00015.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "sharegpt-validation-16-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00016.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "sharegpt-validation-16-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00016.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "sharegpt-validation-17-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00017.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "sharegpt-validation-17-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00017.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "sharegpt-validation-18-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00018.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "sharegpt-validation-18-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00018.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "mashqa-validation-13-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00013.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "mashqa-validation-13-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00013.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "mashqa-validation-14-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00014.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "mashqa-validation-14-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00014.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "mashqa-validation-15-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00015.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "mashqa-validation-15-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00015.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "mashqa-validation-16-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00016.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "mashqa-validation-16-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00016.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "mashqa-validation-17-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00017.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "mashqa-validation-17-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00017.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "mashqa-validation-18-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00018.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "mashqa-validation-18-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00018.json",
+        "capacity_blocks": 4096
+      }
+    ],
+    "source_checkpoint_sha256": "78a7a6c3f020abd96f3726ddfa9da9f353b30ec5977cc6066797bce2e1a62afd"
+  },
+  "ceilings": {
+    "new_calls": 420,
+    "new_usd": 3.000000000000002
+  },
+  "prompt_version": "v2 following inherited v1 history",
+  "prompt_revision": {
+    "source_checkpoint_sha256": "fd77482ccd5fea4df360f1c6076b5a280e17144b390beba81036d86f394f3090",
+    "boundaries": [
+      {
+        "run": "extend-trial-01-fixed",
+        "first_v2_call": 54,
+        "prior_calls": 53,
+        "prior_train_score": 0.2825043211062032
+      },
+      {
+        "run": "extend-trial-02-fixed",
+        "first_v2_call": 54,
+        "prior_calls": 53,
+        "prior_train_score": 0.21874399846360668
+      },
+      {
+        "run": "extend-trial-03-fixed",
+        "first_v2_call": 54,
+        "prior_calls": 53,
+        "prior_train_score": 0.2227770309199155
+      },
+      {
+        "run": "transition-01-trial-01-predecessor",
+        "first_v2_call": 14,
+        "prior_calls": 13,
+        "prior_train_score": 0.0015363933166890724
+      },
+      {
+        "run": "transition-01-trial-01-revised",
+        "first_v2_call": 11,
+        "prior_calls": 10,
+        "prior_train_score": 0.12003072786633379
+      },
+      {
+        "run": "transition-01-trial-02-revised",
+        "first_v2_call": 10,
+        "prior_calls": 9,
+        "prior_train_score": 0.20434031111964662
+      },
+      {
+        "run": "transition-01-trial-02-predecessor",
+        "first_v2_call": 14,
+        "prior_calls": 13,
+        "prior_train_score": 0.0
+      },
+      {
+        "run": "transition-02-trial-01-predecessor",
+        "first_v2_call": 10,
+        "prior_calls": 9,
+        "prior_train_score": 0.0015363933166890724
+      },
+      {
+        "run": "transition-02-trial-01-revised",
+        "first_v2_call": 9,
+        "prior_calls": 8,
+        "prior_train_score": 0.0
+      },
+      {
+        "run": "transition-02-trial-02-revised",
+        "first_v2_call": 9,
+        "prior_calls": 8,
+        "prior_train_score": 0.020549260610716342
+      },
+      {
+        "run": "transition-02-trial-02-predecessor",
+        "first_v2_call": 11,
+        "prior_calls": 10,
+        "prior_train_score": 0.09544843479930862
+      },
+      {
+        "run": "transition-03-trial-01-predecessor",
+        "first_v2_call": 14,
+        "prior_calls": 13,
+        "prior_train_score": 0.020549260610716342
+      },
+      {
+        "run": "transition-03-trial-01-revised",
+        "first_v2_call": 14,
+        "prior_calls": 13,
+        "prior_train_score": 0.0
+      },
+      {
+        "run": "transition-03-trial-02-revised",
+        "first_v2_call": 14,
+        "prior_calls": 13,
+        "prior_train_score": 0.15517572498559631
+      },
+      {
+        "run": "transition-03-trial-02-predecessor",
+        "first_v2_call": 14,
+        "prior_calls": 13,
+        "prior_train_score": 0.12809679277895142
+      },
+      {
+        "run": "transition-04-trial-01-predecessor",
+        "first_v2_call": 13,
+        "prior_calls": 12,
+        "prior_train_score": 0.058574995198770886
+      },
+      {
+        "run": "transition-04-trial-01-revised",
+        "first_v2_call": 14,
+        "prior_calls": 13,
+        "prior_train_score": 0.0015363933166890724
+      },
+      {
+        "run": "transition-04-trial-02-revised",
+        "first_v2_call": 11,
+        "prior_calls": 10,
+        "prior_train_score": 0.06068753600921836
+      },
+      {
+        "run": "transition-04-trial-02-predecessor",
+        "first_v2_call": 14,
+        "prior_calls": 13,
+        "prior_train_score": 0.14710966007297868
+      }
+    ],
+    "previous_new_calls": 219,
+    "previous_new_usd": 0.7098125550000002,
+    "remaining_call_allowance": 201,
+    "remaining_usd_allowance": 2.290187445000002
+  }
+}

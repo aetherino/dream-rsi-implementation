@@ -2,6 +2,7 @@ import json
 import hashlib
 import ast
 from .scoring import TOTAL_EXTRA, objective_description
+from .programs import POLICY_FEATURE_SETS
 
 LANGUAGE = """Expressions support finite numbers, + - * /, comparisons, and/or/not, x if condition else y,
 and min(a,b), max(a,b), abs(x), log1p(x), sqrt(x). No other syntax or functions.
@@ -17,7 +18,7 @@ def compact_node(node):
     return {k: node[k] for k in ("id", "parent", "depth", "score", "valid", "candidate")} | {
         "feedback": {"error": feedback.get("error"), "runs": [
             {k: r[k] for k in ("name", "extra_computed_tokens", "lru_extra_computed_tokens",
-                               "saved_prompt_tokens", "score_contribution", "evicted_blocks", "policy_us_per_request") if k in r}
+                               "saved_prompt_tokens", "score_contribution", "evicted_blocks", "policy_us_per_request", "workloads") if k in r}
             for r in feedback.get("runs", [])]}}
 
 
@@ -125,8 +126,23 @@ def compact_node_v2(node):
     return compact
 
 
-def discovery_prompt(parent, visible, suite_summary, prior_rollouts=(), scoring=TOTAL_EXTRA,
-                     *, version="v2", best=None, memory=None):
+def _discovery_prompt(parent, visible, suite_summary, prior_rollouts=(), scoring=TOTAL_EXTRA,
+                     *, version="v2", best=None, memory=None, policy_features="block-v1"):
+    if policy_features not in POLICY_FEATURE_SETS:
+        raise ValueError("Unknown policy feature set")
+    feature_help = ""
+    if policy_features == "task-v1":
+        if version != "v2":
+            raise ValueError("Task features require prompt v2")
+        feature_help = """
+Additional allowed runtime names: task_chat, task_qa, task_unknown, turn_index.
+The three task flags are booleans for the declared serving category of the MOST RECENT
+request touching that block. They are not dataset IDs. Shared prefixes take the latest
+toucher category. turn_index is that request's zero-based current turn (QA is always 0).
+Chat includes conversations that may never return; no continuation or final-turn flag is supplied.
+No raw text, token IDs, session IDs, document IDs, future arrivals or future hits are exposed.
+Use only observable metadata; task labels do not guarantee future reuse.
+"""
     if version == "v1":
         return discovery_prompt_v1(parent, visible, suite_summary, prior_rollouts, scoring)
     if version != "v2":
@@ -150,12 +166,32 @@ Do not resubmit an expression in tried_expressions without a specific reason in 
 Prefer a different hypothesis or a focused parameter change over renaming a previous formula.
 The authoritative aggregate feedback supplies saved tokens, the LRU denominator, and score; do not invent totals.
 Distinguish expected benefits from observed benefits. No future request information is available at runtime.
-""" + objective_description(scoring) + "\n" + LANGUAGE_V2 + "\n" + json.dumps({
-        "prompt_version": "v2", "selected_parent": compact_node_v2(parent),
+""" + feature_help + objective_description(scoring) + "\n" + LANGUAGE_V2 + "\n" + json.dumps({
+        "prompt_version": "v2", "policy_features": policy_features, "selected_parent": compact_node_v2(parent),
         "best_ever_training_policy": compact_node_v2(best) if best else None,
         "recent_observations": [compact_node_v2(n) for n in visible[-12:]],
         "prior_rollout_best_observations": [compact_node_v2(n) for n in prior_rollouts],
         "tried_expressions": memory, "suite": suite_summary})
+
+
+
+def discovery_prompt(parent, visible, suite_summary, prior_rollouts=(), scoring=TOTAL_EXTRA,
+                     *, version="v2", best=None, memory=None, policy_features="block-v1"):
+    """Bound serialized input, retaining parent, best, suite and attempted-formula ledger."""
+    recent, prior = list(visible[-12:]), list(prior_rollouts)
+    while True:
+        prompt = _discovery_prompt(parent, recent, suite_summary, prior, scoring, version=version,
+                                  best=best, memory=memory, policy_features=policy_features)
+        messages = [{"role": "user", "content": prompt}]
+        # Leave room for backend system text/envelope and the 4096-byte allowance.
+        if len(json.dumps(messages, ensure_ascii=False).encode()) <= 54000:
+            return prompt
+        if recent:
+            recent.pop(0)
+        elif prior:
+            prior.pop(0)
+        else:
+            raise ValueError("Selected parent, best, suite and memory exceed prompt allowance")
 
 
 def controller_prompt(incumbent, feedback, history_summaries, settings, revision_log=(), scoring=TOTAL_EXTRA,

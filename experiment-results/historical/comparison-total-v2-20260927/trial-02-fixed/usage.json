@@ -1,0 +1,8 @@
+{
+  "backend": "mimo",
+  "model": "mimo-v2.6-pro",
+  "thinking": "disabled",
+  "calls": 8,
+  "estimated_usd": 0.02325945,
+  "cost_basis": "Configured uncached token rates; unknown failed calls retain reservation"
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "revision": 0,
+    "controller": {
+      "name": "parallel-refinement",
+      "root_if": "True",
+      "root_priority": "1",
+      "leaf_if": "failure_streak < 2 and stagnation < 3",
+      "leaf_priority": "2 + score - 0.1 * depth"
+    },
+    "evaluation": {
+      "valid": true,
+      "value": -0.033859868126240325,
+      "replays": [
+        {
+          "value": -0.033859868126240325,
+          "best_score": 0.05780679854042635,
+          "attempts": 5,
+          "rounds": 3,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 2,
+              "selected": [
+                1,
+                0
+              ],
+              "revealed": [
+                2,
+                3
+              ],
+              "best_score": 0.05780679854042635
+            },
+            {
+              "round": 3,
+              "selected": [
+                3,
+                2
+              ],
+              "revealed": [
+                4,
+                5
+              ],
+              "best_score": 0.05780679854042635
+            }
+          ],
+          "exhausted": []
+        }
+      ]
+    },
+    "accepted": true
+  },
+  {
+    "revision": 1,
+    "controller": {
+      "name": "leaf-first-root-backfill",
+      "root_if": "True",
+      "root_priority": "round_index * 0.01",
+      "leaf_if": "failure_streak < 2 and stagnation < 4 and depth < 4",
+      "leaf_priority": "10 + 3 * gain - 0.3 * depth + 0.05 * age_rounds - 0.5 * stagnation"
+    },
+    "evaluation": {
+      "valid": true,
+      "value": -0.033859868126240325,
+      "replays": [
+        {
+          "value": -0.033859868126240325,
+          "best_score": 0.05780679854042635,
+          "attempts": 5,
+          "rounds": 3,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 2,
+              "selected": [
+                1,
+                0
+              ],
+              "revealed": [
+                2,
+                3
+              ],
+              "best_score": 0.05780679854042635
+            },
+            {
+              "round": 3,
+              "selected": [
+                2,
+                3
+              ],
+              "revealed": [
+                5,
+                4
+              ],
+              "best_score": 0.05780679854042635
+            }
+          ],
+          "exhausted": []
+        }
+      ]
+    },
+    "accepted": false
+  }
+]

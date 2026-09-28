@@ -1,0 +1,62 @@
+[
+  {
+    "revision": 0,
+    "controller": {
+      "name": "score-gated-parallel-priority",
+      "root_if": "round_index <= 2 or best_score <= 0.02",
+      "root_priority": "3 if round_index <= 2 else 2",
+      "leaf_if": "valid and failure_streak < 2 and stagnation < 3",
+      "leaf_priority": "3 + score + max(gain, 0) - 0.05 * depth - 0.05 * age_rounds"
+    },
+    "evaluation": {
+      "valid": true,
+      "value": -0.012734460021765577,
+      "replays": [
+        {
+          "value": -0.012734460021765577,
+          "best_score": 0.0789322066449011,
+          "attempts": 5,
+          "rounds": 3,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.0789322066449011
+            },
+            {
+              "round": 2,
+              "selected": [
+                1,
+                0
+              ],
+              "revealed": [
+                2,
+                3
+              ],
+              "best_score": 0.0789322066449011
+            },
+            {
+              "round": 3,
+              "selected": [
+                2,
+                3
+              ],
+              "revealed": [
+                4,
+                5
+              ],
+              "best_score": 0.0789322066449011
+            }
+          ],
+          "exhausted": []
+        }
+      ]
+    },
+    "accepted": true
+  }
+]

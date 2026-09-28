@@ -1,0 +1,209 @@
+[
+  {
+    "revision": 0,
+    "controller": {
+      "name": "parallel-refinement",
+      "root_if": "True",
+      "root_priority": "1",
+      "leaf_if": "failure_streak < 2 and stagnation < 3",
+      "leaf_priority": "2 + score - 0.1 * depth"
+    },
+    "evaluation": {
+      "valid": true,
+      "value": -0.06285929197874657,
+      "replays": [
+        {
+          "value": -0.09166666666666667,
+          "best_score": 0.0,
+          "attempts": 5,
+          "rounds": 3,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 2,
+              "selected": [
+                1,
+                0
+              ],
+              "revealed": [
+                2,
+                3
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 3,
+              "selected": [
+                0,
+                2
+              ],
+              "revealed": [
+                4,
+                5
+              ],
+              "best_score": 0.0
+            }
+          ],
+          "exhausted": []
+        },
+        {
+          "value": -0.03405191729082646,
+          "best_score": 0.05761474937584021,
+          "attempts": 5,
+          "rounds": 3,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 2,
+              "selected": [
+                0,
+                1
+              ],
+              "revealed": [
+                2,
+                3
+              ],
+              "best_score": 0.05761474937584021
+            },
+            {
+              "round": 3,
+              "selected": [
+                3,
+                0
+              ],
+              "revealed": [
+                4,
+                5
+              ],
+              "best_score": 0.05761474937584021
+            }
+          ],
+          "exhausted": []
+        }
+      ]
+    },
+    "accepted": true
+  },
+  {
+    "revision": 1,
+    "controller": {
+      "name": "root-prioritize-recency-weighted-leaf-refinement",
+      "root_if": "round_index < 5 or branches_opened < 2",
+      "root_priority": "1 + 0.5 / (1 + branches_opened)",
+      "leaf_if": "valid and failure_streak < 2 and stagnation < 3 and age_rounds < 4",
+      "leaf_priority": "3 + 2 * score + 0.5 * gain - 0.3 * depth - 0.2 * stagnation + 0.1 * log1p(age_rounds)"
+    },
+    "evaluation": {
+      "valid": true,
+      "value": -0.06285929197874657,
+      "replays": [
+        {
+          "value": -0.09166666666666667,
+          "best_score": 0.0,
+          "attempts": 5,
+          "rounds": 3,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 2,
+              "selected": [
+                1,
+                0
+              ],
+              "revealed": [
+                2,
+                3
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 3,
+              "selected": [
+                0,
+                2
+              ],
+              "revealed": [
+                4,
+                5
+              ],
+              "best_score": 0.0
+            }
+          ],
+          "exhausted": []
+        },
+        {
+          "value": -0.03405191729082646,
+          "best_score": 0.05761474937584021,
+          "attempts": 5,
+          "rounds": 3,
+          "trajectory": [
+            {
+              "round": 1,
+              "selected": [
+                0
+              ],
+              "revealed": [
+                1
+              ],
+              "best_score": 0.0
+            },
+            {
+              "round": 2,
+              "selected": [
+                0,
+                1
+              ],
+              "revealed": [
+                2,
+                3
+              ],
+              "best_score": 0.05761474937584021
+            },
+            {
+              "round": 3,
+              "selected": [
+                3,
+                0
+              ],
+              "revealed": [
+                4,
+                5
+              ],
+              "best_score": 0.05761474937584021
+            }
+          ],
+          "exhausted": []
+        }
+      ]
+    },
+    "accepted": false,
+    "api_call": 12
+  }
+]

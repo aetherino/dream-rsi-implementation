@@ -17,6 +17,11 @@ class Entry:
     frequency: int
     insertion_order: int
     access_order: int
+    # Metadata of the most recent request touching this prefix, including shared prefixes.
+    task_chat: bool = False
+    task_qa: bool = False
+    task_unknown: bool = True
+    turn_index: int = 0
 
 
 class Policy:

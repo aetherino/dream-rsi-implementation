@@ -1,7 +1,7 @@
 # Cache simulator contract (v1)
 
 This is the **task evaluator** for cache-policy search. It is separate from
-Dream-RSI's future replay of coding-attempt histories. No API calls, GPU,
+Dream-RSI's replay of coding-attempt histories. No API calls, GPU,
 model weights, or tokenizer are used while replaying a prepared trace.
 
 ## Model
@@ -61,8 +61,9 @@ on an idle machine before drawing speed conclusions. Invariant checking adds
 replay overhead and is intended for debugging. There is no GPU-latency estimate.
 
 `peak_retained_blocks` bounds the number of built-in Entry records. It is **not**
-a measurement of total process RAM or arbitrary custom-policy memory. Generated
-policy memory/time limits and process isolation remain future work.
+a measurement of total process RAM or arbitrary custom-policy memory. The Dream-RSI
+harness uses a bounded numeric expression language, CPU feasibility checks and
+child-process wall-time limits; these are not an arbitrary-code security sandbox.
 
 ## Trace format
 
@@ -100,7 +101,11 @@ matching depends on token prefixes, not labels.
 
 This simple JSON format repeats conversation history; it is intended for initial
 experiments. Packed token arrays/shared-prefix references are a later storage
-optimization. The raw datasets have not yet been converted to this format.
+optimization. ShareGPT and MASH-QA exports use this format; see
+[dataset preparation](dataset-preparation.md). Optional `task_type` (`chat`,
+`document-qa`, or `unknown`) and zero-based `turn_index` fields carry current
+serving metadata. Missing fields default to unknown/zero. These are separate
+from the reporting-only `workload` and opaque `session_id` fields.
 
 ## Extending policies
 
@@ -108,12 +113,15 @@ Subclass `cache_sim.policies.Policy` and pass a **fresh instance** into
 `replay(compiled_trace, capacity_blocks, policy)`. `choose(eligible, now)` must
 return one eligible block ID. The read-only Entry objects expose depth,
 insertion/access times, access frequency and deterministic insertion/access
-ordering. IDs are opaque handles, not predictive signals. Hooks can maintain
+ordering, plus task flags and current turn from the latest request touching the
+block. The generated-policy `block-v1` interface hides task metadata; `task-v1`
+exposes it. IDs are opaque handles, not predictive signals. Hooks can maintain
 additional policy state; the engine times them too. Invalid victims fail fast.
 
 Custom policy code executes in the current process with its Python privileges.
 The CLI intentionally exposes only the built-in baselines. Do not plug untrusted
-MiMo-generated code into this interface until isolation and limits are added.
+MiMo-generated Python into this interface. The search harness accepts only
+validated numeric expressions through `dream_rsi.programs.RetentionPolicy`.
 
 ## Verification
 
