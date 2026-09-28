@@ -13,7 +13,7 @@ from .compare import aggregate, arm_config, markdown_report, summarize_run
 from .evaluation import isolated_evaluate
 from .history import evaluate_controller, observation, root
 from .programs import Controller, INITIAL_CONTROLLER
-from .prompts import controller_prompt, discovery_prompt
+from .prompts import controller_prompt, discovery_prompt, tried_memory
 from .runner import prepare_config
 from .realtime_transport import RealtimeTransport
 
@@ -38,12 +38,16 @@ def lean_node(node):
     return result
 
 
-def bounded_discovery(parent, tree, suite, histories, scoring):
+def bounded_discovery(parent, tree, suite, histories, scoring, prompt_version="v1", best=None):
     # Keep the parent and suite; discard only old auxiliary observations as needed.
     visible = [lean_node(n) for n in tree[-12:]]
     previous = [lean_node(max(h, key=lambda n: n["score"])) for h in histories[-4:]]
+    if best is None:
+        best = max([n for h in histories for n in h] + tree, key=lambda n: n["score"])
+    memory = tried_memory(histories, tree) if prompt_version == "v2" else None
     while True:
-        prompt = discovery_prompt(lean_node(parent), visible, suite, previous, scoring)
+        prompt = discovery_prompt(lean_node(parent), visible, suite, previous, scoring, version=prompt_version,
+                                  best=lean_node(best), memory=memory)
         if len(prompt.encode()) < 54000:
             return prompt
         if len(visible) > 1:
@@ -78,6 +82,7 @@ def reserve(run, role, prompt, context, parent=None):
         return None
     custom_id = f"{run['id']}-call-{len(run['records']) + 1:04d}"
     record = {"call": len(run["records"]) + 1, "id": custom_id, "role": role, "context": context,
+              "prompt_version": run["config"].get("prompt_version", "v1"),
               "status": "reserved", "charged_estimate_usd": amount, "input_token_allowance": input_tokens}
     run["records"].append(record)
     return {"id": custom_id, "role": role, "context": context, "parent": parent,
@@ -173,7 +178,8 @@ def advance(run):
                 continue
             for offset, parent_id in enumerate(actions[:remaining]):
                 parent = next(n for n in run["tree"] if n["id"] == parent_id)
-                prompt = bounded_discovery(parent, run["tree"], run["suite_summary"], run["histories"], config["scoring"])
+                prompt = bounded_discovery(parent, run["tree"], run["suite_summary"], run["histories"], config["scoring"],
+                                           config.get("prompt_version", "v1"), run["best"])
                 job = reserve(run, "discovery", prompt, {"cycle": run["cycle"], "node": len(run["tree"]) + offset}, parent_id)
                 if job is None:
                     break
@@ -187,7 +193,8 @@ def advance(run):
                 run["phase"] = "start_cycle"
                 continue
             prompt = controller_prompt(run["controller"], run["incumbent_feedback"], controller_history(run["histories"]),
-                                       run["replay_settings"], run["revision_log"], config["scoring"])
+                                       run["replay_settings"], run["revision_log"], config["scoring"],
+                                       version=config.get("prompt_version", "v1"), online_rounds=config["online_rounds"])
             job = reserve(run, "controller", prompt, {"cycle": run["cycle"], "revision": run["revision"]})
             if job:
                 run["pending"].append(job)

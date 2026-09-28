@@ -62,7 +62,9 @@ class ScoringTests(unittest.TestCase):
         self.assertEqual(result["score"], 0)
         self.assertEqual(result["total_extra_computed_tokens"], result["total_lru_extra_computed_tokens"])
         self.assertEqual(result["runs"][0]["score_contribution"], 0)
-        prompts = [discovery_prompt(root(), [root()], []), controller_prompt(INITIAL_CONTROLLER, {}, [], {})]
+        prompts = [discovery_prompt(root(), [root()], []),
+                   controller_prompt(INITIAL_CONTROLLER, {}, [],
+                                     {"workers": 2, "max_depth": 4, "max_rounds": 6}, online_rounds=3)]
         for prompt in prompts:
             self.assertIn("SUM of LRU extra tokens", prompt)
             self.assertNotIn("equally weighted mean", prompt)

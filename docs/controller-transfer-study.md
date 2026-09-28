@@ -62,3 +62,9 @@ The [prompt audit](prompt-audit-20260927.md) identifies repetition, output-schem
 errors, simulator misconceptions, and missing controller-horizon context. Those
 are candidates for a separate prompt comparison; changing them here would make
 it harder to attribute differences to search length or the controller revision.
+
+## Subsequent user-directed change
+
+The user subsequently requested revised prompts and resumed search. The original
+checkpoint is preserved, and the continuation is explicitly labeled with its
+prompt-version boundary and inherited spending. See [prompt v2 continuation](prompt-v2-continuation.md).

@@ -107,6 +107,38 @@ def make_state(source, raw, project_root):
                      "settings": raw, "ceilings": ceilings, "prompt_version": "unchanged from source experiment"}}
 
 
+def make_prompt_continuation(source, project_root, source_digest):
+    """Explicit version transition; retain all paid attempts and all existing ceilings."""
+    if source["active_wave"] or any(r["pending"] for r in source["runs"]):
+        raise ValueError("Settle pending requests before changing prompt versions")
+    if any("validation" in r or r["phase"] in ("validation", "done") for r in source["runs"]):
+        raise ValueError("This continuation requires unobserved validation; completed studies need a fresh suite")
+    permitted = {"dream_rsi/prompts.py", "dream_rsi/runner.py", "dream_rsi/batch_compare.py", "dream_rsi/diagnostics.py"}
+    for name, digest in source["source_hashes"].items():
+        if name not in permitted and hashlib.sha256((project_root / name).read_bytes()).hexdigest() != digest:
+            raise ValueError(f"Non-prompt semantics changed: {name}")
+    state = copy.deepcopy(source)
+    boundaries = []
+    for run in state["runs"]:
+        for record in run["records"]:
+            record.setdefault("prompt_version", run["config"].get("prompt_version", "v1"))
+        boundaries.append({"run": run["id"], "first_v2_call": len(run["records"]) + 1,
+                           "prior_calls": len(run["records"]), "prior_train_score": run["best"]["score"]})
+        run["config"]["prompt_version"] = "v2"
+        prepare_config(run["config"], project_root)  # Revalidate hashes and configuration without resetting state.
+    spent = sum(search.usage(r, state["backend"])["estimated_usd"] - r["imported_usd"] for r in state["runs"])
+    used_calls = sum(len(r["records"]) - r["imported_calls"] for r in state["runs"])
+    state["plan"].update(kind="prompt-v2-continuation", prompt_version="v2 following inherited v1 history",
+                         prompt_revision={"source_checkpoint_sha256": source_digest, "boundaries": boundaries,
+                                          "previous_new_calls": used_calls, "previous_new_usd": spent,
+                                          "remaining_call_allowance": state["plan"]["ceilings"]["new_calls"] - used_calls,
+                                          "remaining_usd_allowance": state["plan"]["ceilings"]["new_usd"] - spent})
+    state["plan"]["base_config"]["prompt_version"] = "v2"
+    state.update(status="prepared", source_hashes=search.source_hashes(project_root))
+    state.pop("error", None)
+    return state
+
+
 def report(state, output):
     rows = search.save_artifacts(state, output, make_report=False)
     by_id = {r["id"]: r for r in state["runs"]}
@@ -140,7 +172,9 @@ def report(state, output):
               "paired_controller_results": paired, "new_estimated_usd_including_reservations": new_cost,
               "new_calls_reserved": sum(len(r["records"]) - r["imported_calls"] for r in state["runs"])}
     write_json(output / "comparison.json", result)
-    lines = ["# Fixed search extension and controller transfer", "",
+    revised_prompts = "prompt_revision" in state["plan"]
+    title = "Prompt v2 search continuation" if revised_prompts else "Fixed search extension and controller transfer"
+    lines = ["# " + title, "",
              f"Status: **{state['status']}**. Completed runs: {len(rows)}/{len(state['runs'])}.",
              f"New requests reserved: {result['new_calls_reserved']}/{state['plan']['ceilings']['new_calls']}. "
              f"New estimated spending including pending reservations: ${new_cost:.4f} / ${state['plan']['ceilings']['new_usd']:.2f}.", "",
@@ -149,6 +183,10 @@ def report(state, output):
              "Both policies are evaluated on the same fresh validation shards after search finishes.", "",
              "| Trial | 40-call policy | Extended policy | Change | New calls |",
              "| --- | ---: | ---: | ---: | ---: |"]
+    if revised_prompts:
+        lines[2:2] = ["**Prompts changed partway through this search.** Earlier v1 histories, controllers, attempts, and spending are retained. "
+                      "This is a continuation, not a controlled prompt A/B test; final arm differences cannot isolate the prompt effect. "
+                      "Per-run first-v2 call numbers are recorded in plan.json.", ""]
     for r in rows:
         if r["study"] == "extension":
             lines.append(f"| {r['trial']} | {r['reference_validation_score']:.2%} | {r['validation_score']:.2%} | {r['extension_validation_gain']:+.2%} | {r['new_calls']} |")
@@ -163,7 +201,8 @@ def report(state, output):
         if values:
             lines.append(f"\n{transition['id']}: mean paired validation difference {statistics.mean(values):+.2%} ({len(values)} completed pairs).")
     lines += ["", "Equal call and dollar ceilings do not guarantee identical realized spend or sampled proposals. Two replicates per transition are a diagnostic, not a significance test.",
-              "Prompts, model, training suite, evaluator, and online round limits are unchanged. Validation shards 13–18 are new and never appear in model prompts. The original experiment is preserved.", ""]
+              ("Only prompts/context changed at the recorded boundary. " if revised_prompts else "Prompts are unchanged. ") +
+              "Model, training suite, evaluator, and online round limits are unchanged. Validation shards 13–18 never appear in model prompts. The original experiment is preserved.", ""]
     (output / "report.md").write_text("\n".join(lines))
     return result
 
@@ -175,7 +214,10 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--prepare-only", action="store_true")
+    parser.add_argument("--revise-prompts", action="store_true", help="Continue a settled, unvalidated diagnostic checkpoint with prompt v2")
     args = parser.parse_args()
+    if args.resume and args.revise_prompts:
+        parser.error("Use --revise-prompts for a new continuation directory; use --resume thereafter")
     project_root = Path(__file__).resolve().parent.parent
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=args.resume)
@@ -194,8 +236,12 @@ def main():
                 if not args.source:
                     raise ValueError("--source checkpoint is required")
                 contents = args.source.read_bytes()
-                raw = json.loads(args.config.read_text()) | {"source_checkpoint_sha256": hashlib.sha256(contents).hexdigest()}
-                state = make_state(json.loads(contents), raw, project_root)
+                digest = hashlib.sha256(contents).hexdigest()
+                if args.revise_prompts:
+                    state = make_prompt_continuation(json.loads(contents), project_root, digest)
+                else:
+                    raw = json.loads(args.config.read_text()) | {"source_checkpoint_sha256": digest}
+                    state = make_state(json.loads(contents), raw, project_root)
                 write_json(output / "plan.json", state["plan"])
                 for relative in state["source_hashes"]:
                     dest = output / "source" / relative

@@ -9,7 +9,7 @@ from .backend import BudgetExceeded, MiMo, Mock, write_json
 from .evaluation import isolated_evaluate, snapshot_suite
 from .history import evaluate_controller, observation, root
 from .programs import Controller, INITIAL_CONTROLLER
-from .prompts import compact_node, controller_prompt, discovery_prompt
+from .prompts import compact_node, controller_prompt, discovery_prompt, tried_memory, PROMPT_VERSIONS
 from .scoring import TOTAL_EXTRA, SCORING_MODES
 
 
@@ -17,6 +17,7 @@ API_DEFAULTS = {"model": "mimo-v2.6-pro", "max_calls": 24, "max_usd": 0.5,
                 "max_completion_tokens": 4096, "thinking": "disabled", "timeout_seconds": 120,
                 "input_usd_per_million": 0.435, "output_usd_per_million": 0.87}
 DEFAULTS = {"cycles": 2, "online_rounds": 4, "replay_rounds": 6, "workers": 2,
+            "prompt_version": "v2",
             "scoring": TOTAL_EXTRA,
             "max_depth": 4, "controller_revisions": 2, "block_size": 16,
             "revise_after_final_cycle": True, "stop_on_empty_rollout": False,
@@ -26,6 +27,8 @@ DEFAULTS = {"cycles": 2, "online_rounds": 4, "replay_rounds": 6, "workers": 2,
 
 def prepare_config(raw, project_root):
     config = DEFAULTS | raw
+    if config["prompt_version"] not in PROMPT_VERSIONS:
+        raise ValueError("Unknown prompt version")
     if config["scoring"] not in SCORING_MODES:
         raise ValueError("Unknown scoring mode")
     config["api"] = API_DEFAULTS | config.get("api", {})
@@ -148,7 +151,9 @@ def run(config, backend_name, project_root, output):
                         node_id = len(tree) + offset
                         parent = by_id[parent_id]
                         prior_best = [max(history, key=lambda n: n["score"]) for history in histories[-4:]]
-                        prompt = discovery_prompt(parent, tree, suite_summary, prior_best, config["scoring"])
+                        prompt = discovery_prompt(parent, tree, suite_summary, prior_best, config["scoring"],
+                                                  version=config["prompt_version"], best=best,
+                                                  memory=tried_memory(histories, tree) if config["prompt_version"] == "v2" else None)
                         jobs.append((node_id, parent, pool.submit(generate, "discovery", prompt,
                                                                   {"cycle": cycle, "node": node_id})))
                     # Generation overlaps. Evaluations are serialized for less noisy CPU timing.
@@ -194,7 +199,8 @@ def run(config, backend_name, project_root, output):
                     if cycle == config["cycles"] or remaining < 2:
                         break
                 prompt = controller_prompt(controller, incumbent_feedback,
-                                           [[compact_node(n) for n in history] for history in histories], replay_settings, revision_log, config["scoring"])
+                                           [[compact_node(n) for n in history] for history in histories], replay_settings, revision_log, config["scoring"],
+                                           version=config["prompt_version"], online_rounds=config["online_rounds"])
                 proposal = None
                 try:
                     proposal = generate("controller", prompt, {"cycle": cycle, "revision": revision})

@@ -205,5 +205,16 @@ all four accepted controller revisions against their predecessors on fresh
 searches. It allows 420 new requests with a $3 new spending ceiling.
 
 See [the diagnostic study design](docs/controller-transfer-study.md) and
-[the prompt audit](docs/prompt-audit-20260927.md). Prompts remain unchanged in this
-study so controller and search-length effects can be interpreted separately.
+[the prompt audit](docs/prompt-audit-20260927.md). The original study protocol holds prompts unchanged; the subsequent user-directed revision is documented below.
+
+## Revised prompts and continuation
+
+Prompt v2 clarifies simulator mechanics and output constraints, includes the
+best-ever training policy and a compact attempted-formula history, and separates
+live search limits from offline replay limits. The diagnostic search continues
+from its saved state with the same call and spending ceilings. Its report marks
+the prompt-change boundary; mixed histories are not a controlled prompt A/B test.
+
+See [the prompt v2 continuation](docs/prompt-v2-continuation.md) for changes,
+accounting, and resume commands. New configurations default to `prompt_version:
+"v2"`; explicit `"v1"` retains the legacy prompt text.

@@ -80,3 +80,9 @@ miscalibrated search-cost objective. At `beta_calls=0.02`, one extra revealed ca
 costs two percentage points of task score before the small parallelism bonus.
 This can favor pruning branches that might produce useful future improvements.
 The prospective controller comparisons test that concern directly.
+
+## Subsequent user-directed change
+
+The user subsequently requested revised prompts and resumed search. The original
+checkpoint is preserved, and the continuation is explicitly labeled with its
+prompt-version boundary and inherited spending. See [prompt v2 continuation](prompt-v2-continuation.md).
