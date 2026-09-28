@@ -18,7 +18,7 @@ The continuation mixes v1 and v2 prompt histories. Prompt revision happened afte
 
 ## Environment and data
 
-From the repository root, use Python 3.11+ and `uv`:
+From the experiment directory (`experiments/prefix-cache`), use Python 3.11+ and `uv`:
 
 ```sh
 uv sync --locked

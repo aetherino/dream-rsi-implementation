@@ -56,7 +56,7 @@ The CPU simulator still requires no GPU.
 
 ## Commands
 
-Run from the repository root. `XIAOMI_API` is read from the environment or `.env`.
+Run from the experiment directory (`experiments/prefix-cache`). `XIAOMI_API` is read from the environment or `.env`.
 The Batch API Base URL is account-region-specific: copy it from the
 [MiMo Batch console](https://platform.xiaomimimo.com/console/batch). Do not assume
 the China example URL works for an overseas account. Batch billing uses cash

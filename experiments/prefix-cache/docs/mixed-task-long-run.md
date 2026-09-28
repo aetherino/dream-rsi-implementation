@@ -22,7 +22,7 @@ Every wave writes a checkpoint, per-request outcomes, usage, histories, prompts,
 
 ## Commands
 
-From the repository root, prepare without making API calls:
+From the experiment directory (`experiments/prefix-cache`), prepare without making API calls:
 
 ```sh
 .venv/bin/python -m dream_rsi.mixed_long \

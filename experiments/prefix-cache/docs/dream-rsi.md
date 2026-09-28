@@ -39,7 +39,7 @@ flowchart TD
 
 ## Run it
 
-Run commands from the repository root. The default backend is a deterministic
+Run commands from the experiment directory (`experiments/prefix-cache`). The default backend is a deterministic
 mock, so forgetting `--backend mimo` cannot incur API charges.
 
 ```sh

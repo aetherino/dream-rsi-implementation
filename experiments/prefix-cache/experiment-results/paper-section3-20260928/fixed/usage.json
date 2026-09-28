@@ -1,0 +1,1538 @@
+[
+  {
+    "id": "fixed-call-0001",
+    "call": 1,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 1
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.0014711700000000002,
+    "input_token_allowance": 13810,
+    "prompt_tokens": 3036,
+    "completion_tokens": 173,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0002",
+    "call": 2,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 2
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.002840115,
+    "input_token_allowance": 18633,
+    "prompt_tokens": 5135,
+    "completion_tokens": 697,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0003",
+    "call": 3,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 3
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.002687865,
+    "input_token_allowance": 18633,
+    "prompt_tokens": 5135,
+    "completion_tokens": 522,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0004",
+    "call": 4,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 4
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.005622375,
+    "input_token_allowance": 32056,
+    "prompt_tokens": 10207,
+    "completion_tokens": 1359,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0005",
+    "call": 5,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 5
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.0055397250000000006,
+    "input_token_allowance": 32056,
+    "prompt_tokens": 10207,
+    "completion_tokens": 1264,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0006",
+    "call": 6,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 6
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.008209755,
+    "input_token_allowance": 50527,
+    "prompt_tokens": 16825,
+    "completion_tokens": 1024,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0007",
+    "call": 7,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 7
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.007847835,
+    "input_token_allowance": 50527,
+    "prompt_tokens": 16825,
+    "completion_tokens": 608,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0008",
+    "call": 8,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 8
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.011146004999999999,
+    "input_token_allowance": 64753,
+    "prompt_tokens": 21983,
+    "completion_tokens": 1820,
+    "error": "Invalid model program (JSONDecodeError)",
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0009",
+    "call": 9,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 9
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.009983684999999999,
+    "input_token_allowance": 64753,
+    "prompt_tokens": 21983,
+    "completion_tokens": 484,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0010",
+    "call": 10,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 10
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.010895880000000002,
+    "input_token_allowance": 70763,
+    "prompt_tokens": 24088,
+    "completion_tokens": 480,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0011",
+    "call": 11,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 11
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.01082541,
+    "input_token_allowance": 70763,
+    "prompt_tokens": 24088,
+    "completion_tokens": 399,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0012",
+    "call": 12,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 12
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.012672855,
+    "input_token_allowance": 82141,
+    "prompt_tokens": 27997,
+    "completion_tokens": 568,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0013",
+    "call": 13,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 13
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.012687645,
+    "input_token_allowance": 82141,
+    "prompt_tokens": 27997,
+    "completion_tokens": 585,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0014",
+    "call": 14,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 14
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.014552490000000001,
+    "input_token_allowance": 94568,
+    "prompt_tokens": 32188,
+    "completion_tokens": 633,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0015",
+    "call": 15,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 15
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.01481262,
+    "input_token_allowance": 94568,
+    "prompt_tokens": 32188,
+    "completion_tokens": 932,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0016",
+    "call": 16,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 16
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.016577849999999998,
+    "input_token_allowance": 108120,
+    "prompt_tokens": 36798,
+    "completion_tokens": 656,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0017",
+    "call": 17,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 17
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.01662744,
+    "input_token_allowance": 108120,
+    "prompt_tokens": 36798,
+    "completion_tokens": 713,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0018",
+    "call": 18,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 18
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.018513165,
+    "input_token_allowance": 121318,
+    "prompt_tokens": 41215,
+    "completion_tokens": 672,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0019",
+    "call": 19,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 19
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.018472275,
+    "input_token_allowance": 121318,
+    "prompt_tokens": 41215,
+    "completion_tokens": 625,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0020",
+    "call": 20,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 20
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.020336685,
+    "input_token_allowance": 134080,
+    "prompt_tokens": 45551,
+    "completion_tokens": 600,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0021",
+    "call": 21,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 21
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.020366265,
+    "input_token_allowance": 134080,
+    "prompt_tokens": 45551,
+    "completion_tokens": 634,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0022",
+    "call": 22,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 1
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.022868384999999998,
+    "input_token_allowance": 150611,
+    "prompt_tokens": 51411,
+    "completion_tokens": 580,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0023",
+    "call": 23,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 2
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.02378667,
+    "input_token_allowance": 156777,
+    "prompt_tokens": 53508,
+    "completion_tokens": 587,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0024",
+    "call": 24,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 3
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.02377623,
+    "input_token_allowance": 156777,
+    "prompt_tokens": 53508,
+    "completion_tokens": 575,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0025",
+    "call": 25,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 4
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.025601055,
+    "input_token_allowance": 169159,
+    "prompt_tokens": 57701,
+    "completion_tokens": 576,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0026",
+    "call": 26,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 5
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.025637595000000003,
+    "input_token_allowance": 169159,
+    "prompt_tokens": 57701,
+    "completion_tokens": 618,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0027",
+    "call": 27,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 6
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.02744502,
+    "input_token_allowance": 181655,
+    "prompt_tokens": 61930,
+    "completion_tokens": 581,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0028",
+    "call": 28,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 7
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.02744502,
+    "input_token_allowance": 181655,
+    "prompt_tokens": 61930,
+    "completion_tokens": 581,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0029",
+    "call": 29,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 8
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.029284635000000003,
+    "input_token_allowance": 194021,
+    "prompt_tokens": 66131,
+    "completion_tokens": 595,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0030",
+    "call": 30,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 9
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.029303775,
+    "input_token_allowance": 194021,
+    "prompt_tokens": 66131,
+    "completion_tokens": 617,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0031",
+    "call": 31,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 10
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.031132515,
+    "input_token_allowance": 206678,
+    "prompt_tokens": 70381,
+    "completion_tokens": 594,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0032",
+    "call": 32,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 11
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.031181235,
+    "input_token_allowance": 206678,
+    "prompt_tokens": 70381,
+    "completion_tokens": 650,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0033",
+    "call": 33,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 12
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.032959515,
+    "input_token_allowance": 219337,
+    "prompt_tokens": 74651,
+    "completion_tokens": 559,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0034",
+    "call": 34,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 13
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.033015195,
+    "input_token_allowance": 219337,
+    "prompt_tokens": 74651,
+    "completion_tokens": 623,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0035",
+    "call": 35,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 14
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.0348174,
+    "input_token_allowance": 231762,
+    "prompt_tokens": 78872,
+    "completion_tokens": 584,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0036",
+    "call": 36,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 15
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.03481914,
+    "input_token_allowance": 231762,
+    "prompt_tokens": 78872,
+    "completion_tokens": 586,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0037",
+    "call": 37,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 16
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.03665397,
+    "input_token_allowance": 244152,
+    "prompt_tokens": 83078,
+    "completion_tokens": 592,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0038",
+    "call": 38,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 17
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.03664962,
+    "input_token_allowance": 244152,
+    "prompt_tokens": 83078,
+    "completion_tokens": 587,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0039",
+    "call": 39,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 18
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.038788515,
+    "input_token_allowance": 256623,
+    "prompt_tokens": 87303,
+    "completion_tokens": 933,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0040",
+    "call": 40,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 19
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.038483144999999996,
+    "input_token_allowance": 256623,
+    "prompt_tokens": 87303,
+    "completion_tokens": 582,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0041",
+    "call": 41,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 20
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.040778205000000005,
+    "input_token_allowance": 270902,
+    "prompt_tokens": 92287,
+    "completion_tokens": 728,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0042",
+    "call": 42,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 21
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.040881735,
+    "input_token_allowance": 270902,
+    "prompt_tokens": 92287,
+    "completion_tokens": 847,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0043",
+    "call": 43,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 1
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.043475639999999996,
+    "input_token_allowance": 288673,
+    "prompt_tokens": 98496,
+    "completion_tokens": 724,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0044",
+    "call": 44,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 2
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.044454389999999996,
+    "input_token_allowance": 295521,
+    "prompt_tokens": 100744,
+    "completion_tokens": 725,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0045",
+    "call": 45,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 3
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.044453519999999996,
+    "input_token_allowance": 295521,
+    "prompt_tokens": 100744,
+    "completion_tokens": 724,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0046",
+    "call": 46,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 4
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.046402755,
+    "input_token_allowance": 309204,
+    "prompt_tokens": 105225,
+    "completion_tokens": 724,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0047",
+    "call": 47,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 5
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.046401885000000004,
+    "input_token_allowance": 309204,
+    "prompt_tokens": 105225,
+    "completion_tokens": 723,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0048",
+    "call": 48,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 6
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.048351555,
+    "input_token_allowance": 322877,
+    "prompt_tokens": 109705,
+    "completion_tokens": 724,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0049",
+    "call": 49,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 7
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.048351555,
+    "input_token_allowance": 322877,
+    "prompt_tokens": 109705,
+    "completion_tokens": 724,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0050",
+    "call": 50,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 8
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.050301225,
+    "input_token_allowance": 336555,
+    "prompt_tokens": 114185,
+    "completion_tokens": 725,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0051",
+    "call": 51,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 9
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.050275995,
+    "input_token_allowance": 336555,
+    "prompt_tokens": 114185,
+    "completion_tokens": 696,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0052",
+    "call": 52,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 10
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.05224045499999999,
+    "input_token_allowance": 350095,
+    "prompt_tokens": 118645,
+    "completion_tokens": 724,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0053",
+    "call": 53,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 11
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.052241325,
+    "input_token_allowance": 350095,
+    "prompt_tokens": 118645,
+    "completion_tokens": 725,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0054",
+    "call": 54,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 12
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.05419143,
+    "input_token_allowance": 363784,
+    "prompt_tokens": 123128,
+    "completion_tokens": 725,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0055",
+    "call": 55,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 13
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.05422275,
+    "input_token_allowance": 363784,
+    "prompt_tokens": 123128,
+    "completion_tokens": 761,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0056",
+    "call": 56,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 14
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.05613675,
+    "input_token_allowance": 377428,
+    "prompt_tokens": 127660,
+    "completion_tokens": 695,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0057",
+    "call": 57,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 15
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.05620896,
+    "input_token_allowance": 377428,
+    "prompt_tokens": 127660,
+    "completion_tokens": 778,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0058",
+    "call": 58,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 16
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.058085985,
+    "input_token_allowance": 390835,
+    "prompt_tokens": 132169,
+    "completion_tokens": 681,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0059",
+    "call": 59,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 17
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.058123394999999994,
+    "input_token_allowance": 390835,
+    "prompt_tokens": 132169,
+    "completion_tokens": 724,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0060",
+    "call": 60,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 18
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.060023475,
+    "input_token_allowance": 404285,
+    "prompt_tokens": 136623,
+    "completion_tokens": 681,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0061",
+    "call": 61,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 19
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.060060884999999994,
+    "input_token_allowance": 404285,
+    "prompt_tokens": 136623,
+    "completion_tokens": 724,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0062",
+    "call": 62,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 20
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.062003594999999995,
+    "input_token_allowance": 417726,
+    "prompt_tokens": 141067,
+    "completion_tokens": 735,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0063",
+    "call": 63,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 21
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.061994024999999994,
+    "input_token_allowance": 417726,
+    "prompt_tokens": 141067,
+    "completion_tokens": 724,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0064",
+    "call": 64,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 1
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.064653615,
+    "input_token_allowance": 435263,
+    "prompt_tokens": 147157,
+    "completion_tokens": 736,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0065",
+    "call": 65,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 2
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.065635845,
+    "input_token_allowance": 441983,
+    "prompt_tokens": 149415,
+    "completion_tokens": 736,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0066",
+    "call": 66,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 3
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.06562105500000001,
+    "input_token_allowance": 441983,
+    "prompt_tokens": 149415,
+    "completion_tokens": 719,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0067",
+    "call": 67,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 4
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.06759160500000001,
+    "input_token_allowance": 455382,
+    "prompt_tokens": 153911,
+    "completion_tokens": 736,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0068",
+    "call": 68,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 5
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.06759160500000001,
+    "input_token_allowance": 455382,
+    "prompt_tokens": 153911,
+    "completion_tokens": 736,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0069",
+    "call": 69,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 6
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.06955911000000001,
+    "input_token_allowance": 468821,
+    "prompt_tokens": 158424,
+    "completion_tokens": 741,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0070",
+    "call": 70,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 7
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.06955389,
+    "input_token_allowance": 468821,
+    "prompt_tokens": 158424,
+    "completion_tokens": 735,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0071",
+    "call": 71,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 8
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.071508345,
+    "input_token_allowance": 482283,
+    "prompt_tokens": 162931,
+    "completion_tokens": 728,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0072",
+    "call": 72,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 9
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.071513565,
+    "input_token_allowance": 482283,
+    "prompt_tokens": 162931,
+    "completion_tokens": 734,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0073",
+    "call": 73,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 10
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.07347585000000001,
+    "input_token_allowance": 495688,
+    "prompt_tokens": 167438,
+    "completion_tokens": 736,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0074",
+    "call": 74,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 11
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.07345497,
+    "input_token_allowance": 495688,
+    "prompt_tokens": 167438,
+    "completion_tokens": 712,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0075",
+    "call": 75,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 12
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.07542987,
+    "input_token_allowance": 509070,
+    "prompt_tokens": 171932,
+    "completion_tokens": 735,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0076",
+    "call": 76,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 13
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.07538028,
+    "input_token_allowance": 509070,
+    "prompt_tokens": 171932,
+    "completion_tokens": 678,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0077",
+    "call": 77,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 14
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.07735518,
+    "input_token_allowance": 522267,
+    "prompt_tokens": 176396,
+    "completion_tokens": 716,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0078",
+    "call": 78,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 15
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.07737258,
+    "input_token_allowance": 522267,
+    "prompt_tokens": 176396,
+    "completion_tokens": 736,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0079",
+    "call": 79,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 16
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.079313985,
+    "input_token_allowance": 535631,
+    "prompt_tokens": 180873,
+    "completion_tokens": 729,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0080",
+    "call": 80,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 17
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.079324425,
+    "input_token_allowance": 535631,
+    "prompt_tokens": 180873,
+    "completion_tokens": 741,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0081",
+    "call": 81,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 18
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.08126800499999999,
+    "input_token_allowance": 549095,
+    "prompt_tokens": 185389,
+    "completion_tokens": 717,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0082",
+    "call": 82,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 19
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.08128714499999999,
+    "input_token_allowance": 549095,
+    "prompt_tokens": 185389,
+    "completion_tokens": 739,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0083",
+    "call": 83,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 20
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.083234205,
+    "input_token_allowance": 562514,
+    "prompt_tokens": 189895,
+    "completion_tokens": 724,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0084",
+    "call": 84,
+    "role": "discovery",
+    "context": {
+      "cycle": 4,
+      "node": 21
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.08324290499999999,
+    "input_token_allowance": 562514,
+    "prompt_tokens": 189895,
+    "completion_tokens": 734,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0085",
+    "call": 85,
+    "role": "discovery",
+    "context": {
+      "cycle": 5,
+      "node": 1
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.08589031499999998,
+    "input_token_allowance": 579873,
+    "prompt_tokens": 195971,
+    "completion_tokens": 739,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0086",
+    "call": 86,
+    "role": "discovery",
+    "context": {
+      "cycle": 5,
+      "node": 2
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.08686167000000002,
+    "input_token_allowance": 586572,
+    "prompt_tokens": 198216,
+    "completion_tokens": 733,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0087",
+    "call": 87,
+    "role": "discovery",
+    "context": {
+      "cycle": 5,
+      "node": 3
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.08686254,
+    "input_token_allowance": 586572,
+    "prompt_tokens": 198216,
+    "completion_tokens": 734,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0088",
+    "call": 88,
+    "role": "discovery",
+    "context": {
+      "cycle": 5,
+      "node": 4
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.08880264,
+    "input_token_allowance": 599977,
+    "prompt_tokens": 202720,
+    "completion_tokens": 712,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0089",
+    "call": 89,
+    "role": "discovery",
+    "context": {
+      "cycle": 5,
+      "node": 5
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.08881656,
+    "input_token_allowance": 599977,
+    "prompt_tokens": 202720,
+    "completion_tokens": 728,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0090",
+    "call": 90,
+    "role": "discovery",
+    "context": {
+      "cycle": 5,
+      "node": 6
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.09076753500000001,
+    "input_token_allowance": 613311,
+    "prompt_tokens": 207189,
+    "completion_tokens": 736,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0091",
+    "call": 91,
+    "role": "discovery",
+    "context": {
+      "cycle": 5,
+      "node": 7
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.090772755,
+    "input_token_allowance": 613311,
+    "prompt_tokens": 207189,
+    "completion_tokens": 742,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0092",
+    "call": 92,
+    "role": "discovery",
+    "context": {
+      "cycle": 5,
+      "node": 8
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.09272981999999999,
+    "input_token_allowance": 626756,
+    "prompt_tokens": 211702,
+    "completion_tokens": 735,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0093",
+    "call": 93,
+    "role": "discovery",
+    "context": {
+      "cycle": 5,
+      "node": 9
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.09273503999999999,
+    "input_token_allowance": 626756,
+    "prompt_tokens": 211702,
+    "completion_tokens": 741,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0094",
+    "call": 94,
+    "role": "discovery",
+    "context": {
+      "cycle": 5,
+      "node": 10
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.094696455,
+    "input_token_allowance": 640221,
+    "prompt_tokens": 216221,
+    "completion_tokens": 736,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0095",
+    "call": 95,
+    "role": "discovery",
+    "context": {
+      "cycle": 5,
+      "node": 11
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.09469906499999999,
+    "input_token_allowance": 640221,
+    "prompt_tokens": 216221,
+    "completion_tokens": 739,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "fixed-call-0096",
+    "call": 96,
+    "role": "discovery",
+    "context": {
+      "cycle": 5,
+      "node": 12
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.09666048,
+    "input_token_allowance": 653683,
+    "prompt_tokens": 220740,
+    "completion_tokens": 734,
+    "error": null,
+    "finish_reason": "stop"
+  }
+]

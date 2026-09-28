@@ -1,0 +1,155 @@
+{
+  "id": 0,
+  "parent": null,
+  "depth": 0,
+  "round": 0,
+  "score": 0.0,
+  "valid": true,
+  "stagnation": 0,
+  "failure_streak": 0,
+  "candidate": {
+    "name": "initial-lru-code",
+    "source": "class CachePolicy:\n    def choose(self, eligible, now):\n        return min(eligible, key=lambda entry: (entry.last_access, entry.access_order)).block_id\n",
+    "rationale": "Fixed initial LRU workspace; each new search tree starts here."
+  },
+  "feedback": {
+    "valid": true,
+    "score": 0.0,
+    "error": null,
+    "scoring": "total_extra_v2",
+    "total_extra_computed_tokens": 132144,
+    "total_lru_extra_computed_tokens": 132144,
+    "saved_prompt_tokens": 0,
+    "score_denominator_tokens": 132144,
+    "scenarios": [
+      {
+        "name": "chat-heavy-00-cap2048",
+        "extra_computed_tokens": 18384,
+        "lru_extra_computed_tokens": 18384,
+        "improvement": 0.0,
+        "policy_us_per_request": 4438.589859315589,
+        "score_contribution": 0.0
+      },
+      {
+        "name": "chat-heavy-00-cap4096",
+        "extra_computed_tokens": 384,
+        "lru_extra_computed_tokens": 384,
+        "improvement": 0.0,
+        "policy_us_per_request": 3181.514498098859,
+        "score_contribution": 0.0
+      },
+      {
+        "name": "chat-heavy-01-cap2048",
+        "extra_computed_tokens": 15152,
+        "lru_extra_computed_tokens": 15152,
+        "improvement": 0.0,
+        "policy_us_per_request": 3927.0345229007635,
+        "score_contribution": 0.0
+      },
+      {
+        "name": "chat-heavy-01-cap4096",
+        "extra_computed_tokens": 1616,
+        "lru_extra_computed_tokens": 1616,
+        "improvement": 0.0,
+        "policy_us_per_request": 2524.4995839694657,
+        "score_contribution": 0.0
+      },
+      {
+        "name": "balanced-00-cap2048",
+        "extra_computed_tokens": 14992,
+        "lru_extra_computed_tokens": 14992,
+        "improvement": 0.0,
+        "policy_us_per_request": 4044.5459845559844,
+        "score_contribution": 0.0
+      },
+      {
+        "name": "balanced-00-cap4096",
+        "extra_computed_tokens": 704,
+        "lru_extra_computed_tokens": 704,
+        "improvement": 0.0,
+        "policy_us_per_request": 2515.012922779923,
+        "score_contribution": 0.0
+      },
+      {
+        "name": "balanced-01-cap2048",
+        "extra_computed_tokens": 12272,
+        "lru_extra_computed_tokens": 12272,
+        "improvement": 0.0,
+        "policy_us_per_request": 4226.312469465649,
+        "score_contribution": 0.0
+      },
+      {
+        "name": "balanced-01-cap4096",
+        "extra_computed_tokens": 0,
+        "lru_extra_computed_tokens": 0,
+        "improvement": 0.0,
+        "policy_us_per_request": 2454.5979389312974,
+        "score_contribution": 0.0
+      },
+      {
+        "name": "qa-heavy-00-cap2048",
+        "extra_computed_tokens": 22816,
+        "lru_extra_computed_tokens": 22816,
+        "improvement": 0.0,
+        "policy_us_per_request": 4269.935196969697,
+        "score_contribution": 0.0
+      },
+      {
+        "name": "qa-heavy-00-cap4096",
+        "extra_computed_tokens": 0,
+        "lru_extra_computed_tokens": 0,
+        "improvement": 0.0,
+        "policy_us_per_request": 1203.2128901515152,
+        "score_contribution": 0.0
+      },
+      {
+        "name": "qa-heavy-01-cap2048",
+        "extra_computed_tokens": 29312,
+        "lru_extra_computed_tokens": 29312,
+        "improvement": 0.0,
+        "policy_us_per_request": 5230.487476923077,
+        "score_contribution": 0.0
+      },
+      {
+        "name": "qa-heavy-01-cap4096",
+        "extra_computed_tokens": 1744,
+        "lru_extra_computed_tokens": 1744,
+        "improvement": 0.0,
+        "policy_us_per_request": 4206.744111538462,
+        "score_contribution": 0.0
+      },
+      {
+        "name": "shift-00-cap2048",
+        "extra_computed_tokens": 8832,
+        "lru_extra_computed_tokens": 8832,
+        "improvement": 0.0,
+        "policy_us_per_request": 4277.501890459364,
+        "score_contribution": 0.0
+      },
+      {
+        "name": "shift-00-cap4096",
+        "extra_computed_tokens": 2448,
+        "lru_extra_computed_tokens": 2448,
+        "improvement": 0.0,
+        "policy_us_per_request": 4387.58413074205,
+        "score_contribution": 0.0
+      },
+      {
+        "name": "shift-01-cap2048",
+        "extra_computed_tokens": 3488,
+        "lru_extra_computed_tokens": 3488,
+        "improvement": 0.0,
+        "policy_us_per_request": 3789.176867424242,
+        "score_contribution": 0.0
+      },
+      {
+        "name": "shift-01-cap4096",
+        "extra_computed_tokens": 0,
+        "lru_extra_computed_tokens": 0,
+        "improvement": 0.0,
+        "policy_us_per_request": 1564.546068181818,
+        "score_contribution": 0.0
+      }
+    ]
+  }
+}

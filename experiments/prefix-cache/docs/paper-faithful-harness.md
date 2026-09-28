@@ -59,9 +59,15 @@ The principal remaining differences from the paper are the prefix-cache CPU simu
 Implementation entry points are `dream_rsi/code_prompts.py`, `dream_rsi/code_transport.py`, `dream_rsi/code_policy.py`, `dream_rsi/code_controller.py` and `dream_rsi/paper_search.py`. The coordinator's saved `plan.json`, source hashes, checkpoint, controller revisions, proposal/score records and frozen selections are the authoritative audit artifacts for a prepared or completed run. Run locations and test totals are reported by the coordinator; this document does not start a search.
 
 
-## Prepare, start, and resume
+## Historical preparation and resume commands
 
-From the repository root:
+The commands below document the completed run before directory migration.
+Do not rerun them against its completed output directory. Its predecessor contains
+historical absolute dataset paths; a new study must prepare a new predecessor/configuration
+with paths rooted in `experiments/prefix-cache`. Historical checkpoints are preserved
+unchanged and are not portable resume inputs. See the [repository migration notes](../../README.md).
+
+The original commands were:
 
 ```sh
 # Local baseline parity and preparation only; no API calls.

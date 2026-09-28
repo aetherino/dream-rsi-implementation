@@ -1,6 +1,6 @@
 # Fixed versus adaptive controller experiment
 
-Run the repeatable pilot from the repository root:
+Run the repeatable pilot from the experiment directory (`experiments/prefix-cache`):
 
 ```sh
 uv run --locked python -m dream_rsi.compare \

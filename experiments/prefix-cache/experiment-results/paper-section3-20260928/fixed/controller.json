@@ -1,0 +1,5 @@
+{
+  "name": "parallel-refinement-code",
+  "source": "class ExplorationController:\n    \"\"\"Open at most one independent branch per round, then refine in parallel.\"\"\"\n    def select(self, observed_nodes, round_index, workers, max_depth):\n        parents = {node[\"parent\"] for node in observed_nodes[1:]}\n        leaves = [node for node in observed_nodes[1:]\n                  if node[\"id\"] not in parents and node[\"depth\"] < max_depth\n                  and not node.get(\"exhausted\", False)]\n        leaves.sort(key=lambda node: node[\"id\"])\n        batch = [node[\"id\"] for node in leaves[:workers]]\n        branches = sum(node[\"parent\"] == 0 for node in observed_nodes[1:])\n        if len(batch) < workers and branches < workers and not observed_nodes[0].get(\"exhausted\", False):\n            batch.append(0)\n        return batch\n",
+  "rationale": "Fixed parallel workspace refinement adapted to \u00a73's distinct-parent action set; one root opening per round."
+}

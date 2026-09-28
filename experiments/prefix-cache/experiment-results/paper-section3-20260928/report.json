@@ -1,0 +1,40 @@
+{
+  "status": "completed",
+  "wave": 51,
+  "usd_including_reservations": 9.41479026,
+  "usd_cap": 10.0,
+  "earlier_spending_excluded": true,
+  "test_opened": false,
+  "runs": [
+    {
+      "id": "fixed",
+      "phase": "done",
+      "cycle": 5,
+      "round": 8,
+      "calls": 96,
+      "discovery_calls": 96,
+      "controller_calls": 0,
+      "usd": 4.6596621449999995,
+      "usd_cap": 5.0,
+      "best_train_score": 0.0,
+      "validation_score": 0.0,
+      "stop_reason": "budget_reached",
+      "completed_dream_phases": 0
+    },
+    {
+      "id": "dream",
+      "phase": "done",
+      "cycle": 4,
+      "round": 1,
+      "calls": 81,
+      "discovery_calls": 63,
+      "controller_calls": 18,
+      "usd": 4.755128115,
+      "usd_cap": 5.0,
+      "best_train_score": 0.04758445332364693,
+      "validation_score": 0.026110269262151767,
+      "stop_reason": "budget_reached",
+      "completed_dream_phases": 3
+    }
+  ]
+}

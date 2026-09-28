@@ -1,0 +1,45 @@
+{
+  "specification": "Dream-RSI arXiv:2609.14858v1 Section 3",
+  "paper": "https://arxiv.org/html/2609.14858v1#S3",
+  "max_usd": 10.0,
+  "budget_scope": "Fresh allowance authorized by user; earlier runs excluded",
+  "predecessor": "<ORIGINAL_EXPERIMENT_ROOT>/runs/mixed-task-dream-20260928",
+  "predecessor_checkpoint_sha256": "05b1359d1c542a1ceba3c2851022f2f1a94d2f47dbbe5b788e76ac3bd9080776",
+  "prepared": "<ORIGINAL_EXPERIMENT_ROOT>/data/mixed/task-v1",
+  "prepared_manifest_sha256": "1ea4958f2550b47ee661d0fe12c7f10ab26d0a23bb6488fe7128482d25a9522e",
+  "cycles": 5,
+  "online_rounds": 11,
+  "replay_rounds": 11,
+  "workers": 2,
+  "controller_proposals_per_phase": 8,
+  "controller_versions_per_phase": 9,
+  "beta_calls": 0.001,
+  "beta_parallel": 0.00025,
+  "objective": "Eq.1, arithmetic mean over every recorded history; appendix AUC not used",
+  "revision_rule": "Develop sequentially from the latest proposed version, then deploy best including incumbent",
+  "baseline": "Executable parallel-refinement controller using Section 3 single-root action interface",
+  "context": "All proposal sources, rationales, authoritative scores and errors; no history truncation",
+  "initialization": "Fresh LRU trees; no old expression-policy history imported",
+  "comparison": "One independent fixed/adaptive pair; matched model, task, limits, initial code, and dollar caps",
+  "validation": "Freeze both winners before validation; validation never enters search prompts",
+  "test": "Unopened",
+  "source_ambiguities": [
+    "Appendix AUC/beta sweep and grid planner excluded by user choice",
+    "Section 3 single-root actions differ from Section 4 simultaneous workspace initialization"
+  ],
+  "adaptations": [
+    "MiMo-v2.6-pro and prefix-cache task",
+    "2 workers rather than paper model-specific 10/32",
+    "5 cycles, 11 live/replay rounds, 8 revisions, explicit task-scaled coefficients",
+    "Stateful standalone Python programs, not a shell coding agent or multi-file workspace",
+    "Complete score.json diagnostics in context; detailed simulator counters archived separately",
+    "950000-byte conservative input allowance; stop rather than omit history"
+  ],
+  "pricing": {
+    "url": "https://mimo.mi.com/docs/en-US/price/pay-as-you-go",
+    "checked": "2026-09-28",
+    "input_per_million": 0.435,
+    "output_per_million": 0.87,
+    "cache_discounts_deducted": false
+  }
+}

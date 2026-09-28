@@ -1,0 +1,157 @@
+{
+  "id": 12,
+  "parent": 10,
+  "depth": 7,
+  "round": 7,
+  "score": 0.04758445332364693,
+  "valid": true,
+  "stagnation": 0,
+  "failure_streak": 0,
+  "candidate": {
+    "name": "bounded-lru-depth-bonus-v15-tier120",
+    "source": "class CachePolicy:\n    def __init__(self):\n        self.last = {}\n        self.depth = {}\n        self.hits = {}\n        self.inserted = {}\n        self.evictions = {}\n\n    def observe_insert(self, entry):\n        b = entry.block_id\n        self.last[b] = entry.last_access\n        self.depth[b] = entry.depth\n        self.hits.setdefault(b, 0)\n        self.inserted[b] = entry.inserted_at\n\n    def observe_hit(self, entry):\n        b = entry.block_id\n        self.last[b] = entry.last_access\n        self.depth[b] = entry.depth\n        self.hits[b] = self.hits.get(b, 0) + 1\n        self.inserted.setdefault(b, entry.inserted_at)\n\n    def observe_evict(self, entry):\n        b = entry.block_id\n        self.evictions[b] = self.evictions.get(b, 0) + 1\n        self.last.pop(b, None)\n        self.depth.pop(b, None)\n        self.hits.pop(b, None)\n        self.inserted.pop(b, None)\n\n    def choose(self, eligible, now):\n        # Complete measured feedback is authoritative:\n        #   id 0 and strict-LRU-tie variants (2,3,5,6): 0.0\n        #   id 1 (unbounded frequency/recency multiplier): -1.34 (catastrophic)\n        #   id 7/8 (bounded depth bonus 8/16): +0.0006054 (80 tokens saved)\n        #   id 9 (depth bonus plus hit tiers, cap 32): +0.0003632 (worse)\n        #   id 10/11 (8/16/24): +0.0021794 (288 tokens saved)\n        #   id 12/13 (8/16/24/32): +0.0055697 (736 tokens saved)\n        #   id 14 (8/16/24/40 for depth>=4, cap 40): +0.0072648 (960 saved)\n        #   id 15 (8/16/24/32/40, cap 40): +0.0090810 (1200 saved)\n        #   id 16/17 (8/16/24/32/40/48, cap 48): +0.0140453 (1856 saved)\n        #   id 18/19 (8/16/24/32/40/48/56, cap 56): +0.0202204 (2672 saved)\n        #   id 20/21 (8/16/24/32/40/48/56/64, cap 64): +0.0260322 (3440)\n        #   id 22 (8/16/24/32/40/48/56/64/72, cap 72): +0.0311176 (4112)\n        #   id 23/24 (8/16/24/32/40/48/56/64/72/80, cap 80):\n        #        +0.0342656 (4528 saved)\n        #   id 4/5 (8/16/24/32/40/48/56/64/72/80/88, cap 88):\n        #        +0.0374137 (4944 saved)\n        #   id 6/7 (8/16/24/32/40/48/56/64/72/80/88/96, cap 96):\n        #        +0.0410461 (5424 saved)\n        #   id 8/9 (8/16/24/32/40/48/56/64/72/80/88/96/104, cap 104):\n        #        +0.0433466 (5728 saved)\n        #   id 10/11 (8/16/.../104/112, cap 112): +0.0463737 (6128 saved)\n        #        -- the measured best.\n        # The depth-bonus series is monotonically improving as the graduated\n        # schedule grows finer and the cap grows: 8/16 -> 80, 8/16/24 -> 288,\n        # 8/16/24/32 -> 736, 8/16/24/32/40 -> 1200,\n        # 8/16/24/32/40/48 -> 1856, 8/16/24/32/40/48/56 -> 2672,\n        # 8/16/24/32/40/48/56/64 -> 3440, .../64/72 -> 4112,\n        # .../72/80 -> 4528, .../80/88 -> 4944, .../88/96 -> 5424,\n        # .../96/104 -> 5728, .../104/112 -> 6128 suite tokens saved.\n        #\n        # Revised hypothesis (v15): continue that validated monotone direction\n        # with the smallest remaining step: add one more graduated tier, 120 for\n        # depth>=15, still hard-capped at 120 virtual-time units so any block\n        # more than 120 time units older is evicted first regardless of depth.\n        # This preserves the near-LRU property shared by every measured\n        # positive result and absent from the id-1 catastrophe, while further\n        # strengthening the structural tail-first effect. Id 9 keeps frequency\n        # excluded from the key. Task flags remain unused (category does not\n        # guarantee reuse). block_id is only a deterministic identity tie-break.\n        best = None\n        best_key = None\n        for entry in eligible:\n            b = entry.block_id\n            last = self.last.get(b, entry.last_access)\n            depth = self.depth.get(b, entry.depth)\n            if depth <= 0:\n                bonus = 0\n            elif depth == 1:\n                bonus = 8\n            elif depth == 2:\n                bonus = 16\n            elif depth == 3:\n                bonus = 24\n            elif depth == 4:\n                bonus = 32\n            elif depth == 5:\n                bonus = 40\n            elif depth == 6:\n                bonus = 48\n            elif depth == 7:\n                bonus = 56\n            elif depth == 8:\n                bonus = 64\n            elif depth == 9:\n                bonus = 72\n            elif depth == 10:\n                bonus = 80\n            elif depth == 11:\n                bonus = 88\n            elif depth == 12:\n                bonus = 96\n            elif depth == 13:\n                bonus = 104\n            elif depth == 14:\n                bonus = 112\n            else:\n                bonus = 120\n            key = (last - bonus, entry.access_order, entry.insertion_order, b)\n            if best_key is None or key < best_key:\n                best_key = key\n                best = entry\n        return best.block_id\n",
+    "rationale": "Complete measured feedback is authoritative. Exact LRU (id 0) and every strict tie-break variant (ids 2,3,5,6) score exactly 0.0. The unbounded frequency/recency multiplier (id 1) scored -1.34, inflating suite extra tokens from 132,144 to 309,856 with catastrophic losses on chat-heavy-00-cap2048 (18,384 to 60,416) and shift-00-cap2048 (8,832 to 52,800); it is decisively rejected. The bounded depth-bonus family is the only measured positive region and shows a clear monotone trend as the graduated schedule grows finer and the cap grows: 8/16 (ids 7/8) saved 80 tokens (+0.0006054), 8/16/24 (ids 10/11) saved 288 (+0.0021794), 8/16/24/32 (ids 12/13) saved 736 (+0.0055697), 8/16/24/40 (id 14) saved 960 (+0.0072648), 8/16/24/32/40 (id 15) saved 1200 (+0.0090810), 8/16/24/32/40/48 (ids 16/17) saved 1856 (+0.0140453), 8/16/24/32/40/48/56 (ids 18/19) saved 2672 (+0.0202204), 8/16/24/32/40/48/56/64 (ids 20/21) saved 3440 (+0.0260322), 8/16/24/32/40/48/56/64/72 (id 22) saved 4112 (+0.0311176), 8/16/24/32/40/48/56/64/72/80 (ids 23/24) saved 4528 (+0.0342656), 8/16/24/32/40/48/56/64/72/80/88 (ids 4/5) saved 4944 (+0.0374137), 8/16/24/32/40/48/56/64/72/80/88/96 (ids 6/7) saved 5424 (+0.0410461), 8/16/24/32/40/48/56/64/72/80/88/96/104 (ids 8/9) saved 5728 (+0.0433466), and the selected parent ids 10/11 (8/16/24/32/40/48/56/64/72/80/88/96/104/112, cap 112) saved 6128 suite tokens (+0.0463737) at 126,016 versus LRU 132,144. Id 9 in the early completed history, which added observed-hit tiers to the bonus, regressed to +0.0003632, so frequency is excluded from the ranking key. The measured trend supports continuing the monotone extension one small step further: retain 8/16/24/32/40/48/56/64/72/80/88/96/104/112 for depth 1..14 exactly as validated and add a 120-unit bonus for depth>=15, hard-capped at 120 virtual-time units so any block more than 120 time units older is evicted first regardless of depth. This keeps the near-LRU property shared by every measured positive result and absent from the id-1 failure mode while further strengthening the structural tail-first effect confirmed by fifteen successive improvements: a deep leaf is a true chain tail whose eviction frees a block and exposes its next ancestor as eligible later, whereas a shallow leaf anchors a longer resident chain whose recomputation is expensive. The per-scenario pattern (gains on cap2048 chat/qa/balanced-01/shift, regressions on balanced-00-cap2048 and chat-heavy-01-cap4096) is preserved and modestly amplified; suite-total is the objective and remains positive in every measured member. Task flags remain unused because the prompt states task category does not guarantee future reuse and no completed measurement supports task-aware weighting; block_id is used only as a deterministic identity tie-break, never as a predictive feature. If this extension regresses, restoring exactly the parent parameterization (8/16/24/32/40/48/56/64/72/80/88/96/104/112) is the validated fallback at +0.0463737, ids 8/9 (cap 104) at +0.0433466, ids 6/7 (cap 96) at +0.0410461, ids 4/5 (cap 88) at +0.0374137, ids 23/24 (cap 80) at +0.0342656 and exact LRU at 0.0 remain the measured safety nets. Plain Python with bounded per-entry work keeps CPU time within the 2-second wall budget."
+  },
+  "feedback": {
+    "valid": true,
+    "score": 0.04758445332364693,
+    "error": null,
+    "scoring": "total_extra_v2",
+    "total_extra_computed_tokens": 125856,
+    "total_lru_extra_computed_tokens": 132144,
+    "saved_prompt_tokens": 6288,
+    "score_denominator_tokens": 132144,
+    "scenarios": [
+      {
+        "name": "chat-heavy-00-cap2048",
+        "extra_computed_tokens": 16928,
+        "lru_extra_computed_tokens": 18384,
+        "improvement": 0.07919930374238468,
+        "policy_us_per_request": 5460.401091254753,
+        "score_contribution": 0.011018283085119264
+      },
+      {
+        "name": "chat-heavy-00-cap4096",
+        "extra_computed_tokens": 464,
+        "lru_extra_computed_tokens": 384,
+        "improvement": -0.20833333333333334,
+        "policy_us_per_request": 3296.7674448669204,
+        "score_contribution": -0.0006054001695120475
+      },
+      {
+        "name": "chat-heavy-01-cap2048",
+        "extra_computed_tokens": 14208,
+        "lru_extra_computed_tokens": 15152,
+        "improvement": 0.06230200633579725,
+        "policy_us_per_request": 4955.964595419848,
+        "score_contribution": 0.00714372200024216
+      },
+      {
+        "name": "chat-heavy-01-cap4096",
+        "extra_computed_tokens": 2016,
+        "lru_extra_computed_tokens": 1616,
+        "improvement": -0.24752475247524752,
+        "policy_us_per_request": 3159.0659312977095,
+        "score_contribution": -0.0030270008475602374
+      },
+      {
+        "name": "balanced-00-cap2048",
+        "extra_computed_tokens": 16144,
+        "lru_extra_computed_tokens": 14992,
+        "improvement": -0.0768409818569904,
+        "policy_us_per_request": 5147.47161003861,
+        "score_contribution": -0.008717762440973484
+      },
+      {
+        "name": "balanced-00-cap4096",
+        "extra_computed_tokens": 512,
+        "lru_extra_computed_tokens": 704,
+        "improvement": 0.2727272727272727,
+        "policy_us_per_request": 2589.275146718147,
+        "score_contribution": 0.001452960406828914
+      },
+      {
+        "name": "balanced-01-cap2048",
+        "extra_computed_tokens": 11376,
+        "lru_extra_computed_tokens": 12272,
+        "improvement": 0.07301173402868318,
+        "policy_us_per_request": 5118.258847328245,
+        "score_contribution": 0.006780481898534932
+      },
+      {
+        "name": "balanced-01-cap4096",
+        "extra_computed_tokens": 0,
+        "lru_extra_computed_tokens": 0,
+        "improvement": 0.0,
+        "policy_us_per_request": 2467.1662022900764,
+        "score_contribution": 0.0
+      },
+      {
+        "name": "qa-heavy-00-cap2048",
+        "extra_computed_tokens": 19680,
+        "lru_extra_computed_tokens": 22816,
+        "improvement": 0.13744740532959326,
+        "policy_us_per_request": 4460.396848484848,
+        "score_contribution": 0.02373168664487226
+      },
+      {
+        "name": "qa-heavy-00-cap4096",
+        "extra_computed_tokens": 0,
+        "lru_extra_computed_tokens": 0,
+        "improvement": 0.0,
+        "policy_us_per_request": 1610.6180606060605,
+        "score_contribution": 0.0
+      },
+      {
+        "name": "qa-heavy-01-cap2048",
+        "extra_computed_tokens": 29088,
+        "lru_extra_computed_tokens": 29312,
+        "improvement": 0.007641921397379912,
+        "policy_us_per_request": 6026.639176923077,
+        "score_contribution": 0.001695120474633733
+      },
+      {
+        "name": "qa-heavy-01-cap4096",
+        "extra_computed_tokens": 1616,
+        "lru_extra_computed_tokens": 1744,
+        "improvement": 0.07339449541284404,
+        "policy_us_per_request": 4466.598411538461,
+        "score_contribution": 0.000968640271219276
+      },
+      {
+        "name": "shift-00-cap2048",
+        "extra_computed_tokens": 8176,
+        "lru_extra_computed_tokens": 8832,
+        "improvement": 0.07427536231884058,
+        "policy_us_per_request": 4982.443720848057,
+        "score_contribution": 0.004964281389998789
+      },
+      {
+        "name": "shift-00-cap4096",
+        "extra_computed_tokens": 2384,
+        "lru_extra_computed_tokens": 2448,
+        "improvement": 0.026143790849673203,
+        "policy_us_per_request": 5447.887664310954,
+        "score_contribution": 0.000484320135609638
+      },
+      {
+        "name": "shift-01-cap2048",
+        "extra_computed_tokens": 3264,
+        "lru_extra_computed_tokens": 3488,
+        "improvement": 0.06422018348623854,
+        "policy_us_per_request": 4120.993761363637,
+        "score_contribution": 0.001695120474633733
+      },
+      {
+        "name": "shift-01-cap4096",
+        "extra_computed_tokens": 0,
+        "lru_extra_computed_tokens": 0,
+        "improvement": 0.0,
+        "policy_us_per_request": 1857.683625,
+        "score_contribution": 0.0
+      }
+    ]
+  },
+  "api_call": 41,
+  "cycle": 2
+}

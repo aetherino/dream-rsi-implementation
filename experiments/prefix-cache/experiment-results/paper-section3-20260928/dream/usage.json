@@ -1,0 +1,1298 @@
+[
+  {
+    "id": "dream-call-0001",
+    "call": 1,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 1
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.0018870300000000003,
+    "input_token_allowance": 13810,
+    "prompt_tokens": 3036,
+    "completion_tokens": 651,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0002",
+    "call": 2,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 2
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.003309915,
+    "input_token_allowance": 20726,
+    "prompt_tokens": 5647,
+    "completion_tokens": 981,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0003",
+    "call": 3,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 3
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.0030671850000000005,
+    "input_token_allowance": 20726,
+    "prompt_tokens": 5647,
+    "completion_tokens": 702,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0004",
+    "call": 4,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 4
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.005618025,
+    "input_token_allowance": 35642,
+    "prompt_tokens": 10355,
+    "completion_tokens": 1280,
+    "error": "Invalid model program (JSONDecodeError)",
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0005",
+    "call": 5,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 5
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.0054344549999999995,
+    "input_token_allowance": 35642,
+    "prompt_tokens": 10355,
+    "completion_tokens": 1069,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0006",
+    "call": 6,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 6
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.006601559999999999,
+    "input_token_allowance": 44308,
+    "prompt_tokens": 13050,
+    "completion_tokens": 1063,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0007",
+    "call": 7,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 7
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.00659286,
+    "input_token_allowance": 44308,
+    "prompt_tokens": 13050,
+    "completion_tokens": 1053,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0008",
+    "call": 8,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 8
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.01041825,
+    "input_token_allowance": 69033,
+    "prompt_tokens": 21260,
+    "completion_tokens": 1345,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0009",
+    "call": 9,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 9
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.01055484,
+    "input_token_allowance": 69033,
+    "prompt_tokens": 21260,
+    "completion_tokens": 1502,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0010",
+    "call": 10,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 10
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.0132588,
+    "input_token_allowance": 87742,
+    "prompt_tokens": 27608,
+    "completion_tokens": 1436,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0011",
+    "call": 11,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 11
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.0133893,
+    "input_token_allowance": 87742,
+    "prompt_tokens": 27608,
+    "completion_tokens": 1586,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0012",
+    "call": 12,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 12
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.016704870000000004,
+    "input_token_allowance": 108668,
+    "prompt_tokens": 34752,
+    "completion_tokens": 1825,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0013",
+    "call": 13,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 13
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.016872780000000004,
+    "input_token_allowance": 108668,
+    "prompt_tokens": 34752,
+    "completion_tokens": 2018,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0014",
+    "call": 14,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 14
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.01995084,
+    "input_token_allowance": 131663,
+    "prompt_tokens": 42826,
+    "completion_tokens": 1519,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0015",
+    "call": 15,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 15
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.02039889,
+    "input_token_allowance": 131663,
+    "prompt_tokens": 42826,
+    "completion_tokens": 2034,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0016",
+    "call": 16,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 16
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.023373855,
+    "input_token_allowance": 152782,
+    "prompt_tokens": 50249,
+    "completion_tokens": 1742,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0017",
+    "call": 17,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 17
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.023713155,
+    "input_token_allowance": 152782,
+    "prompt_tokens": 50249,
+    "completion_tokens": 2132,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0018",
+    "call": 18,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 18
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.026807744999999997,
+    "input_token_allowance": 172566,
+    "prompt_tokens": 57769,
+    "completion_tokens": 1929,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0019",
+    "call": 19,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 19
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.026765115,
+    "input_token_allowance": 172566,
+    "prompt_tokens": 57769,
+    "completion_tokens": 1880,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0020",
+    "call": 20,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 20
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.030376919999999998,
+    "input_token_allowance": 193479,
+    "prompt_tokens": 65730,
+    "completion_tokens": 2051,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0021",
+    "call": 21,
+    "role": "discovery",
+    "context": {
+      "cycle": 1,
+      "node": 21
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.030389970000000002,
+    "input_token_allowance": 193479,
+    "prompt_tokens": 65730,
+    "completion_tokens": 2066,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0022",
+    "call": 22,
+    "role": "controller",
+    "context": {
+      "cycle": 1,
+      "revision": 1
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.032735925,
+    "input_token_allowance": 212439,
+    "prompt_tokens": 73259,
+    "completion_tokens": 998,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0023",
+    "call": 23,
+    "role": "controller",
+    "context": {
+      "cycle": 1,
+      "revision": 2
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.03453813000000001,
+    "input_token_allowance": 223787,
+    "prompt_tokens": 76752,
+    "completion_tokens": 1323,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0024",
+    "call": 24,
+    "role": "controller",
+    "context": {
+      "cycle": 1,
+      "revision": 3
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.03612936,
+    "input_token_allowance": 232675,
+    "prompt_tokens": 80126,
+    "completion_tokens": 1465,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0025",
+    "call": 25,
+    "role": "controller",
+    "context": {
+      "cycle": 1,
+      "revision": 4
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.03768057,
+    "input_token_allowance": 242656,
+    "prompt_tokens": 83304,
+    "completion_tokens": 1659,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0026",
+    "call": 26,
+    "role": "controller",
+    "context": {
+      "cycle": 1,
+      "revision": 5
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.039143910000000004,
+    "input_token_allowance": 253825,
+    "prompt_tokens": 86818,
+    "completion_tokens": 1584,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0027",
+    "call": 27,
+    "role": "controller",
+    "context": {
+      "cycle": 1,
+      "revision": 6
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.040965255000000006,
+    "input_token_allowance": 263688,
+    "prompt_tokens": 89983,
+    "completion_tokens": 2095,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0028",
+    "call": 28,
+    "role": "controller",
+    "context": {
+      "cycle": 1,
+      "revision": 7
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.041485515,
+    "input_token_allowance": 271896,
+    "prompt_tokens": 91157,
+    "completion_tokens": 2106,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0029",
+    "call": 29,
+    "role": "controller",
+    "context": {
+      "cycle": 1,
+      "revision": 8
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.04213932,
+    "input_token_allowance": 281020,
+    "prompt_tokens": 93368,
+    "completion_tokens": 1752,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0030",
+    "call": 30,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 1
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.0346869,
+    "input_token_allowance": 218453,
+    "prompt_tokens": 75340,
+    "completion_tokens": 2200,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0031",
+    "call": 31,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 2
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.03676707,
+    "input_token_allowance": 229330,
+    "prompt_tokens": 79592,
+    "completion_tokens": 2465,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0032",
+    "call": 32,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 3
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.03666093,
+    "input_token_allowance": 229330,
+    "prompt_tokens": 79592,
+    "completion_tokens": 2343,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0033",
+    "call": 33,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 4
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.040663365,
+    "input_token_allowance": 251900,
+    "prompt_tokens": 88413,
+    "completion_tokens": 2533,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0034",
+    "call": 34,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 5
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.040752105,
+    "input_token_allowance": 251900,
+    "prompt_tokens": 88413,
+    "completion_tokens": 2635,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0035",
+    "call": 35,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 6
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.044769764999999996,
+    "input_token_allowance": 274701,
+    "prompt_tokens": 97503,
+    "completion_tokens": 2708,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0036",
+    "call": 36,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 7
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.044763675,
+    "input_token_allowance": 274701,
+    "prompt_tokens": 97503,
+    "completion_tokens": 2701,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0037",
+    "call": 37,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 8
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.049028850000000006,
+    "input_token_allowance": 298135,
+    "prompt_tokens": 106930,
+    "completion_tokens": 2890,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0038",
+    "call": 38,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 9
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.04903494,
+    "input_token_allowance": 298135,
+    "prompt_tokens": 106930,
+    "completion_tokens": 2897,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0039",
+    "call": 39,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 10
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.05353197,
+    "input_token_allowance": 322237,
+    "prompt_tokens": 116810,
+    "completion_tokens": 3126,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0040",
+    "call": 40,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 11
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.05348586,
+    "input_token_allowance": 322237,
+    "prompt_tokens": 116810,
+    "completion_tokens": 3073,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0041",
+    "call": 41,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 12
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.05818299,
+    "input_token_allowance": 347083,
+    "prompt_tokens": 127132,
+    "completion_tokens": 3311,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0042",
+    "call": 42,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 13
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.05817777,
+    "input_token_allowance": 347083,
+    "prompt_tokens": 127132,
+    "completion_tokens": 3305,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0043",
+    "call": 43,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 14
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.062991915,
+    "input_token_allowance": 372602,
+    "prompt_tokens": 137931,
+    "completion_tokens": 3439,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0044",
+    "call": 44,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 15
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.06300235500000001,
+    "input_token_allowance": 372602,
+    "prompt_tokens": 137931,
+    "completion_tokens": 3451,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0045",
+    "call": 45,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 16
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.067669905,
+    "input_token_allowance": 398214,
+    "prompt_tokens": 148775,
+    "completion_tokens": 3394,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0046",
+    "call": 46,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 17
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.067704705,
+    "input_token_allowance": 398214,
+    "prompt_tokens": 148775,
+    "completion_tokens": 3434,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0047",
+    "call": 47,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 18
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.071648415,
+    "input_token_allowance": 423640,
+    "prompt_tokens": 159531,
+    "completion_tokens": 2589,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0048",
+    "call": 48,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 19
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.071814585,
+    "input_token_allowance": 423638,
+    "prompt_tokens": 159529,
+    "completion_tokens": 2781,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0049",
+    "call": 49,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 20
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.07463642999999999,
+    "input_token_allowance": 447254,
+    "prompt_tokens": 168794,
+    "completion_tokens": 1392,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0050",
+    "call": 50,
+    "role": "discovery",
+    "context": {
+      "cycle": 2,
+      "node": 21
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.07630509,
+    "input_token_allowance": 447252,
+    "prompt_tokens": 168792,
+    "completion_tokens": 3311,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0051",
+    "call": 51,
+    "role": "controller",
+    "context": {
+      "cycle": 2,
+      "revision": 1
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.080145705,
+    "input_token_allowance": 480492,
+    "prompt_tokens": 181333,
+    "completion_tokens": 1455,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0052",
+    "call": 52,
+    "role": "controller",
+    "context": {
+      "cycle": 2,
+      "revision": 2
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.08273874,
+    "input_token_allowance": 492935,
+    "prompt_tokens": 186160,
+    "completion_tokens": 2022,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0053",
+    "call": 53,
+    "role": "controller",
+    "context": {
+      "cycle": 2,
+      "revision": 3
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.085335255,
+    "input_token_allowance": 508058,
+    "prompt_tokens": 192129,
+    "completion_tokens": 2022,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0054",
+    "call": 54,
+    "role": "controller",
+    "context": {
+      "cycle": 2,
+      "revision": 4
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.08768295,
+    "input_token_allowance": 521911,
+    "prompt_tokens": 197526,
+    "completion_tokens": 2022,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0055",
+    "call": 55,
+    "role": "controller",
+    "context": {
+      "cycle": 2,
+      "revision": 5
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.090030645,
+    "input_token_allowance": 535764,
+    "prompt_tokens": 202923,
+    "completion_tokens": 2022,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0056",
+    "call": 56,
+    "role": "controller",
+    "context": {
+      "cycle": 2,
+      "revision": 6
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.09237834,
+    "input_token_allowance": 549617,
+    "prompt_tokens": 208320,
+    "completion_tokens": 2022,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0057",
+    "call": 57,
+    "role": "controller",
+    "context": {
+      "cycle": 2,
+      "revision": 7
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.09436063500000001,
+    "input_token_allowance": 563470,
+    "prompt_tokens": 213717,
+    "completion_tokens": 1602,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0058",
+    "call": 58,
+    "role": "controller",
+    "context": {
+      "cycle": 2,
+      "revision": 8
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.09635076000000001,
+    "input_token_allowance": 575001,
+    "prompt_tokens": 218274,
+    "completion_tokens": 1611,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0059",
+    "call": 59,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 1
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.07908995999999999,
+    "input_token_allowance": 472603,
+    "prompt_tokens": 179034,
+    "completion_tokens": 1391,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0060",
+    "call": 60,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 2
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.082238055,
+    "input_token_allowance": 481581,
+    "prompt_tokens": 182411,
+    "completion_tokens": 3321,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0061",
+    "call": 61,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 3
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.080796465,
+    "input_token_allowance": 481581,
+    "prompt_tokens": 182411,
+    "completion_tokens": 1664,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0062",
+    "call": 62,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 4
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.08454398999999999,
+    "input_token_allowance": 503604,
+    "prompt_tokens": 191346,
+    "completion_tokens": 1504,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0063",
+    "call": 63,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 5
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.08433518999999999,
+    "input_token_allowance": 503604,
+    "prompt_tokens": 191346,
+    "completion_tokens": 1264,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0064",
+    "call": 64,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 6
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.08844550500000001,
+    "input_token_allowance": 521423,
+    "prompt_tokens": 198073,
+    "completion_tokens": 2625,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0065",
+    "call": 65,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 7
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.087288405,
+    "input_token_allowance": 521423,
+    "prompt_tokens": 198073,
+    "completion_tokens": 1295,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0066",
+    "call": 66,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 8
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.09095502,
+    "input_token_allowance": 542313,
+    "prompt_tokens": 205950,
+    "completion_tokens": 1571,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0067",
+    "call": 67,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 9
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.09113685,
+    "input_token_allowance": 542313,
+    "prompt_tokens": 205950,
+    "completion_tokens": 1780,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0068",
+    "call": 68,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 10
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.09431322,
+    "input_token_allowance": 561542,
+    "prompt_tokens": 213264,
+    "completion_tokens": 1774,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0069",
+    "call": 69,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 11
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.09529719,
+    "input_token_allowance": 561542,
+    "prompt_tokens": 213264,
+    "completion_tokens": 2905,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0070",
+    "call": 70,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 12
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.099127365,
+    "input_token_allowance": 583421,
+    "prompt_tokens": 221915,
+    "completion_tokens": 2982,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0071",
+    "call": 71,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 13
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.098835915,
+    "input_token_allowance": 583421,
+    "prompt_tokens": 221915,
+    "completion_tokens": 2647,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0072",
+    "call": 72,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 14
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.10293579,
+    "input_token_allowance": 607660,
+    "prompt_tokens": 231508,
+    "completion_tokens": 2563,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0073",
+    "call": 73,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 15
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.10331337,
+    "input_token_allowance": 607660,
+    "prompt_tokens": 231508,
+    "completion_tokens": 2997,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0074",
+    "call": 74,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 16
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.10706263499999999,
+    "input_token_allowance": 631793,
+    "prompt_tokens": 241025,
+    "completion_tokens": 2548,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0075",
+    "call": 75,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 17
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.106083015,
+    "input_token_allowance": 631793,
+    "prompt_tokens": 241025,
+    "completion_tokens": 1422,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0076",
+    "call": 76,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 18
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.10997844,
+    "input_token_allowance": 652400,
+    "prompt_tokens": 248964,
+    "completion_tokens": 1930,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0077",
+    "call": 77,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 19
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.11061441000000001,
+    "input_token_allowance": 652400,
+    "prompt_tokens": 248964,
+    "completion_tokens": 2661,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0078",
+    "call": 78,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 20
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.114358455,
+    "input_token_allowance": 675037,
+    "prompt_tokens": 257521,
+    "completion_tokens": 2686,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0079",
+    "call": 79,
+    "role": "discovery",
+    "context": {
+      "cycle": 3,
+      "node": 21
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.11432278499999998,
+    "input_token_allowance": 675037,
+    "prompt_tokens": 257521,
+    "completion_tokens": 2645,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0080",
+    "call": 80,
+    "role": "controller",
+    "context": {
+      "cycle": 3,
+      "revision": 1
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.12036754499999999,
+    "input_token_allowance": 717549,
+    "prompt_tokens": 274127,
+    "completion_tokens": 1290,
+    "error": null,
+    "finish_reason": "stop"
+  },
+  {
+    "id": "dream-call-0081",
+    "call": 81,
+    "role": "controller",
+    "context": {
+      "cycle": 3,
+      "revision": 2
+    },
+    "status": "accounted",
+    "charged_estimate_usd": 0.12408157500000001,
+    "input_token_allowance": 732754,
+    "prompt_tokens": 280341,
+    "completion_tokens": 2452,
+    "error": null,
+    "finish_reason": "stop"
+  }
+]
