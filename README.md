@@ -118,7 +118,7 @@ numeric expressions, never arbitrary Python. Each cache evaluation runs in a
 child process with a wall-time limit. The API has call/completion-token limits and
 an estimated-dollar guard. Local run directories record prompts, programs,
 tree structure, failures, baselines, controller replay trajectories and API usage.
-Existing run directories are never overwritten; automatic resume is not implemented.
+The realtime runner requires a new output directory. The batch comparison runner below supports resume.
 
 See [the detailed walkthrough and flowchart](docs/dream-rsi.md) for the scoring
 formulas, configuration, replay semantics, budget accounting, and differences
@@ -154,3 +154,27 @@ neither strategy beat LRU on the latter measure.
 The corrected-objective rerun is complete: [results](docs/total-recomputation-results.md).
 Both arms reduced raw held-out recomputation versus LRU; no controller revision
 was accepted, so the experiment does not establish a benefit from controller evolution.
+
+## Longer run with discounted provider batches
+
+The resumable batch coordinator groups currently ready requests across independent
+trials using MiMo's actual Batch API. The longer configuration allows 240 total
+requests (40 per run), three trials per strategy, ten discovery cycles, fresh
+validation shards 7–12, and a $3 total estimated spending ceiling.
+
+```sh
+# Freeze the plan and prepare the first wave, without sending API requests.
+.venv/bin/python -m dream_rsi.batch_compare \
+  --config configs/dream-comparison-batch.json --backend mimo-batch \
+  --output runs/comparison-batch-long-20260927 --prepare-only
+
+# Copy your account's Batch API Base URL from the MiMo console first.
+.venv/bin/python -m dream_rsi.batch_compare \
+  --output runs/comparison-batch-long-20260927 --resume \
+  --base-url "$MIMO_BATCH_BASE_URL" --watch
+```
+
+Batch jobs are asynchronous. Later search rounds depend on earlier results;
+multiple provider waves are required. The coordinator saves progress and can
+resume without resubmitting known jobs. See [the batch-run guide](docs/batched-long-run.md)
+for experiment design, pricing, recovery, and interpretation.
