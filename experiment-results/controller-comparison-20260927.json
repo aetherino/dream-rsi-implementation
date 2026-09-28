@@ -1,0 +1,760 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-27",
+  "config": "configs/dream-comparison.json",
+  "backend": "mimo",
+  "status": "completed",
+  "aggregate": {
+    "arms": {
+      "fixed": {
+        "runs": 3,
+        "mean_validation_score": -0.009165543775266929,
+        "mean_validation_extra_tokens": 71216,
+        "mean_lru_validation_extra_tokens": 66400,
+        "total_extra_fraction_change_vs_lru": 0.07253012048192775,
+        "min_validation_score": -0.027496631325800786,
+        "max_validation_score": 0.0,
+        "sample_sd": 0.01587518749775898,
+        "mean_train_score": 0.0010824906123922504,
+        "total_calls": 24,
+        "discovery_calls": 24,
+        "controller_calls": 0,
+        "accepted_revisions": 0,
+        "estimated_usd": 0.05714855999999999
+      },
+      "adaptive": {
+        "runs": 3,
+        "mean_validation_score": 0.014170075632209398,
+        "mean_validation_extra_tokens": 66880,
+        "mean_lru_validation_extra_tokens": 66400,
+        "total_extra_fraction_change_vs_lru": 0.0072289156626506035,
+        "min_validation_score": 0.0,
+        "max_validation_score": 0.03232898227209327,
+        "sample_sd": 0.016529484362591874,
+        "mean_train_score": 0.0011719709624627064,
+        "total_calls": 24,
+        "discovery_calls": 21,
+        "controller_calls": 3,
+        "accepted_revisions": 1,
+        "estimated_usd": 0.058199085
+      }
+    },
+    "paired_differences": [
+      {
+        "trial": 1,
+        "adaptive_minus_fixed": 0.010181244624534923
+      },
+      {
+        "trial": 2,
+        "adaptive_minus_fixed": 0.03232898227209327
+      },
+      {
+        "trial": 3,
+        "adaptive_minus_fixed": 0.027496631325800786
+      }
+    ],
+    "mean_adaptive_minus_fixed": 0.023335619407476325,
+    "estimated_usd": 0.115347645
+  },
+  "runs": [
+    {
+      "trial": 1,
+      "arm": "fixed",
+      "path": "runs/comparison-mimo-pilot-20260927/trial-01-fixed",
+      "status": "api_budget_reached",
+      "train_score": 0.0,
+      "validation_score": 0.0,
+      "calls": 8,
+      "discovery_calls": 8,
+      "controller_calls": 0,
+      "valid_candidates": 8,
+      "candidate_failures": [],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.01831959,
+      "elapsed_seconds": 90.99241624999559,
+      "best_policy": {
+        "name": "initial-lru",
+        "retention_score": "last_access",
+        "rationale": "LRU baseline"
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-1-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 21536,
+          "lru_extra_computed_tokens": 21536,
+          "policy_us_per_request": 1582.0553956043955
+        },
+        {
+          "name": "sharegpt-validation-1-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 741.6575824175824
+        },
+        {
+          "name": "sharegpt-validation-2-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 16624,
+          "lru_extra_computed_tokens": 16624,
+          "policy_us_per_request": 1154.3648063063063
+        },
+        {
+          "name": "sharegpt-validation-2-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 320,
+          "lru_extra_computed_tokens": 320,
+          "policy_us_per_request": 593.025018018018
+        },
+        {
+          "name": "sharegpt-validation-3-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 23520,
+          "lru_extra_computed_tokens": 23520,
+          "policy_us_per_request": 1407.8507464114832
+        },
+        {
+          "name": "sharegpt-validation-3-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 144,
+          "lru_extra_computed_tokens": 144,
+          "policy_us_per_request": 655.2464449760766
+        },
+        {
+          "name": "mashqa-validation-1-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 2816,
+          "lru_extra_computed_tokens": 2816,
+          "policy_us_per_request": 588.8437524271845
+        },
+        {
+          "name": "mashqa-validation-1-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 60.39847087378641
+        },
+        {
+          "name": "mashqa-validation-2-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 1440,
+          "lru_extra_computed_tokens": 1440,
+          "policy_us_per_request": 370.8416968085106
+        },
+        {
+          "name": "mashqa-validation-2-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 67.86919680851064
+        },
+        {
+          "name": "mashqa-validation-3-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 60.34157971014493
+        },
+        {
+          "name": "mashqa-validation-3-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 57.277159420289856
+        }
+      ]
+    },
+    {
+      "trial": 1,
+      "arm": "adaptive",
+      "path": "runs/comparison-mimo-pilot-20260927/trial-01-adaptive",
+      "status": "api_budget_reached",
+      "train_score": 0.0031553209870765924,
+      "validation_score": 0.010181244624534923,
+      "calls": 8,
+      "discovery_calls": 7,
+      "controller_calls": 1,
+      "valid_candidates": 7,
+      "candidate_failures": [],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.02050155,
+      "elapsed_seconds": 120.30407970800297,
+      "best_policy": {
+        "name": "lru-freq-boost-anchored",
+        "retention_score": "last_access + 30 * log1p(frequency) * (1 if depth == 0 else 0.7)",
+        "rationale": "Improves LRU by adding a bounded, frequency-based retention boost so repeatedly reused prefixes (high frequency since insertion) are less likely to be evicted, while recency (last_access) still dominates since time deltas between accesses dwarf the logarithmic frequency term. The boost is capped by log1p growth to avoid runaway scores and scaled down for deeper blocks, reflecting that shallow prefix blocks are shared by more prefixes and are more expensive to recompute. Uses only last_access, frequency, and depth, which are cheap scalar fields; the cost is a few arithmetic ops plus one log1p, well within CPU feasibility. Ties still resolve to least recent access_order as required, since the frequency boost uses log1p which is zero only when frequency is zero."
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-1-cap2048",
+          "improvement": 0.005200594353640416,
+          "extra_computed_tokens": 21424,
+          "lru_extra_computed_tokens": 21536,
+          "policy_us_per_request": 2786.6902252747254
+        },
+        {
+          "name": "sharegpt-validation-1-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 1242.1715989010988
+        },
+        {
+          "name": "sharegpt-validation-2-cap2048",
+          "improvement": -0.04427333974975938,
+          "extra_computed_tokens": 17360,
+          "lru_extra_computed_tokens": 16624,
+          "policy_us_per_request": 1975.8626801801802
+        },
+        {
+          "name": "sharegpt-validation-2-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 320,
+          "lru_extra_computed_tokens": 320,
+          "policy_us_per_request": 914.213527027027
+        },
+        {
+          "name": "sharegpt-validation-3-cap2048",
+          "improvement": -0.04897959183673469,
+          "extra_computed_tokens": 24672,
+          "lru_extra_computed_tokens": 23520,
+          "policy_us_per_request": 2521.8963971291864
+        },
+        {
+          "name": "sharegpt-validation-3-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 144,
+          "lru_extra_computed_tokens": 144,
+          "policy_us_per_request": 1069.7898421052632
+        },
+        {
+          "name": "mashqa-validation-1-cap2048",
+          "improvement": 0.21022727272727273,
+          "extra_computed_tokens": 2224,
+          "lru_extra_computed_tokens": 2816,
+          "policy_us_per_request": 1254.9098106796118
+        },
+        {
+          "name": "mashqa-validation-1-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 60.59166990291263
+        },
+        {
+          "name": "mashqa-validation-2-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 1440,
+          "lru_extra_computed_tokens": 1440,
+          "policy_us_per_request": 825.937090425532
+        },
+        {
+          "name": "mashqa-validation-2-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 68.10070212765957
+        },
+        {
+          "name": "mashqa-validation-3-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 63.38252173913043
+        },
+        {
+          "name": "mashqa-validation-3-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 60.18197101449275
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "arm": "adaptive",
+      "path": "runs/comparison-mimo-pilot-20260927/trial-02-adaptive",
+      "status": "api_budget_reached",
+      "train_score": 0.0003605919003115265,
+      "validation_score": 0.03232898227209327,
+      "calls": 8,
+      "discovery_calls": 7,
+      "controller_calls": 1,
+      "valid_candidates": 6,
+      "candidate_failures": [
+        {
+          "cycle_file": "tree-001.json",
+          "node": 4,
+          "error": "ValueError: Unexpected policy fields"
+        }
+      ],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.020207055,
+      "elapsed_seconds": 113.98252841699286,
+      "best_policy": {
+        "name": "recency-tiny-freq-depth",
+        "retention_score": "last_access + log1p(frequency) * 2 + log1p(depth) * 1",
+        "rationale": "The previous heavy frequency bonus (1000x) badly hurt performance because it kept stale but once-hot blocks over recently used ones, especially at tight capacities where LRU already does well. We keep recency as the overwhelming primary term and reduce frequency/depth to tiny tiebreakers: frequency adds at most ~14 for count 1e6 and depth adds at most ~14 for depth 1e6, so recency ordering dominates whenever there is any meaningful gap in last_access. This preserves pure-LRU behavior for sparse workloads while letting frequently reused, deep prefix blocks survive short idle gaps. Cheap: two log1p calls and simple arithmetic, well under the CPU limit (baseline runs ~1100 us max vs 50000 us budget)."
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-1-cap2048",
+          "improvement": -0.002228826151560178,
+          "extra_computed_tokens": 21584,
+          "lru_extra_computed_tokens": 21536,
+          "policy_us_per_request": 2769.4929725274724
+        },
+        {
+          "name": "sharegpt-validation-1-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 1223.165736263736
+        },
+        {
+          "name": "sharegpt-validation-2-cap2048",
+          "improvement": -0.019249278152069296,
+          "extra_computed_tokens": 16944,
+          "lru_extra_computed_tokens": 16624,
+          "policy_us_per_request": 1932.4913558558558
+        },
+        {
+          "name": "sharegpt-validation-2-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 320,
+          "lru_extra_computed_tokens": 320,
+          "policy_us_per_request": 917.3477162162162
+        },
+        {
+          "name": "sharegpt-validation-3-cap2048",
+          "improvement": -0.025170068027210883,
+          "extra_computed_tokens": 24112,
+          "lru_extra_computed_tokens": 23520,
+          "policy_us_per_request": 2462.3434306220097
+        },
+        {
+          "name": "sharegpt-validation-3-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 144,
+          "lru_extra_computed_tokens": 144,
+          "policy_us_per_request": 1058.7684976076555
+        },
+        {
+          "name": "mashqa-validation-1-cap2048",
+          "improvement": 0.056818181818181816,
+          "extra_computed_tokens": 2656,
+          "lru_extra_computed_tokens": 2816,
+          "policy_us_per_request": 1310.6176747572815
+        },
+        {
+          "name": "mashqa-validation-1-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 78.38951941747574
+        },
+        {
+          "name": "mashqa-validation-2-cap2048",
+          "improvement": 0.37777777777777777,
+          "extra_computed_tokens": 896,
+          "lru_extra_computed_tokens": 1440,
+          "policy_us_per_request": 773.6795
+        },
+        {
+          "name": "mashqa-validation-2-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 66.66319148936171
+        },
+        {
+          "name": "mashqa-validation-3-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 59.10853623188406
+        },
+        {
+          "name": "mashqa-validation-3-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 62.276753623188405
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "arm": "fixed",
+      "path": "runs/comparison-mimo-pilot-20260927/trial-02-fixed",
+      "status": "api_budget_reached",
+      "train_score": 0.0,
+      "validation_score": 0.0,
+      "calls": 8,
+      "discovery_calls": 8,
+      "controller_calls": 0,
+      "valid_candidates": 6,
+      "candidate_failures": [
+        {
+          "cycle_file": "tree-001.json",
+          "node": 4,
+          "error": "ValueError: Unexpected policy fields"
+        },
+        {
+          "cycle_file": "tree-001.json",
+          "node": 5,
+          "error": "ValueError: Unknown variable: exp_weight"
+        }
+      ],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.018941639999999996,
+      "elapsed_seconds": 154.35805104201427,
+      "best_policy": {
+        "name": "initial-lru",
+        "retention_score": "last_access",
+        "rationale": "LRU baseline"
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-1-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 21536,
+          "lru_extra_computed_tokens": 21536,
+          "policy_us_per_request": 1561.9961868131868
+        },
+        {
+          "name": "sharegpt-validation-1-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 741.1562857142857
+        },
+        {
+          "name": "sharegpt-validation-2-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 16624,
+          "lru_extra_computed_tokens": 16624,
+          "policy_us_per_request": 1154.2312207207208
+        },
+        {
+          "name": "sharegpt-validation-2-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 320,
+          "lru_extra_computed_tokens": 320,
+          "policy_us_per_request": 581.3979324324324
+        },
+        {
+          "name": "sharegpt-validation-3-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 23520,
+          "lru_extra_computed_tokens": 23520,
+          "policy_us_per_request": 1407.9792870813396
+        },
+        {
+          "name": "sharegpt-validation-3-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 144,
+          "lru_extra_computed_tokens": 144,
+          "policy_us_per_request": 654.5307559808613
+        },
+        {
+          "name": "mashqa-validation-1-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 2816,
+          "lru_extra_computed_tokens": 2816,
+          "policy_us_per_request": 583.0771747572816
+        },
+        {
+          "name": "mashqa-validation-1-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 58.663490291262136
+        },
+        {
+          "name": "mashqa-validation-2-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 1440,
+          "lru_extra_computed_tokens": 1440,
+          "policy_us_per_request": 364.42007446808515
+        },
+        {
+          "name": "mashqa-validation-2-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 68.52156914893617
+        },
+        {
+          "name": "mashqa-validation-3-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 59.11644927536232
+        },
+        {
+          "name": "mashqa-validation-3-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 58.599463768115946
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "arm": "fixed",
+      "path": "runs/comparison-mimo-pilot-20260927/trial-03-fixed",
+      "status": "api_budget_reached",
+      "train_score": 0.003247471837176751,
+      "validation_score": -0.027496631325800786,
+      "calls": 8,
+      "discovery_calls": 8,
+      "controller_calls": 0,
+      "valid_candidates": 8,
+      "candidate_failures": [],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.019887329999999998,
+      "elapsed_seconds": 133.7763238749758,
+      "best_policy": {
+        "name": "lru-soft-freq-no-depth",
+        "retention_score": "last_access + log1p(frequency) * 30 + log1p(frequency) * 300 / (1 + (now - last_access) / 4000)",
+        "rationale": "Parent hurt badly versus LRU: its raw depth*150 term dominated and forced many more evictions by over-retaining deep entries that were never reused, and its depth-free age penalty drove churn. New design keeps recency (last_access) as the primary signal like LRU, adds only a small unconditional frequency bonus (log1p(frequency)*30) for hot blocks, and a larger frequency bonus gated by recency (log1p(frequency)*300/(1+(now-last_access)/4000)) so strong frequency only boosts entries that were accessed reasonably recently. This decays with idle time without needing inserted_at, avoiding the parent's age penalty artifact that caused unnecessary eviction of freshly inserted cold tail entries. Removed depth entirely since empirically it increased extra tokens by over-protecting deep but rarely reused prefixes. Constants are cheap and small; expression is arithmetic plus one log1p, well within CPU feasibility (parent was ~3-5x LRU cost with depth and age terms). All terms bounded and denominators are >= 1 so no division by zero; intermediate values stay far below 1e12."
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-1-cap2048",
+          "improvement": -0.10475482912332838,
+          "extra_computed_tokens": 23792,
+          "lru_extra_computed_tokens": 21536,
+          "policy_us_per_request": 3787.5664065934066
+        },
+        {
+          "name": "sharegpt-validation-1-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 1506.8994285714286
+        },
+        {
+          "name": "sharegpt-validation-2-cap2048",
+          "improvement": -0.5524542829643888,
+          "extra_computed_tokens": 25808,
+          "lru_extra_computed_tokens": 16624,
+          "policy_us_per_request": 2857.5175675675673
+        },
+        {
+          "name": "sharegpt-validation-2-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 320,
+          "lru_extra_computed_tokens": 320,
+          "policy_us_per_request": 1095.2260450450449
+        },
+        {
+          "name": "sharegpt-validation-3-cap2048",
+          "improvement": -0.18979591836734694,
+          "extra_computed_tokens": 27984,
+          "lru_extra_computed_tokens": 23520,
+          "policy_us_per_request": 3466.2037846889953
+        },
+        {
+          "name": "sharegpt-validation-3-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 144,
+          "lru_extra_computed_tokens": 144,
+          "policy_us_per_request": 1305.6624066985646
+        },
+        {
+          "name": "mashqa-validation-1-cap2048",
+          "improvement": 0.5170454545454546,
+          "extra_computed_tokens": 1360,
+          "lru_extra_computed_tokens": 2816,
+          "policy_us_per_request": 1543.8130339805825
+        },
+        {
+          "name": "mashqa-validation-1-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 61.75894174757282
+        },
+        {
+          "name": "mashqa-validation-2-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 1440,
+          "lru_extra_computed_tokens": 1440,
+          "policy_us_per_request": 1094.2360319148936
+        },
+        {
+          "name": "mashqa-validation-2-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 70.5341755319149
+        },
+        {
+          "name": "mashqa-validation-3-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 61.4419420289855
+        },
+        {
+          "name": "mashqa-validation-3-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 61.17001449275362
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "arm": "adaptive",
+      "path": "runs/comparison-mimo-pilot-20260927/trial-03-adaptive",
+      "status": "api_budget_reached",
+      "train_score": 0.0,
+      "validation_score": 0.0,
+      "calls": 8,
+      "discovery_calls": 7,
+      "controller_calls": 1,
+      "valid_candidates": 6,
+      "candidate_failures": [
+        {
+          "cycle_file": "tree-001.json",
+          "node": 1,
+          "error": "ValueError: Only finite numeric constants of magnitude <= 1e6 are allowed"
+        }
+      ],
+      "accepted_revisions": 1,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.01749048,
+      "elapsed_seconds": 106.67697691600188,
+      "best_policy": {
+        "name": "initial-lru",
+        "retention_score": "last_access",
+        "rationale": "LRU baseline"
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-1-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 21536,
+          "lru_extra_computed_tokens": 21536,
+          "policy_us_per_request": 1570.1492912087913
+        },
+        {
+          "name": "sharegpt-validation-1-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 739.6404175824176
+        },
+        {
+          "name": "sharegpt-validation-2-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 16624,
+          "lru_extra_computed_tokens": 16624,
+          "policy_us_per_request": 1167.8499009009008
+        },
+        {
+          "name": "sharegpt-validation-2-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 320,
+          "lru_extra_computed_tokens": 320,
+          "policy_us_per_request": 592.635572072072
+        },
+        {
+          "name": "sharegpt-validation-3-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 23520,
+          "lru_extra_computed_tokens": 23520,
+          "policy_us_per_request": 1396.0600956937799
+        },
+        {
+          "name": "sharegpt-validation-3-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 144,
+          "lru_extra_computed_tokens": 144,
+          "policy_us_per_request": 658.8567703349282
+        },
+        {
+          "name": "mashqa-validation-1-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 2816,
+          "lru_extra_computed_tokens": 2816,
+          "policy_us_per_request": 595.769786407767
+        },
+        {
+          "name": "mashqa-validation-1-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 59.79493689320388
+        },
+        {
+          "name": "mashqa-validation-2-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 1440,
+          "lru_extra_computed_tokens": 1440,
+          "policy_us_per_request": 365.06197340425535
+        },
+        {
+          "name": "mashqa-validation-2-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 67.03237234042552
+        },
+        {
+          "name": "mashqa-validation-3-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 58.99885507246377
+        },
+        {
+          "name": "mashqa-validation-3-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 58.86885507246377
+        }
+      ]
+    }
+  ],
+  "usage_tokens": {
+    "prompt": 242371,
+    "completion": 11398
+  },
+  "audit": {
+    "identical_trace_snapshots": true,
+    "identical_implementation_hashes_at_execution": true,
+    "identical_api_limits": true,
+    "implementation_hashes_at_execution": {
+      "dream_rsi/worker.py": "cc152e276cdbfd077800a43d000373f4b293d6a2c4ac43c38661af6312940108",
+      "dream_rsi/runner.py": "fb475d611aa5ace20f98e594b7682fdddd5673abb79946bac5bcbe39c5aa5cc1",
+      "dream_rsi/backend.py": "8787e489efddb9a35f3a0ae309e61007cedb381e4af32ce5c4bb5ba2737461b0",
+      "dream_rsi/evaluation.py": "d54aeceac39cbae774ff6b546fdd55dfe034afcda8f01208f63adce673647df3",
+      "dream_rsi/__init__.py": "fe14ab8d14212de870c90c0c8fb004e616b58079150e1c35d5f4101c984cb959",
+      "dream_rsi/prompts.py": "bb95478aeb06157ff739a1cd9154947f9b363dd123a4ba5822acaf81e4e1041d",
+      "dream_rsi/programs.py": "3be73c9ba89c44f9433ddc90151c323a1f8589698e82c9a0994324696471331b",
+      "dream_rsi/replay.py": "34e24669792ce4a21fec41f891e999456276079adba88668e898ae97b0e2d81a",
+      "dream_rsi/compare.py": "1b4a7b08a5470e67f5cac191dc79d97f65addd0263a3de1ee059f294c71e9cbf",
+      "dream_rsi/__main__.py": "9c738e5548fd6dd7ae45b45dd93aa2cc6b0301e949cf28e547c518a98ccbb44a",
+      "dream_rsi/history.py": "658254c7c7bd95b961da3f2dd1f2fcdcb2905a3a56e62ec8b8adb2ed01b8ece0",
+      "cache_sim/trace.py": "5213487331c4a8a86cb1dffda9f7d23b79bb2e91a43491bff5c7414e19664392",
+      "cache_sim/__init__.py": "cdd9f73c489489ef9469af0f252e99060c02b3a21ba809a9675005d32e5de4fd",
+      "cache_sim/engine.py": "91fd6591c4ff92dca5c7f580601a143f96136968e909ae394312a2fac44460c7",
+      "cache_sim/policies.py": "ee506f5e9299d0d1c3c6f63002f7f76c65be780609c7b900b280636e2705be61",
+      "cache_sim/__main__.py": "ef6a2c6fdd1cde8f941ec9333be773c7efaacd4128926ca7d70f2a5bf4f75941"
+    }
+  },
+  "interpretation": "Positive macro improvement is not a reduction in total extra tokens; raw-total diagnostics were added after collection without changing selection or scoring."
+}

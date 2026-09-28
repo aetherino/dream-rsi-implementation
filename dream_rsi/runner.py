@@ -17,6 +17,7 @@ API_DEFAULTS = {"model": "mimo-v2.6-pro", "max_calls": 24, "max_usd": 0.5,
                 "input_usd_per_million": 0.435, "output_usd_per_million": 0.87}
 DEFAULTS = {"cycles": 2, "online_rounds": 4, "replay_rounds": 6, "workers": 2,
             "max_depth": 4, "controller_revisions": 2, "block_size": 16,
+            "revise_after_final_cycle": True, "stop_on_empty_rollout": False,
             "beta_calls": 0.02, "beta_parallel": 0.005, "evaluation_timeout_seconds": 120,
             "max_policy_us_per_request": 50000}
 
@@ -24,6 +25,9 @@ DEFAULTS = {"cycles": 2, "online_rounds": 4, "replay_rounds": 6, "workers": 2,
 def prepare_config(raw, project_root):
     config = DEFAULTS | raw
     config["api"] = API_DEFAULTS | config.get("api", {})
+    for name in ("revise_after_final_cycle", "stop_on_empty_rollout"):
+        if type(config[name]) is not bool:
+            raise ValueError(f"{name} must be boolean")
     for name, upper in {"cycles": 20, "online_rounds": 100, "replay_rounds": 100,
                         "workers": 8, "max_depth": 100, "controller_revisions": 20, "block_size": 4096}.items():
         lower = 0 if name == "controller_revisions" else 1
@@ -122,10 +126,16 @@ def run(config, backend_name, project_root, output):
             write_json(tree_path, {"controller": controller, "nodes": tree})
             event("discovery_started", cycle=cycle, controller=controller["name"])
             for round_index in range(1, config["online_rounds"] + 1):
+                remaining = config["api"]["max_calls"] - backend.summary()["calls"]
+                if remaining <= 0:
+                    stop_reason = "api_budget_reached"
+                    break
                 actions = Controller(controller).select(tree, round_index, config["workers"], config["max_depth"])
                 if not actions:
                     event("controller_stopped", cycle=cycle, round=round_index)
                     break
+                # Make a partial last batch deterministic, rather than racing API reservations.
+                actions = actions[:remaining]
                 by_id = {n["id"]: n for n in tree}
                 jobs = []
                 with ThreadPoolExecutor(max_workers=config["workers"]) as pool:
@@ -162,6 +172,8 @@ def run(config, backend_name, project_root, output):
                     break
             histories.append(tree)
             write_json(output / "best-policy.json", best)
+            if len(tree) == 1 and config["stop_on_empty_rollout"] and stop_reason == "completed":
+                stop_reason = "controller_stopped_run"
             if stop_reason != "completed":
                 break
             incumbent_feedback = evaluate_controller(controller, histories, **replay_settings)
@@ -171,6 +183,11 @@ def run(config, backend_name, project_root, output):
             revision_path = output / f"controller-revisions-{cycle:03d}.json"
             write_json(revision_path, revision_log)
             for revision in range(1, config["controller_revisions"] + 1):
+                if not config["revise_after_final_cycle"]:
+                    remaining = config["api"]["max_calls"] - backend.summary()["calls"]
+                    # A development call must leave room for at least one future discovery.
+                    if cycle == config["cycles"] or remaining < 2:
+                        break
                 prompt = controller_prompt(controller, incumbent_feedback,
                                            [[compact_node(n) for n in history] for history in histories], replay_settings, revision_log)
                 proposal = None

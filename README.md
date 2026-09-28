@@ -125,6 +125,24 @@ formulas, configuration, replay semantics, budget accounting, and differences
 from the paper. This implements the paper's two-loop mechanism in a restricted
 program space; smoke results are not evidence of general self-improvement.
 
-Next experiments: expand the fixed suites; compare frozen and adaptive controllers
-at equal total API budgets; calibrate recomputation/CPU-cost tradeoffs; validate
-promising policies against a serving engine before making latency claims.
+## Compare fixed and adaptive controllers
+
+```sh
+uv run --locked python -m dream_rsi.compare \
+  --config configs/dream-comparison.json --backend mimo
+```
+
+This runs three trials per strategy on a larger fixed suite, with eight API calls
+and a $0.10 estimated budget per run ($0.60 total ceiling). Controller-development
+calls count against the adaptive allowance. The default backend is `mock`; use
+it to check the experiment without API costs. A frozen plan, all per-run artifacts,
+and aggregate JSON/Markdown reports are saved under a new `runs/` directory.
+
+See [the experimental design](docs/controller-comparison.md) for workload selection,
+scoring, actual-spend caveats, and interpretation. These small pilots do not establish
+statistical superiority. Further work includes calibrating recomputation/CPU-cost
+tradeoffs and validating promising policies against a serving engine.
+
+The first live pilot is complete: [results and interpretation](docs/controller-comparison-results.md).
+It found a mismatch between mean relative scenario scores and total recomputation;
+neither strategy beat LRU on the latter measure.

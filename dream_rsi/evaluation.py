@@ -28,7 +28,10 @@ def snapshot_suite(suite, project_root):
             raise ValueError("Each scenario requires a name")
         if "path" in item:
             path = (project_root / item["path"]).resolve()
-            item.update(path=str(path), sha256=digest(path))
+            current_hash = digest(path)
+            if "sha256" in item and item["sha256"] != current_hash:
+                raise ValueError("Trace changed after suite snapshot")
+            item.update(path=str(path), sha256=current_hash)
         elif "synthetic" not in item:
             raise ValueError("Scenario requires a path or synthetic configuration")
         frozen.append(item)
