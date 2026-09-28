@@ -1,0 +1,207 @@
+{
+  "trials": 3,
+  "run": {
+    "cycles": 10,
+    "online_rounds": 3,
+    "replay_rounds": 6,
+    "workers": 2,
+    "max_depth": 4,
+    "controller_revisions": 1,
+    "evaluation_timeout_seconds": 180,
+    "max_policy_us_per_request": 50000,
+    "api": {
+      "model": "mimo-v2.6-pro",
+      "thinking": "disabled",
+      "max_completion_tokens": 2048,
+      "max_calls": 40,
+      "max_usd": 0.5,
+      "input_usd_per_million": 0.435,
+      "output_usd_per_million": 0.87
+    },
+    "train": [
+      {
+        "name": "sharegpt-train-1-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00001.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "sharegpt-train-1-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00001.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "sharegpt-train-2-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00002.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "sharegpt-train-2-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00002.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "sharegpt-train-3-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00003.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "sharegpt-train-3-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/train/trace-00003.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "mashqa-train-1-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00001.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "mashqa-train-1-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00001.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "mashqa-train-2-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00002.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "mashqa-train-2-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00002.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "mashqa-train-3-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00003.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "mashqa-train-3-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/train/trace-00003.json",
+        "capacity_blocks": 4096
+      }
+    ],
+    "validation": [
+      {
+        "name": "sharegpt-validation-7-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00007.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "sharegpt-validation-7-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00007.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "sharegpt-validation-8-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00008.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "sharegpt-validation-8-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00008.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "sharegpt-validation-9-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00009.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "sharegpt-validation-9-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00009.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "sharegpt-validation-10-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00010.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "sharegpt-validation-10-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00010.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "sharegpt-validation-11-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00011.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "sharegpt-validation-11-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00011.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "sharegpt-validation-12-cap2048",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00012.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "sharegpt-validation-12-cap4096",
+        "path": "data/tokenized/qwen2.5/sharegpt/validation/trace-00012.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "mashqa-validation-7-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00007.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "mashqa-validation-7-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00007.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "mashqa-validation-8-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00008.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "mashqa-validation-8-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00008.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "mashqa-validation-9-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00009.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "mashqa-validation-9-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00009.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "mashqa-validation-10-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00010.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "mashqa-validation-10-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00010.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "mashqa-validation-11-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00011.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "mashqa-validation-11-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00011.json",
+        "capacity_blocks": 4096
+      },
+      {
+        "name": "mashqa-validation-12-cap2048",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00012.json",
+        "capacity_blocks": 2048
+      },
+      {
+        "name": "mashqa-validation-12-cap4096",
+        "path": "data/tokenized/qwen2.5/mashqa/validation/trace-00012.json",
+        "capacity_blocks": 4096
+      }
+    ],
+    "scoring": "total_extra_v2"
+  }
+}

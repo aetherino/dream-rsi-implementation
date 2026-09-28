@@ -178,3 +178,20 @@ Batch jobs are asynchronous. Later search rounds depend on earlier results;
 multiple provider waves are required. The coordinator saves progress and can
 resume without resubmitting known jobs. See [the batch-run guide](docs/batched-long-run.md)
 for experiment design, pricing, recovery, and interpretation.
+
+### Regular API fallback
+
+The same resumable coordinator can use concurrent regular MiMo requests when
+provider batching is inconvenient. This uses standard token rates, not the batch
+discount. The 240-call and $3 total ceilings are unchanged:
+
+```sh
+.venv/bin/python -m dream_rsi.batch_compare \
+  --config configs/dream-comparison-long.json --backend mimo \
+  --output runs/comparison-long-realtime-20260927 --watch
+```
+
+Up to four requests run concurrently across independent trials. Each request's
+outcome is saved immediately. Restart with the same output path and `--resume
+--watch`; completed requests are reused, and requests interrupted with an unknown
+outcome are recorded as failed attempts without automatic resubmission.

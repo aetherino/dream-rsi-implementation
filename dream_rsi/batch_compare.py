@@ -1,4 +1,4 @@
-"""Resumable fixed/adaptive comparison using real provider batches across trials."""
+"""Resumable fixed/adaptive comparison with provider batches or concurrent realtime requests."""
 import argparse
 import copy
 import fcntl
@@ -15,6 +15,7 @@ from .history import evaluate_controller, observation, root
 from .programs import Controller, INITIAL_CONTROLLER
 from .prompts import controller_prompt, discovery_prompt
 from .runner import prepare_config
+from .realtime_transport import RealtimeTransport
 
 
 def source_hashes(project_root):
@@ -63,7 +64,7 @@ def usage(run, backend):
     return {"backend": backend, "model": run["config"]["api"]["model"],
             "thinking": run["config"]["api"]["thinking"], "calls": len(run["records"]),
             "estimated_usd": sum(r["charged_estimate_usd"] for r in run["records"]),
-            "cost_basis": "Configured batch uncached rates; pending/unknown results retain reservation",
+            "cost_basis": "Configured uncached rates for the selected transport; pending/unknown results retain reservation",
             "records": run["records"]}
 
 
@@ -246,9 +247,11 @@ def save_artifacts(state, output):
     report = {"status": state["status"], "backend": state["backend"], "plan": state["plan"],
               "runs": rows, "aggregate": aggregate(rows), "error": state.get("error")}
     write_json(output / "comparison.json", report)
-    text = markdown_report(report).replace("controller pilot", "controller batch experiment")
-    text = text.replace("The run order alternates by pair.", "Trials advance together; ready requests share provider batches.")
-    text += f"\nProvider waves submitted/planned: {state['wave']}. Pending requests: {sum(len(r['pending']) for r in state['runs'])}.\n"
+    text = markdown_report(report).replace("controller pilot", "controller longer experiment")
+    scheduling = ("Trials advance together using concurrent regular API requests." if state["backend"] == "mimo"
+                  else "Trials advance together; ready requests share provider batches.")
+    text = text.replace("The run order alternates by pair.", scheduling)
+    text += f"\nRequest waves submitted/planned: {state['wave']}. Pending requests: {sum(len(r['pending']) for r in state['runs'])}.\n"
     text += f"Current estimated cost including pending reservations: ${sum(usage(r, state['backend'])['estimated_usd'] for r in state['runs']):.6f}.\n"
     (output / "report.md").write_text(text)
     return report
@@ -264,7 +267,8 @@ def initialize(raw, backend, project_root):
     plan = {"trials": trials, "backend": backend, "base_config": base,
             "estimated_usd_ceiling": 2 * trials * base["api"]["max_usd"],
             "total_call_ceiling": 2 * trials * base["api"]["max_calls"],
-            "scheduling": "All trials advance independently; ready requests share a provider batch"}
+            "scheduling": ("Independent trials; up to four concurrent regular API requests" if backend == "mimo"
+                           else "All trials advance independently; ready requests share a provider batch")}
     runs = []
     for trial in range(1, trials + 1):
         for arm in (("fixed", "adaptive") if trial % 2 else ("adaptive", "fixed")):
@@ -290,7 +294,8 @@ def tick(state, output, project_root, transport=None, attach_batch=None):
             results = {j["id"]: {"program": mock.generate(j["role"], j["prompt"], j["context"]), "error": None,
                                    "usage": {"prompt_tokens": 0, "completion_tokens": 0}, "explicit_failure": False} for j in jobs}
         else:
-            transport = transport or BatchTransport(state["base_url"], project_root, output / "batches")
+            transport = transport or (RealtimeTransport(project_root, output / "requests") if state["backend"] == "mimo"
+                                      else BatchTransport(state["base_url"], project_root, output / "batches"))
             results = transport.poll(state["wave"], jobs, attach_batch=attach_batch)
         if results is None:
             state["status"] = "waiting_for_batch"
@@ -320,7 +325,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=Path("configs/dream-comparison-batch.json"))
     parser.add_argument("--output", required=True, type=Path)
-    parser.add_argument("--backend", choices=["mock", "mimo-batch"], default="mock")
+    parser.add_argument("--backend", choices=["mock", "mimo", "mimo-batch"], default="mock")
     parser.add_argument("--base-url", help="Account-specific Batch API Base URL from the MiMo console")
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--prepare-only", action="store_true", help="Freeze suites and prepare first wave without API calls")
