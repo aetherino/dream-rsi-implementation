@@ -9,6 +9,7 @@ import uuid
 
 from .backend import write_json
 from .runner import prepare_config, run
+from .scoring import LEGACY_MACRO, TOTAL_EXTRA, objective_description
 
 
 def arm_config(base, arm):
@@ -42,6 +43,7 @@ def summarize_run(directory, trial, arm):
                 for p in sorted(directory.glob("tree-*.json"))
                 for n in json.loads(p.read_text())["nodes"][1:] if not n["valid"]]
     return {"trial": trial, "arm": arm, "path": str(directory), "status": summary["status"],
+            "scoring": summary.get("scoring", LEGACY_MACRO),
             "train_score": summary["best_train_score"], "validation_score": summary["validation_score"],
             "calls": usage["calls"], "discovery_calls": sum(r["role"] == "discovery" for r in usage["records"]),
             "controller_calls": sum(r["role"] == "controller" for r in usage["records"]),
@@ -53,6 +55,8 @@ def summarize_run(directory, trial, arm):
 
 
 def aggregate(rows):
+    if len({r.get("scoring", LEGACY_MACRO) for r in rows}) > 1:
+        raise ValueError("Cannot aggregate runs with different scoring versions")
     arms = {}
     for arm in ("fixed", "adaptive"):
         selected = [r for r in rows if r["arm"] == arm]
@@ -84,6 +88,7 @@ def aggregate(rows):
 
 
 def markdown_report(report):
+    scoring = report["plan"]["base_config"].get("scoring", LEGACY_MACRO)
     lines = ["# Fixed versus adaptive controller pilot", "", f"Status: **{report['status']}**. Backend: `{report['backend']}`.", "",
              "Both strategies receive the same call-count, output-token and estimated-dollar ceilings. Controller-development calls count against the adaptive allowance. Actual token spending may differ; this is not exact dollar-spend matching.", "",
              "| Trial | Strategy | Train score | Validation score | Discovery calls | Controller calls | Accepted revisions | Estimated USD |",
@@ -94,15 +99,15 @@ def markdown_report(report):
     if stats["mean_adaptive_minus_fixed"] is not None:
         lines += ["", f"Mean validation difference (adaptive − fixed): **{stats['mean_adaptive_minus_fixed']:+.5f}**."]
     lines += ["", f"Total estimated API cost: **${stats['estimated_usd']:.6f}**.", "",
-              "## Raw held-out recomputation (descriptive secondary measure)", "",
+              "## Held-out recomputation", "",
               "| Strategy | Mean extra tokens per run | LRU reference | Change vs LRU |",
               "| --- | ---: | ---: | ---: |"]
     for arm, metrics in stats["arms"].items():
         change = metrics["total_extra_fraction_change_vs_lru"]
         formatted = f"{change:+.2%}" if change is not None else "undefined (zero LRU extra)"
         lines.append(f"| {arm} | {metrics['mean_validation_extra_tokens']:,.2f} | {metrics['mean_lru_validation_extra_tokens']:,.2f} | {formatted} |")
-    lines += ["", "Lower raw extra-token counts are better. These sum scenarios, including each capacity as a separate replay. This diagnostic is not the optimization score and was added after the pilot exposed a difference between the two measures. A positive mean relative score need not mean fewer total recomputed tokens.", "",
-              "Scores are mean per-scenario reductions in extra recomputation versus LRU, using the harness's zero-denominator convention. Higher is better. Scenarios share shards across capacities, so they are not independent replicates.", "",
+    lines += ["", f"Scoring version: `{scoring}`. " + objective_description(scoring), "",
+              "Lower raw extra-token counts are better. These sum scenarios, including each capacity as a separate replay. Higher task scores are better. Scenarios share shards across capacities, so they are not independent replicates.", "",
               "This small pilot reports all trials, not just the best run. Trial pairs share workloads and settings, not identical model samples or guaranteed random seeds. The run order alternates by pair. No significance or general superiority claim is warranted from three pairs.", "",
               "Validation is evaluated once for each training-selected winner and is never fed into generation. The experiment does not tune settings after observing validation; test data is unused. Model thinking is disabled in this pilot, so results do not establish behavior in thinking mode.", "",
               "See comparison.json for per-scenario outcomes, failures, policies, spending, variability and accepted controller revisions.", ""]
@@ -149,7 +154,7 @@ def compare(raw, backend, project_root, output):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--config", type=Path, default=Path("configs/dream-comparison.json"))
+    parser.add_argument("--config", type=Path, default=Path("configs/dream-comparison-total.json"))
     parser.add_argument("--backend", choices=["mock", "mimo"], default="mock")
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()

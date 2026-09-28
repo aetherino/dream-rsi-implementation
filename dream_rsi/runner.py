@@ -10,12 +10,14 @@ from .evaluation import isolated_evaluate, snapshot_suite
 from .history import evaluate_controller, observation, root
 from .programs import Controller, INITIAL_CONTROLLER
 from .prompts import compact_node, controller_prompt, discovery_prompt
+from .scoring import TOTAL_EXTRA, SCORING_MODES
 
 
 API_DEFAULTS = {"model": "mimo-v2.6-pro", "max_calls": 24, "max_usd": 0.5,
                 "max_completion_tokens": 4096, "thinking": "disabled", "timeout_seconds": 120,
                 "input_usd_per_million": 0.435, "output_usd_per_million": 0.87}
 DEFAULTS = {"cycles": 2, "online_rounds": 4, "replay_rounds": 6, "workers": 2,
+            "scoring": TOTAL_EXTRA,
             "max_depth": 4, "controller_revisions": 2, "block_size": 16,
             "revise_after_final_cycle": True, "stop_on_empty_rollout": False,
             "beta_calls": 0.02, "beta_parallel": 0.005, "evaluation_timeout_seconds": 120,
@@ -24,6 +26,8 @@ DEFAULTS = {"cycles": 2, "online_rounds": 4, "replay_rounds": 6, "workers": 2,
 
 def prepare_config(raw, project_root):
     config = DEFAULTS | raw
+    if config["scoring"] not in SCORING_MODES:
+        raise ValueError("Unknown scoring mode")
     config["api"] = API_DEFAULTS | config.get("api", {})
     for name in ("revise_after_final_cycle", "stop_on_empty_rollout"):
         if type(config[name]) is not bool:
@@ -88,6 +92,7 @@ def run(config, backend_name, project_root, output):
         return isolated_evaluate({"suite": config["train"] if suite is None else suite,
                                   "block_size": config["block_size"], "candidate": candidate,
                                   "baselines": baselines,
+                                  "scoring": config["scoring"],
                                   "max_policy_us_per_request": config["max_policy_us_per_request"]},
                                  config["evaluation_timeout_seconds"])
 
@@ -143,7 +148,7 @@ def run(config, backend_name, project_root, output):
                         node_id = len(tree) + offset
                         parent = by_id[parent_id]
                         prior_best = [max(history, key=lambda n: n["score"]) for history in histories[-4:]]
-                        prompt = discovery_prompt(parent, tree, suite_summary, prior_best)
+                        prompt = discovery_prompt(parent, tree, suite_summary, prior_best, config["scoring"])
                         jobs.append((node_id, parent, pool.submit(generate, "discovery", prompt,
                                                                   {"cycle": cycle, "node": node_id})))
                     # Generation overlaps. Evaluations are serialized for less noisy CPU timing.
@@ -189,7 +194,7 @@ def run(config, backend_name, project_root, output):
                     if cycle == config["cycles"] or remaining < 2:
                         break
                 prompt = controller_prompt(controller, incumbent_feedback,
-                                           [[compact_node(n) for n in history] for history in histories], replay_settings, revision_log)
+                                           [[compact_node(n) for n in history] for history in histories], replay_settings, revision_log, config["scoring"])
                 proposal = None
                 try:
                     proposal = generate("controller", prompt, {"cycle": cycle, "revision": revision})
@@ -221,6 +226,7 @@ def run(config, backend_name, project_root, output):
                           if validation_baselines["valid"] else validation_baselines)
             write_json(output / "validation.json", validation)
         summary = {"status": stop_reason, "backend": backend_name, "cycles_recorded": len(histories),
+                   "scoring": config["scoring"],
                    "task_attempts": sum(len(h) - 1 for h in histories), "best_train_score": best["score"],
                    "valid_task_attempts": sum(n["valid"] for h in histories for n in h[1:]),
                    "best_policy": best["candidate"], "controller": controller,

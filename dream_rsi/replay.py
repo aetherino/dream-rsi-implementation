@@ -5,6 +5,7 @@ from pathlib import Path
 
 from .backend import write_json
 from .history import evaluate_controller
+from .scoring import LEGACY_MACRO
 
 
 def main():
@@ -22,6 +23,8 @@ def main():
         result = evaluate_controller(spec, histories, workers=config["workers"], max_rounds=config["replay_rounds"],
                                      max_depth=config["max_depth"], beta_calls=config["beta_calls"],
                                      beta_parallel=config["beta_parallel"])
+        # Replay preserves recorded rewards; it never silently rescores historical trees.
+        result["scoring"] = config.get("scoring", LEGACY_MACRO)
         if args.output:
             # Preserve recorded run data; replay outputs must be new files.
             if args.output.exists():

@@ -1,4 +1,5 @@
 import json
+from .scoring import TOTAL_EXTRA, objective_description
 
 LANGUAGE = """Expressions support finite numbers, + - * /, comparisons, and/or/not, x if condition else y,
 and min(a,b), max(a,b), abs(x), log1p(x), sqrt(x). No other syntax or functions.
@@ -13,27 +14,27 @@ def compact_node(node):
     feedback = node["feedback"]
     return {k: node[k] for k in ("id", "parent", "depth", "score", "valid", "candidate")} | {
         "feedback": {"error": feedback.get("error"), "runs": [
-            {k: r[k] for k in ("name", "extra_computed_tokens", "improvement", "evicted_blocks", "policy_us_per_request")}
+            {k: r[k] for k in ("name", "extra_computed_tokens", "lru_extra_computed_tokens",
+                               "saved_prompt_tokens", "score_contribution", "evicted_blocks", "policy_us_per_request") if k in r}
             for r in feedback.get("runs", [])]}}
 
 
-def discovery_prompt(parent, visible, suite_summary, prior_rollouts=()):
+def discovery_prompt(parent, visible, suite_summary, prior_rollouts=(), scoring=TOTAL_EXTRA):
     return """Propose an improved prefix-cache eviction policy for the fixed CPU simulator.
 The lowest retention_score among eligible entries is evicted. Ties use least recent access order.
 Entries are equal-sized blocks, only unpinned leaves are eligible. Ancestors remain resident.
 Available variables: now, depth, inserted_at, last_access, frequency, insertion_order, access_order.
 Times are virtual request arrival times; frequency is access count since insertion; depth is prefix blocks.
-The score is the equally weighted mean of (LRU extra tokens - candidate extra tokens)/max(1, LRU extra tokens).
 Extra tokens are prompt computation beyond an unlimited-cache replay. Higher score is better; initial LRU=0.
 Policies must also satisfy a CPU-time feasibility limit. Real GPU latency is not measured.
 Output schema: {"name": "...", "retention_score": "expression", "rationale": "..."}.
 Improve the selected parent, using only allowed entry metadata at runtime.
-""" + LANGUAGE + "\n" + json.dumps({"selected_parent": compact_node(parent),
+""" + objective_description(scoring) + "\n" + LANGUAGE + "\n" + json.dumps({"selected_parent": compact_node(parent),
         "recent_observations": [compact_node(n) for n in visible[-12:]],
         "prior_rollout_best_observations": [compact_node(n) for n in prior_rollouts], "suite": suite_summary})
 
 
-def controller_prompt(incumbent, feedback, history_summaries, settings, revision_log=()):
+def controller_prompt(incumbent, feedback, history_summaries, settings, revision_log=(), scoring=TOTAL_EXTRA):
     return """Revise the exploration controller, not the cache policy.
 It chooses a batch of at most W distinct nodes from the root plus observed leaves each round.
 Selecting root opens one new branch; selecting a leaf refines it once. Stop if no eligible actions.
@@ -48,7 +49,7 @@ N counts revealed recorded attempts including failures; initial LRU score 0 is a
 Replay can only reveal already recorded outcomes; it cannot invent a continuation. Missing continuations
 consume a round slot and become exhausted, with no new generation-call charge. The incumbent is retained
 unless a revision strictly improves value on the identical history pool. Avoid overfitting these histories.
-""" + LANGUAGE + "\n" + json.dumps({"incumbent": incumbent, "incumbent_replay": feedback,
+""" + objective_description(scoring) + "\n" + LANGUAGE + "\n" + json.dumps({"incumbent": incumbent, "incumbent_replay": feedback,
         "historical_trees": history_summaries, "settings": settings,
         "previous_revisions": [{"controller": r["controller"], "accepted": r["accepted"],
                                  "evaluation": r["evaluation"]} for r in revision_log]})

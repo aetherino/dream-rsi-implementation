@@ -10,6 +10,7 @@ from cache_sim.engine import replay
 from cache_sim.policies import BASELINES
 from cache_sim.trace import compile_trace, load_trace, synthetic_trace
 from .programs import RetentionPolicy
+from .scoring import TOTAL_EXTRA, score_recomputation
 
 
 def digest(path):
@@ -40,8 +41,9 @@ def snapshot_suite(suite, project_root):
     return frozen
 
 
-def run_suite(suite, block_size, *, candidate=None, baselines=None, max_policy_us_per_request=50000):
-    """Score each scenario equally; timing is a feasibility gate, not fake latency."""
+def run_suite(suite, block_size, *, candidate=None, baselines=None, max_policy_us_per_request=50000,
+              scoring=TOTAL_EXTRA):
+    """Minimize total recomputation; timing remains a feasibility gate."""
     if candidate is not None:
         RetentionPolicy(candidate)  # Reject malformed expressions even if no eviction happens.
     runs = []
@@ -70,12 +72,17 @@ def run_suite(suite, block_size, *, candidate=None, baselines=None, max_policy_u
             extra = result["computed_prompt_tokens"] - reference["unlimited"]["computed_prompt_tokens"]
             lru_extra = reference["policies"]["lru"]["extra_computed_tokens"]
             result.update(name=item["name"], extra_computed_tokens=extra,
+                          lru_extra_computed_tokens=lru_extra, saved_prompt_tokens=lru_extra - extra,
                           improvement=(lru_extra - extra) / max(1, lru_extra))
             runs.append(result)
     if candidate is None:
-        return {"valid": True, "baselines": runs}
+        return {"valid": True, "scoring": scoring, "baselines": runs}
+    metrics = score_recomputation([r["extra_computed_tokens"] for r in runs],
+                                  [r["lru_extra_computed_tokens"] for r in runs], scoring)
+    for result, contribution in zip(runs, metrics.pop("score_contributions")):
+        result["score_contribution"] = contribution
     within_budget = all(r["policy_us_per_request"] <= max_policy_us_per_request for r in runs)
-    return {"valid": within_budget, "score": sum(r["improvement"] for r in runs) / len(runs),
+    return {"valid": within_budget, **metrics,
             "error": None if within_budget else "Policy CPU time exceeds configured per-request limit",
             "runs": runs}
 

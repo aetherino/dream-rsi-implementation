@@ -1,0 +1,754 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-27",
+  "config": "configs/dream-comparison-total.json",
+  "scoring": "total_extra_v2",
+  "backend": "mimo",
+  "status": "completed",
+  "aggregate": {
+    "arms": {
+      "fixed": {
+        "runs": 3,
+        "mean_validation_score": 0.037996545768566495,
+        "mean_validation_extra_tokens": 35648,
+        "mean_lru_validation_extra_tokens": 37056,
+        "total_extra_fraction_change_vs_lru": -0.03799654576856648,
+        "min_validation_score": 0.0,
+        "max_validation_score": 0.07556131260794473,
+        "sample_sd": 0.03778250673978177,
+        "mean_train_score": 0.044683438960373856,
+        "total_calls": 24,
+        "discovery_calls": 24,
+        "controller_calls": 0,
+        "accepted_revisions": 0,
+        "estimated_usd": 0.071772825
+      },
+      "adaptive": {
+        "runs": 3,
+        "mean_validation_score": 0.11197466896948761,
+        "mean_validation_extra_tokens": 32906.666666666664,
+        "mean_lru_validation_extra_tokens": 37056,
+        "total_extra_fraction_change_vs_lru": -0.1119746689694876,
+        "min_validation_score": 0.07340241796200346,
+        "max_validation_score": 0.18393782383419688,
+        "sample_sd": 0.062375743146951525,
+        "mean_train_score": 0.0733627808719032,
+        "total_calls": 24,
+        "discovery_calls": 21,
+        "controller_calls": 3,
+        "accepted_revisions": 0,
+        "estimated_usd": 0.07829565
+      }
+    },
+    "paired_differences": [
+      {
+        "trial": 1,
+        "adaptive_minus_fixed": -0.0021588946459412672
+      },
+      {
+        "trial": 2,
+        "adaptive_minus_fixed": 0.18393782383419688
+      },
+      {
+        "trial": 3,
+        "adaptive_minus_fixed": 0.04015544041450777
+      }
+    ],
+    "mean_adaptive_minus_fixed": 0.07397812320092112,
+    "estimated_usd": 0.150068475
+  },
+  "runs": [
+    {
+      "trial": 1,
+      "arm": "fixed",
+      "path": "runs/comparison-total-v2-20260927/trial-01-fixed",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.11350105627040523,
+      "validation_score": 0.07556131260794473,
+      "calls": 8,
+      "discovery_calls": 8,
+      "controller_calls": 0,
+      "valid_candidates": 8,
+      "candidate_failures": [],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.024460919999999997,
+      "elapsed_seconds": 116.78615949998493,
+      "best_policy": {
+        "name": "cost-aware-lru-with-weak-freq-and-depth",
+        "retention_score": "last_access + 200 * log1p(frequency) + 5 * log1p(depth)",
+        "rationale": "Parent (freq-boosted-recency-with-depth-bonus) lost overall despite a huge win on mashqa-train-3-cap2048 because it introduced large regressions on sharegpt (e.g. +9024 extra on sharegpt-1-cap2048, +2640 on sharegpt-1-cap4096 where LRU was already near-zero). Sum across scenarios, not per-scenario wins, is the objective, so avoiding new losses on already-good scenarios matters more than further fixing the biggest loser. Diagnosis: the frequency bonus (400*log1p(freq)) and depth bonus (30*log1p(depth)) are too strong relative to recency. They pull cold-but-fresh blocks below stale-but-frequent/deep blocks, breaking prefix-block ordering. Because blocks form prefixes, a single displaced deep block forces recomputation of everything past it, so preserving strict recency/order alignment (which LRU already does well) is critical. Fix: keep the frequency term (it delivered +10976 on mashqa-3) but halve its weight to 200 so hotness only rescues blocks within a smaller recency window, and cut the depth weight to 5 so depth is only a tie-breaker among similarly-stale candidates rather than a driver. This keeps LRU's ordering behavior on sharegpt (where LRU is already near-optimal) while retaining most of the frequency gains on mashqa. Total should now beat LRU suite-wide: keep mashqa-3 gains, shed most sharegpt regressions. Cheap ops (log1p, mul, add) keep CPU per request well under the 50000us limit."
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-4-cap2048",
+          "improvement": 0.12742980561555076,
+          "extra_computed_tokens": 6464,
+          "lru_extra_computed_tokens": 7408,
+          "policy_us_per_request": 1799.6860166666665
+        },
+        {
+          "name": "sharegpt-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 365.14363888888886
+        },
+        {
+          "name": "sharegpt-validation-5-cap2048",
+          "improvement": -0.2808988764044944,
+          "extra_computed_tokens": 12768,
+          "lru_extra_computed_tokens": 9968,
+          "policy_us_per_request": 2224.954623529412
+        },
+        {
+          "name": "sharegpt-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 351.4798352941176
+        },
+        {
+          "name": "sharegpt-validation-6-cap2048",
+          "improvement": -0.031446540880503145,
+          "extra_computed_tokens": 7872,
+          "lru_extra_computed_tokens": 7632,
+          "policy_us_per_request": 1525.7052167487684
+        },
+        {
+          "name": "sharegpt-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 200.60349753694584
+        },
+        {
+          "name": "mashqa-validation-4-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 413.2213939393939
+        },
+        {
+          "name": "mashqa-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 419.5432878787879
+        },
+        {
+          "name": "mashqa-validation-5-cap2048",
+          "improvement": 0.4140730717185386,
+          "extra_computed_tokens": 6928,
+          "lru_extra_computed_tokens": 11824,
+          "policy_us_per_request": 1345.733973568282
+        },
+        {
+          "name": "mashqa-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 54.22364757709251
+        },
+        {
+          "name": "mashqa-validation-6-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 224,
+          "lru_extra_computed_tokens": 224,
+          "policy_us_per_request": 876.66891160221
+        },
+        {
+          "name": "mashqa-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 69.95082872928177
+        }
+      ]
+    },
+    {
+      "trial": 1,
+      "arm": "adaptive",
+      "path": "runs/comparison-total-v2-20260927/trial-01-adaptive",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.05780679854042635,
+      "validation_score": 0.07340241796200346,
+      "calls": 8,
+      "discovery_calls": 7,
+      "controller_calls": 1,
+      "valid_candidates": 6,
+      "candidate_failures": [
+        {
+          "cycle_file": "tree-002.json",
+          "node": 2,
+          "error": "ValueError: Unexpected policy fields"
+        }
+      ],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.02533266,
+      "elapsed_seconds": 116.81022095799563,
+      "best_policy": {
+        "name": "lru-recency-deep-hot",
+        "retention_score": "last_access + 20 * log1p(frequency) * log1p(depth) + 200 / (1 + abs(depth - 4))",
+        "rationale": "Depth-4 prefix blocks are treated as costly anchors whose eviction multiplies recomputation across many downstream blocks, so they receive a bounded structural bonus via 200/(1+abs(depth-4)). Frequency contributes only multiplicatively with depth, meaning frequency boosts retention primarily for deeper blocks (where repeated reuse suggests a shared long prefix) rather than shallow ones (which are cheap to recompute and closer to the root where eviction is unhelpful). Recency remains the dominant term at 100 per unit of time in normal ranges, preserving LRU's proven behavior while correcting its main failure mode: dropping long frequently-reused anchors that cost many extra tokens when recomputed. The multiplicative depth-frequency interaction naturally stays small for shallow blocks (depth 0 or 1), preventing the boost over-retention seen in the previous iteration where frequency added unconditionally and evicted hot anchors prematurely. Tie-breaking naturally falls back to last_access since it is the dominant additive term. Policy cost remains moderate: only log1p and one division, well within the 50000 us/request CPU feasibility budget given prior measurements of 2400us max."
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-4-cap2048",
+          "improvement": 0.10583153347732181,
+          "extra_computed_tokens": 6624,
+          "lru_extra_computed_tokens": 7408,
+          "policy_us_per_request": 3114.324222222222
+        },
+        {
+          "name": "sharegpt-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 473.36965000000004
+        },
+        {
+          "name": "sharegpt-validation-5-cap2048",
+          "improvement": -0.24719101123595505,
+          "extra_computed_tokens": 12432,
+          "lru_extra_computed_tokens": 9968,
+          "policy_us_per_request": 4190.949347058823
+        },
+        {
+          "name": "sharegpt-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 469.0680705882353
+        },
+        {
+          "name": "sharegpt-validation-6-cap2048",
+          "improvement": -0.15513626834381553,
+          "extra_computed_tokens": 8816,
+          "lru_extra_computed_tokens": 7632,
+          "policy_us_per_request": 2838.096896551724
+        },
+        {
+          "name": "sharegpt-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 259.52364532019703
+        },
+        {
+          "name": "mashqa-validation-4-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 415.3399772727273
+        },
+        {
+          "name": "mashqa-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 407.4011590909091
+        },
+        {
+          "name": "mashqa-validation-5-cap2048",
+          "improvement": 0.4654939106901218,
+          "extra_computed_tokens": 6320,
+          "lru_extra_computed_tokens": 11824,
+          "policy_us_per_request": 1835.4553700440529
+        },
+        {
+          "name": "mashqa-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 52.61956387665198
+        },
+        {
+          "name": "mashqa-validation-6-cap2048",
+          "improvement": 0.35714285714285715,
+          "extra_computed_tokens": 144,
+          "lru_extra_computed_tokens": 224,
+          "policy_us_per_request": 1198.19382320442
+        },
+        {
+          "name": "mashqa-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 68.45580110497237
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "arm": "adaptive",
+      "path": "runs/comparison-total-v2-20260927/trial-02-adaptive",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.15440752832725177,
+      "validation_score": 0.18393782383419688,
+      "calls": 8,
+      "discovery_calls": 7,
+      "controller_calls": 1,
+      "valid_candidates": 7,
+      "candidate_failures": [],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.025674570000000004,
+      "elapsed_seconds": 114.50201012499747,
+      "best_policy": {
+        "name": "freq-biased-lru-k700",
+        "retention_score": "last_access + 700 * frequency / (1 + depth)",
+        "rationale": "Parent k=500 scored 0.145, improving on k=1000's 0.142 by trading some mashqa-train-3 savings (10672->7760) for much better sharegpt behavior (sharegpt-train-2 went from -1664 to +992 saved). Interpolating to k=700 should recover part of the mashqa-train-3 savings lost between k=1000 and k=500 (the marginal gain from 500->1000 was roughly 3.3 tokens saved per unit k in mashqa-train-3) while staying closer to k=500 in sharegpt scenarios where over-protecting frequent blocks displaced recently-needed ones. Total LRU baseline tokens sum to 83312 across the suite, so even modest per-scenario gains compound in the objective. Deeper blocks retain smaller boosts since they serve fewer descendant prefixes, and (1+depth) is always >=1 so the division is safe. Expression is simple arithmetic, well under node and depth limits, with bounded intermediate values."
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-4-cap2048",
+          "improvement": 0.22894168466522677,
+          "extra_computed_tokens": 5712,
+          "lru_extra_computed_tokens": 7408,
+          "policy_us_per_request": 1965.3774611111112
+        },
+        {
+          "name": "sharegpt-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 317.97228333333334
+        },
+        {
+          "name": "sharegpt-validation-5-cap2048",
+          "improvement": -0.28731942215088285,
+          "extra_computed_tokens": 12832,
+          "lru_extra_computed_tokens": 9968,
+          "policy_us_per_request": 2502.6823705882352
+        },
+        {
+          "name": "sharegpt-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 307.11879999999996
+        },
+        {
+          "name": "sharegpt-validation-6-cap2048",
+          "improvement": 0.1278825995807128,
+          "extra_computed_tokens": 6656,
+          "lru_extra_computed_tokens": 7632,
+          "policy_us_per_request": 1767.290502463054
+        },
+        {
+          "name": "sharegpt-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 173.11331527093597
+        },
+        {
+          "name": "mashqa-validation-4-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 414.7225378787879
+        },
+        {
+          "name": "mashqa-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 413.5483712121212
+        },
+        {
+          "name": "mashqa-validation-5-cap2048",
+          "improvement": 0.5751014884979703,
+          "extra_computed_tokens": 5024,
+          "lru_extra_computed_tokens": 11824,
+          "policy_us_per_request": 1016.1424449339207
+        },
+        {
+          "name": "mashqa-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 51.90419383259912
+        },
+        {
+          "name": "mashqa-validation-6-cap2048",
+          "improvement": 0.9285714285714286,
+          "extra_computed_tokens": 16,
+          "lru_extra_computed_tokens": 224,
+          "policy_us_per_request": 670.2660497237569
+        },
+        {
+          "name": "mashqa-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 69.14311602209945
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "arm": "fixed",
+      "path": "runs/comparison-total-v2-20260927/trial-02-fixed",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.0,
+      "validation_score": 0.0,
+      "calls": 8,
+      "discovery_calls": 8,
+      "controller_calls": 0,
+      "valid_candidates": 8,
+      "candidate_failures": [],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.02325945,
+      "elapsed_seconds": 117.67603570802021,
+      "best_policy": {
+        "name": "initial-lru",
+        "retention_score": "last_access",
+        "rationale": "LRU baseline"
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-4-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 7408,
+          "lru_extra_computed_tokens": 7408,
+          "policy_us_per_request": 1002.7570722222222
+        },
+        {
+          "name": "sharegpt-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 223.95692222222223
+        },
+        {
+          "name": "sharegpt-validation-5-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 9968,
+          "lru_extra_computed_tokens": 9968,
+          "policy_us_per_request": 1114.2029117647057
+        },
+        {
+          "name": "sharegpt-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 215.48231764705884
+        },
+        {
+          "name": "sharegpt-validation-6-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 7632,
+          "lru_extra_computed_tokens": 7632,
+          "policy_us_per_request": 867.1258472906403
+        },
+        {
+          "name": "sharegpt-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 135.47321674876846
+        },
+        {
+          "name": "mashqa-validation-4-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 427.0846212121212
+        },
+        {
+          "name": "mashqa-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 428.56367424242427
+        },
+        {
+          "name": "mashqa-validation-5-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 11824,
+          "lru_extra_computed_tokens": 11824,
+          "policy_us_per_request": 826.1909559471366
+        },
+        {
+          "name": "mashqa-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 55.40424669603524
+        },
+        {
+          "name": "mashqa-validation-6-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 224,
+          "lru_extra_computed_tokens": 224,
+          "policy_us_per_request": 420.7806464088398
+        },
+        {
+          "name": "mashqa-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 70.54403867403315
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "arm": "fixed",
+      "path": "runs/comparison-total-v2-20260927/trial-03-fixed",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.020549260610716342,
+      "validation_score": 0.03842832469775475,
+      "calls": 8,
+      "discovery_calls": 8,
+      "controller_calls": 0,
+      "valid_candidates": 8,
+      "candidate_failures": [],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.024052455,
+      "elapsed_seconds": 107.56439974997193,
+      "best_policy": {
+        "name": "lru-dominant-weak-freq",
+        "retention_score": "last_access + log1p(frequency) * 20",
+        "rationale": "Parent massively over-penalized by adding thousands of units to last_access, destroying recency ordering which clearly mattered most given the large regressions. This variant keeps last_access dominant (virtual time gaps between requests are large enough that a 20x log-frequency bonus mostly breaks ties and gives a mild bump to reused blocks without reordering anything meaningfully). log1p(frequency) is cheap to compute and bounded, frequency=0 yields 0 so it reduces to pure LRU for cold blocks. Small constant 20 keeps the perturbation tiny relative to inter-request time deltas while still rewarding reuse in tight eviction races. This is intentionally a near-LRU policy with a very gentle frequency tiebreaker, minimizing risk of large token regressions while allowing small potential gains where blocks have similar last_access but different reuse counts."
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-4-cap2048",
+          "improvement": -0.04535637149028078,
+          "extra_computed_tokens": 7744,
+          "lru_extra_computed_tokens": 7408,
+          "policy_us_per_request": 1434.5925277777778
+        },
+        {
+          "name": "sharegpt-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 296.3894555555555
+        },
+        {
+          "name": "sharegpt-validation-5-cap2048",
+          "improvement": -0.0898876404494382,
+          "extra_computed_tokens": 10864,
+          "lru_extra_computed_tokens": 9968,
+          "policy_us_per_request": 1622.7904647058824
+        },
+        {
+          "name": "sharegpt-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 281.15609411764706
+        },
+        {
+          "name": "sharegpt-validation-6-cap2048",
+          "improvement": -0.04612159329140461,
+          "extra_computed_tokens": 7984,
+          "lru_extra_computed_tokens": 7632,
+          "policy_us_per_request": 1215.3567438423645
+        },
+        {
+          "name": "sharegpt-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 168.27812807881773
+        },
+        {
+          "name": "mashqa-validation-4-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 408.3606439393939
+        },
+        {
+          "name": "mashqa-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 406.192803030303
+        },
+        {
+          "name": "mashqa-validation-5-cap2048",
+          "improvement": 0.2543978349120433,
+          "extra_computed_tokens": 8816,
+          "lru_extra_computed_tokens": 11824,
+          "policy_us_per_request": 1130.3290484581498
+        },
+        {
+          "name": "mashqa-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 53.34039647577092
+        },
+        {
+          "name": "mashqa-validation-6-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 224,
+          "lru_extra_computed_tokens": 224,
+          "policy_us_per_request": 665.9671325966851
+        },
+        {
+          "name": "mashqa-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 66.15472375690608
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "arm": "adaptive",
+      "path": "runs/comparison-total-v2-20260927/trial-03-adaptive",
+      "status": "api_budget_reached",
+      "scoring": "total_extra_v2",
+      "train_score": 0.007874015748031496,
+      "validation_score": 0.07858376511226252,
+      "calls": 8,
+      "discovery_calls": 7,
+      "controller_calls": 1,
+      "valid_candidates": 7,
+      "candidate_failures": [],
+      "accepted_revisions": 0,
+      "invalid_revisions": 0,
+      "estimated_usd": 0.02728842,
+      "elapsed_seconds": 133.67536799999652,
+      "best_policy": {
+        "name": "lru_recency_dominant_medium_freq_depth_tiebreak",
+        "retention_score": "last_access + log1p(frequency) * 30 + depth * 0.001",
+        "rationale": "Parent improved LRU modestly (+0.0038 score, 320 total saved tokens via sharegpt-train-2-cap2048 and mashqa-train-3-cap2048) using small frequency/depth tiebreaks over last_access. All other scenarios matched LRU exactly, showing the policy is a safe recency-first refinement. Given the objective is TOTAL suite-wide extra tokens, and the parent's only wins came from cases where a tiny tiebreak preference kept a deeper/more-reused block resident, I amplify the tiebreak weights moderately: frequency weight 10->30 and depth weight 0.0001->0.001. This remains utterly subordinate to last_access (virtual times are millions, so these terms only re-order entries within tight recency windows) and therefore preserves LRU-level behavior in the vast majority of decisions while strengthening the signal that won tokens in sharegpt-train-2 and mashqa-train-3. Frequency (log-scaled to prevent runaway hot-block retention that previously caused -2.69 catastrophic failure) and depth (shallow-weighted to avoid stranding shallow hot leaves) jointly break near-ties toward blocks that are both reused and expensive-to-rebuild, which is exactly where prefix recompute cost concentrates. I deliberately did not go higher on weights because the earlier catastrophic attempt showed that overriding recency destroys suite-wide totals even if a few scenarios look better individually. CPU cost remains trivial (log1p + a few mults/adds per entry), well within the 50us limit; all metadata (now, depth, inserted_at, last_access, frequency, insertion_order, access_order) is legal and only entry fields are used at runtime. Constants stay tiny and bounded; no division, so no zero-denominator risk."
+      },
+      "scenarios": [
+        {
+          "name": "sharegpt-validation-4-cap2048",
+          "improvement": -0.04535637149028078,
+          "extra_computed_tokens": 7744,
+          "lru_extra_computed_tokens": 7408,
+          "policy_us_per_request": 1626.5263944444443
+        },
+        {
+          "name": "sharegpt-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 334.9360777777778
+        },
+        {
+          "name": "sharegpt-validation-5-cap2048",
+          "improvement": -0.09791332263242375,
+          "extra_computed_tokens": 10944,
+          "lru_extra_computed_tokens": 9968,
+          "policy_us_per_request": 1885.8275352941178
+        },
+        {
+          "name": "sharegpt-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 317.89264705882357
+        },
+        {
+          "name": "sharegpt-validation-6-cap2048",
+          "improvement": 0.031446540880503145,
+          "extra_computed_tokens": 7392,
+          "lru_extra_computed_tokens": 7632,
+          "policy_us_per_request": 1376.403064039409
+        },
+        {
+          "name": "sharegpt-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 187.2466354679803
+        },
+        {
+          "name": "mashqa-validation-4-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 421.2349393939394
+        },
+        {
+          "name": "mashqa-validation-4-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 415.358
+        },
+        {
+          "name": "mashqa-validation-5-cap2048",
+          "improvement": 0.33694181326116374,
+          "extra_computed_tokens": 7840,
+          "lru_extra_computed_tokens": 11824,
+          "policy_us_per_request": 1276.990101321586
+        },
+        {
+          "name": "mashqa-validation-5-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 53.744933920704845
+        },
+        {
+          "name": "mashqa-validation-6-cap2048",
+          "improvement": 0.0,
+          "extra_computed_tokens": 224,
+          "lru_extra_computed_tokens": 224,
+          "policy_us_per_request": 791.3071436464088
+        },
+        {
+          "name": "mashqa-validation-6-cap4096",
+          "improvement": 0.0,
+          "extra_computed_tokens": 0,
+          "lru_extra_computed_tokens": 0,
+          "policy_us_per_request": 69.54696685082872
+        }
+      ]
+    }
+  ],
+  "usage_tokens": {
+    "prompt": 314353,
+    "completion": 15316
+  },
+  "audit": {
+    "valid": true,
+    "evaluations_checked": 62,
+    "runs_checked": 6,
+    "shared_trace_and_source_hashes": true,
+    "scores_match_raw_totals": true,
+    "training_winners_are_best_observed": true
+  },
+  "implementation_hashes_at_execution": {
+    "dream_rsi/worker.py": "cc152e276cdbfd077800a43d000373f4b293d6a2c4ac43c38661af6312940108",
+    "dream_rsi/runner.py": "223beaae53d0b741ef89ece0d3a79032eff6d708b8b94e298179fc1a3deecf08",
+    "dream_rsi/backend.py": "8787e489efddb9a35f3a0ae309e61007cedb381e4af32ce5c4bb5ba2737461b0",
+    "dream_rsi/scoring.py": "686c2fb66223a1bed8c88ecd1f66486d7c64f803db52be802595da3116093eb7",
+    "dream_rsi/evaluation.py": "48b294c76e6d4b2025ad341abeb3e12900d7346870cbc149e46b02f92d6feeeb",
+    "dream_rsi/__init__.py": "fe14ab8d14212de870c90c0c8fb004e616b58079150e1c35d5f4101c984cb959",
+    "dream_rsi/prompts.py": "fe9b93f208a7832a10bb38376e75e10278868f9c8342a71f894e8955e1c5aa71",
+    "dream_rsi/programs.py": "3be73c9ba89c44f9433ddc90151c323a1f8589698e82c9a0994324696471331b",
+    "dream_rsi/replay.py": "bc85ffc4535adf209bf14047d0f81b1504e03a4986dbb79e6f59b09ca325f53c",
+    "dream_rsi/compare.py": "57ec2004565abb31862b9ece134a829146c3da4be8e1cd8fc0b8cfdd1c40f610",
+    "dream_rsi/__main__.py": "9c738e5548fd6dd7ae45b45dd93aa2cc6b0301e949cf28e547c518a98ccbb44a",
+    "dream_rsi/history.py": "658254c7c7bd95b961da3f2dd1f2fcdcb2905a3a56e62ec8b8adb2ed01b8ece0",
+    "cache_sim/trace.py": "5213487331c4a8a86cb1dffda9f7d23b79bb2e91a43491bff5c7414e19664392",
+    "cache_sim/__init__.py": "cdd9f73c489489ef9469af0f252e99060c02b3a21ba809a9675005d32e5de4fd",
+    "cache_sim/engine.py": "91fd6591c4ff92dca5c7f580601a143f96136968e909ae394312a2fac44460c7",
+    "cache_sim/policies.py": "ee506f5e9299d0d1c3c6f63002f7f76c65be780609c7b900b280636e2705be61",
+    "cache_sim/__main__.py": "ef6a2c6fdd1cde8f941ec9333be773c7efaacd4128926ca7d70f2a5bf4f75941"
+  },
+  "interpretation": "Scores and raw-token savings agree. No controller revisions were accepted; arm differences cannot be attributed to controller evolution. Fresh validation differs from the earlier pilot."
+}

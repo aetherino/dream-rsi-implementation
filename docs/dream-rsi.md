@@ -82,25 +82,37 @@ Each generated cache policy is then replayed on precisely the training scenarios
 Trace hashes are checked again inside each evaluation. An oversized request is
 an error; the harness never silently truncates it or increases its cache capacity.
 
-For scenario `s`, let `extra_s(policy)` be the number of prompt tokens computed
-beyond what an unlimited cache would compute. The task reward is:
+The default objective is now `total_extra_v2`. For each scenario, extra tokens
+are prompt computation beyond an unlimited-cache replay. Sum the token counts
+across the entire fixed suite, then normalize once:
 
 ```text
-improvement_s = (extra_s(LRU) - extra_s(candidate)) / max(1, extra_s(LRU))
-task_score = arithmetic mean of improvement_s across scenarios
+total_extra(policy) = sum of extra computed prompt tokens across scenarios
+task_score = (total_extra(LRU) - total_extra(candidate)) / max(1, total_extra(LRU))
 ```
 
-LRU has score 0. A score of 0.10 means a 10% mean reduction in extra recomputation
-on scenarios with a nonzero LRU denominator, with any zero-denominator scenarios
-included as specified above. If LRU already has zero extra computation, matching
-it scores zero; regressions lose one score unit per extra token. This convention
-strongly discourages regressions on already-solved scenarios; change it explicitly
-before an experiment if a different tradeoff is desired.
+LRU scores zero. When the LRU suite total is positive, a score of 0.10 means
+10% fewer extra recomputed tokens across the suite. Every saved token has equal
+value, regardless of dataset, shard, or capacity. More total recomputation always
+produces a lower score; a positive score requires fewer tokens overall.
 
-Equal scenario weighting gives each dataset 50% of the default four-scenario
-suite, and each capacity within each dataset 25% of the overall score. This is
-not a request-weighted or token-weighted average. Preserve balanced scenario
-counts if that weighting matters when expanding the suite.
+A scenario where LRU has zero extra tokens uses the same suite denominator as
+all other scenarios. If LRU has zero extra tokens on the entire suite, the
+normalizer is 1: matching it scores zero, and each extra token scores -1; there
+is no percentage-improvement interpretation in that all-zero case.
+
+The workload mix is determined by the trace suite. There is no additional 50/50
+dataset weighting: a token saved in either dataset has the same value. Each
+capacity remains a separate scenario, so repeating a trace at another capacity
+adds another episode to the objective. CPU cost remains a separate feasibility
+gate rather than part of the token score.
+
+The previous objective, `mean_relative_v1`, averaged scenario-level relative
+improvements. It remains available explicitly for historical comparisons; it is
+not the default. Its per-scenario diagnostic is still recorded, but the new
+prompts use token savings and contributions to the suite score. Configurations,
+evaluator outputs, summaries and historical replay outputs identify the objective
+version. Existing recorded histories retain their original scores during replay.
 
 Reports retain computed/reused/extra tokens, eviction count, occupied blocks,
 policy microseconds per request, and replay timing. CPU policy time has a
