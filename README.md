@@ -7,11 +7,18 @@ needed to download/tokenize data or run the replay simulator.
 
 ## Current experiment and results
 
-The current experiment mixes chat and document QA in one shared cache and compares
-policies with and without declared task metadata. A separate final test remains
-outside search feedback. See [mixed-workload setup and protocol](docs/mixed-task-experiment.md),
-[the first pilot results](docs/mixed-task-pilot-results.md), and
-[the $10 dream-enabled continuation](docs/mixed-task-dream-continuation.md).
+The current harness implements the user-selected Dream-RSI Section 3 algorithm
+with an explicitly documented prefix-cache task adaptation. It searches executable,
+stateful Python cache policies and exploration controllers, supplies complete
+proposal histories, develops controller revisions sequentially, and deploys the
+best replay-tested version after each dream phase.
+
+The fresh experiment compares fixed exploration with Dream-RSI under a reset
+**$10 total cap**, using eleven online/replay rounds and the same frozen mixed
+chat/document-QA workload. See the [implementation contract and setup](docs/paper-faithful-harness.md).
+The earlier expression-only searches remain archived; they are not a reproduction
+of the paper's original model/task experiments. The final test remains outside
+search feedback.
 
 [Archived experiments](docs/past-results.md) include selected policies, per-scenario
 metrics, configurations and provenance hashes. The latest three extended searches
