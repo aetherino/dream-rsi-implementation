@@ -1,0 +1,15 @@
+# Paused mixed-task predecessor archive
+
+This is a compact archival snapshot of `runs/mixed-task-dream-20260928`, whose authoritative checkpoint remains `paused_by_user`. The original checkpoint and all active run files were left unchanged. No pending requests were reconciled or resent, no policies were reevaluated, and no model or provider HTTP calls were made to create this archive.
+
+The predecessor used expression policies and a fixed-controller warmup followed by an adaptive stage across three trials and two feature arms. It is an incomplete staged continuation, not a controlled fixed/adaptive comparison. Its combined new-spending cap was **$10**. The fresh Section 3 experiment at `runs/paper-section3-20260928` has a separate **$10** allowance that excludes this archive and its spending.
+
+The checkpoint's new-spending estimate is **$1.530736725**, including **$0.291835845** in unaccounted reservations for **12 pending jobs**. The accounted new-spending estimate is **$1.238900880**. The entire carried ledger totals **$1.722381630**, including **$0.191644905** imported from the earlier pilot. These are configured-rate estimates rather than verified provider bills; reservations do not prove requests completed or were charged. The checkpoint's reservations remain unchanged even if a separate provider-side outcome may exist.
+
+`snapshot.json` preserves the saved plan, provenance hashes, pause metadata, six configurations, current best policies and their aggregate/per-scenario training metrics, controllers, all saved revision evaluations, progress, complete usage records and pending-job identities. Compact current/completed proposal trees retain public policy expressions, rationales, scores, validity and errors; full per-node simulator metric rows are retained only for each arm's current best policy to avoid large repeated feedback. Rollout controllers refer to the corresponding completed histories rather than copying trees. An identical current revision log refers to its existing completed revision-log entry.
+
+No request prompts/bodies, credentials, raw dataset text, token sequences, request traces or hidden reasoning are included. Dataset paths, split declarations and hashes in the configurations are provenance metadata. Public generated policy/controller expressions and rationales are preserved as experiment outputs.
+
+There is **no completed final validation result for this stopped experiment**. The final test split was never opened. Best scores in this snapshot are training observations, not final validation/test evidence. Local per-arm `stop_reason` strings are preserved verbatim; they do not override the coordinator's paused status, pending jobs or incomplete experiment status.
+
+Original checkpoint SHA-256: `05b1359d1c542a1ceba3c2851022f2f1a94d2f47dbbe5b788e76ac3bd9080776`. Archive totals were calculated directly from that unchanged saved ledger, without importing or running the experiment code. This archive is evidence for review, not a runnable checkpoint or authorization to resume the predecessor.
