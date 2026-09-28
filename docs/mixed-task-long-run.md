@@ -1,5 +1,7 @@
 # Longer mixed-workload search
 
+**Superseded during execution:** the user requested controller dreaming. See the [dream-enabled continuation](mixed-task-dream-continuation.md). The text below records the original fixed-controller protocol; its spending carries forward into the combined budget, subsequently raised by the user to $10.
+
 The September 28 continuation tests whether more proposals help under the unchanged pilot setup. It targets three paired trials of `block-v1` versus `task-v1`, with up to 100 total proposals per arm. Trial 1 resumes each 12-call pilot history, including its partially completed second cycle. Trials 2 and 3 start independently from LRU, without importing candidate histories. These are stochastic replications, not seeded deterministic API runs.
 
 Prompts, model, task features, expression language, controller, scoring, capacities and workloads remain unchanged. The controller is fixed; there are no controller revisions or hints about inactive task conditions. New cycles still start from LRU while retaining the prior search history, as in the pilot. The cycle ceiling increases to 20 to accommodate the longer search.

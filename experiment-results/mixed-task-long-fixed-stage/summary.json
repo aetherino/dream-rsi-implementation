@@ -1,0 +1,52 @@
+{
+  "status": "fixed_stage_stopped_for_dream_continuation",
+  "runs": [
+    {
+      "id": "trial-01-block-v1",
+      "calls": 29,
+      "new_calls": 17,
+      "new_usd": 0.146850345,
+      "best_train_score": 0.048068773459256565
+    },
+    {
+      "id": "trial-01-task-v1",
+      "calls": 29,
+      "new_calls": 17,
+      "new_usd": 0.141923535,
+      "best_train_score": 0.06271945756144812
+    },
+    {
+      "id": "trial-02-task-v1",
+      "calls": 17,
+      "new_calls": 17,
+      "new_usd": 0.13881894000000003,
+      "best_train_score": 0.05763409613754692
+    },
+    {
+      "id": "trial-02-block-v1",
+      "calls": 17,
+      "new_calls": 17,
+      "new_usd": 0.141378045,
+      "best_train_score": 0.10473422932558421
+    },
+    {
+      "id": "trial-03-block-v1",
+      "calls": 17,
+      "new_calls": 17,
+      "new_usd": 0.13945317,
+      "best_train_score": 0.0446785325099891
+    },
+    {
+      "id": "trial-03-task-v1",
+      "calls": 17,
+      "new_calls": 17,
+      "new_usd": 0.14086953,
+      "best_train_score": 0.10788231020704686
+    }
+  ],
+  "new_usd": 0.849293565,
+  "validation_evaluated": false,
+  "test_opened": false,
+  "continuation": "runs/mixed-task-dream-20260928",
+  "combined_cap_usd": 10
+}

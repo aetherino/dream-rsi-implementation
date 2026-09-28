@@ -11,7 +11,7 @@ The current experiment mixes chat and document QA in one shared cache and compar
 policies with and without declared task metadata. A separate final test remains
 outside search feedback. See [mixed-workload setup and protocol](docs/mixed-task-experiment.md),
 [the first pilot results](docs/mixed-task-pilot-results.md), and
-[the $4 continuation protocol](docs/mixed-task-long-run.md).
+[the $10 dream-enabled continuation](docs/mixed-task-dream-continuation.md).
 
 [Archived experiments](docs/past-results.md) include selected policies, per-scenario
 metrics, configurations and provenance hashes. The latest three extended searches
